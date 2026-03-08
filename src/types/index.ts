@@ -15,6 +15,12 @@ export interface ChecklistItem {
   description?: string;
 }
 
+export interface DocumentItem {
+  id: string;
+  label: string;
+  germanName?: string;
+}
+
 export interface TimelineTask {
   id: string;
   taskGroup: string;
@@ -27,6 +33,8 @@ export interface TimelineTask {
   optional: boolean;
   dueWeek?: number;
   description?: string;
+  whyItMatters?: string;
+  documents?: DocumentItem[];
   unlocks?: string[];
   checklist?: ChecklistItem[];
 }

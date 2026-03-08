@@ -1,4 +1,4 @@
-import { TimelineTask } from '@/types';
+import { TimelineTask, DocumentItem } from '@/types';
 
 export const timelineTasks: TimelineTask[] = [
   {
@@ -166,6 +166,13 @@ export const timelineTasks: TimelineTask[] = [
     international: true,
     optional: false,
     description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
+    whyItMatters: 'Without the birth certificate, you cannot apply for Elterngeld, Kindergeld, register the baby for health insurance, or apply for a passport. Delays here cascade into every other step.',
+    documents: [
+      { id: 'doc-bc-parent-birth-certs', label: 'Parent birth certificates', germanName: 'Geburtsurkunden der Eltern' },
+      { id: 'doc-bc-passports', label: 'Passports or ID cards', germanName: 'Reisepässe oder Personalausweise' },
+      { id: 'doc-bc-marriage-cert', label: 'Marriage certificate (if married)', germanName: 'Eheurkunde' },
+      { id: 'doc-bc-paternity', label: 'Paternity recognition (if unmarried)', germanName: 'Vaterschaftsanerkennung' },
+    ],
     unlocks: [
       'Elterngeld application',
       'Kindergeld application',
@@ -307,6 +314,12 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: true,
     description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
+    whyItMatters: 'Without Vaterschaftsanerkennung, the father may not be listed on the birth certificate, which affects custody, benefits and legal rights.',
+    documents: [
+      { id: 'doc-vater-parent-ids', label: 'Both parents\' passports or ID cards', germanName: 'Personalausweise oder Reisepässe' },
+      { id: 'doc-vater-parent-birth-certs', label: 'Both parents\' birth certificates', germanName: 'Geburtsurkunden beider Eltern' },
+      { id: 'doc-vater-mutterpass', label: 'Mutterpass (pregnancy record)', germanName: 'Mutterpass' },
+    ],
     unlocks: [
       'father listed on birth certificate',
       'shared custody declaration',
@@ -327,6 +340,7 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: true,
     description: 'Completing this before birth can simplify the birth certificate process later.',
+    whyItMatters: 'Doing this before birth means the father can be included on the birth certificate from the start, avoiding a separate amendment process later.',
     checklist: [
       { id: 'complete-vaterschaftsanerkennung-finish', label: 'Complete recognition before birth', description: 'Doing it ahead of time can reduce stress after the baby arrives.' },
     ],
@@ -393,6 +407,13 @@ export const timelineTasks: TimelineTask[] = [
     international: true,
     optional: false,
     description: 'Some documents can take time to obtain, especially if they were issued outside Germany. Starting now helps avoid painful delays later.',
+    whyItMatters: 'If documents are missing or need apostilles and translations, it can delay the birth certificate by weeks, blocking almost every other postpartum step.',
+    documents: [
+      { id: 'doc-gather-parent-birth-certs', label: 'Parent birth certificates', germanName: 'Geburtsurkunden der Eltern' },
+      { id: 'doc-gather-passports', label: 'Passports or ID cards', germanName: 'Reisepässe oder Personalausweise' },
+      { id: 'doc-gather-marriage-cert', label: 'Marriage certificate (if married)', germanName: 'Eheurkunde' },
+      { id: 'doc-gather-naming-declaration', label: 'Naming declaration', germanName: 'Namensklärung' },
+    ],
     checklist: [
       { id: 'gather-birth-certificate-documents-birth-certificates', label: 'Obtain parent birth certificates', description: 'These are often core documents in the file.' },
       { id: 'gather-birth-certificate-documents-passports', label: 'Prepare passports or IDs', description: 'These are commonly required for identity verification.' },
@@ -427,6 +448,7 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'The formal parental leave request must be submitted in time. Even if you have already informed your employer about the pregnancy, this is a separate formal step.',
+    whyItMatters: 'Submitting late can delay your leave start or reduce your legal protections. The formal request has a deadline that is separate from informally telling your employer.',
     checklist: [
       { id: 'submit-elternzeit-request-finalize', label: 'Finalize the leave dates', description: 'Make sure the request reflects the actual plan you want to submit.' },
       { id: 'submit-elternzeit-request-send', label: 'Submit the formal request', description: 'Do not rely on earlier conversations alone.' },
@@ -444,6 +466,13 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'Elterngeld can only be submitted after birth, but preparing early reduces stress and delays.',
+    whyItMatters: 'Elterngeld replaces part of your income during parental leave. Applying late means payments start later, potentially leaving a gap in your finances.',
+    documents: [
+      { id: 'doc-elterngeld-birth-cert', label: 'Birth certificate (after birth)', germanName: 'Geburtsurkunde' },
+      { id: 'doc-elterngeld-income-proof', label: 'Proof of income (payslips)', germanName: 'Gehaltsnachweise' },
+      { id: 'doc-elterngeld-employer-cert', label: 'Employer certificate of maternity pay', germanName: 'Bescheinigung über Mutterschaftsgeld' },
+      { id: 'doc-elterngeld-health-ins-cert', label: 'Health insurance maternity benefit statement', germanName: 'Bescheinigung der Krankenkasse über Mutterschaftsgeld' },
+    ],
     checklist: [
       { id: 'prepare-elterngeld-application-eligibility', label: 'Review eligibility', description: 'Review the basic rules so there are no surprises later.' },
       { id: 'prepare-elterngeld-application-forms', label: 'Review required forms', description: 'Find out what the application will require.' },
@@ -703,6 +732,12 @@ export const timelineTasks: TimelineTask[] = [
     international: true,
     optional: false,
     description: 'Kindergeld requires the birth certificate and your baby\'s tax identification number. If either parent is an EU national or foreign-born, additional paperwork may be required.',
+    whyItMatters: 'Kindergeld is a monthly payment per child. Applying promptly ensures you receive it from the earliest possible date.',
+    documents: [
+      { id: 'doc-kindergeld-birth-cert', label: 'Birth certificate', germanName: 'Geburtsurkunde' },
+      { id: 'doc-kindergeld-tax-id', label: 'Baby\'s tax identification number', germanName: 'Steueridentifikationsnummer' },
+      { id: 'doc-kindergeld-parent-id', label: 'Parent ID or passport', germanName: 'Personalausweis oder Reisepass' },
+    ],
     checklist: [
       { id: 'submit-kindergeld-birth-certificate', label: 'Wait for birth certificate', description: 'This application cannot move properly without it.' },
       { id: 'submit-kindergeld-tax-id', label: 'Wait for baby\'s tax ID letter', description: 'The tax ID arrives automatically by mail after birth registration.' },
