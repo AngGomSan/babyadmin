@@ -448,6 +448,7 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'The formal parental leave request must be submitted in time. Even if you have already informed your employer about the pregnancy, this is a separate formal step.',
+    whyItMatters: 'Submitting late can delay your leave start or reduce your legal protections. The formal request has a deadline that is separate from informally telling your employer.',
     checklist: [
       { id: 'submit-elternzeit-request-finalize', label: 'Finalize the leave dates', description: 'Make sure the request reflects the actual plan you want to submit.' },
       { id: 'submit-elternzeit-request-send', label: 'Submit the formal request', description: 'Do not rely on earlier conversations alone.' },
