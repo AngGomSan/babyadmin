@@ -115,7 +115,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 pb-8">
+      <footer className="px-6 pt-3 pb-8">
         <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/70 flex-wrap">
           <Link to="/your-data" className="hover:text-muted-foreground transition-colors">How your data is used</Link>
           <span>·</span>
