@@ -15,6 +15,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The official pregnancy record used during prenatal care. Bring it to every pregnancy-related appointment.',
     pronunciationHint: 'MOOT-er-pass',
     keywords: ['pregnancy record', 'prenatal appointments', 'pregnancy booklet'],
+    category: 'medical_care',
   },
   {
     id: 'geburtsanzeige',
