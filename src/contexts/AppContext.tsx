@@ -190,10 +190,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
           intro_seen: false,
           completed_tasks: [],
           completed_checklist: [],
+          completed_documents: [],
           baby_born: false,
           birth_date: null,
           reassurance_dismissed: false,
-        })
+        } as any)
         .eq('user_id', user.id)
         .then();
     }
