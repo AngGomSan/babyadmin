@@ -37,15 +37,24 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   return (
     <Dialog open={open} onOpenChange={o => { if (!o) { onClose(); setQuery(''); } }}>
       <DialogContent className="max-w-lg p-0 gap-0 mx-4 rounded-2xl">
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
+        <div className="flex items-center gap-3 px-4 h-12 border-b border-border">
           <Search className="w-5 h-5 text-muted-foreground shrink-0" />
-          <Input
+          <input
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search tasks and glossary..."
-            className="border-0 focus-visible:ring-0 px-0 h-auto text-base"
+            className="flex-1 h-full bg-transparent text-base text-foreground placeholder:text-muted-foreground outline-none"
             autoFocus
           />
+          {query && (
+            <button
+              onClick={() => setQuery('')}
+              className="shrink-0 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          )}
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto p-2">
