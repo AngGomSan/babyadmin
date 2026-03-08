@@ -190,6 +190,24 @@ export default function Dashboard() {
           {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
         </section>
       )}
+
+      {/* Feedback */}
+      <section className="mt-8 rounded-xl border border-border bg-card p-5 space-y-2">
+        <h3 className="text-sm font-semibold text-foreground">Have feedback or noticed something missing?</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          BabyAdmin is built by a mom who went through the German pregnancy bureaucracy herself. If you notice missing steps, unclear instructions or anything that could help other parents, please share it.
+        </p>
+        <div className="pt-1">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="text-xs"
+            onClick={() => window.open('https://forms.gle/3ezuHYTzqAGqUdFAA', '_blank', 'noopener')}
+          >
+            Send feedback
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }
