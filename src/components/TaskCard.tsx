@@ -162,7 +162,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                           />
                         </span>
                         <span className={`text-[13px] leading-[20px] ${checked ? 'line-through text-muted-foreground/50' : 'text-foreground/85'}`}>
-                          {doc.label} <span className="text-foreground/45">({doc.germanName})</span>
+                          {doc.label} <span className="text-foreground/50">({doc.germanName})</span>
                         </span>
                       </label>
                     </div>
