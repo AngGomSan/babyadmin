@@ -37,8 +37,8 @@ export default function OverdueTasks() {
           <ArrowLeft className="w-4 h-4" />
         </Button>
         <div>
-          <h1 className="text-xl font-bold text-foreground">Overdue tasks</h1>
-          <p className="text-xs text-muted-foreground mt-0.5">Tasks from earlier weeks that haven't been completed.</p>
+          <h1 className="text-xl font-bold text-foreground">Earlier tasks</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">These tasks from earlier weeks may still be relevant.</p>
         </div>
       </div>
 
