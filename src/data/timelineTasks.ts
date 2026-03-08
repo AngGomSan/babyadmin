@@ -678,6 +678,15 @@ export const timelineTasks: TimelineTask[] = [
     international: true,
     optional: false,
     description: 'The birth certificate unlocks most later administrative steps including benefits, insurance registration, passports and other registrations.',
+    whyItMatters: 'This is the single most important document after birth. Without it, you cannot apply for Elterngeld, Kindergeld, health insurance, passports, or complete most registrations.',
+    documents: [
+      { id: 'doc-submit-bc-passports', label: 'Parent passports', germanName: 'Reisepässe' },
+      { id: 'doc-submit-bc-parent-birth-certs', label: 'Parents\' birth certificates', germanName: 'Geburtsurkunden der Eltern' },
+      { id: 'doc-submit-bc-marriage', label: 'Marriage certificate if married', germanName: 'Heiratsurkunde' },
+      { id: 'doc-submit-bc-paternity', label: 'Acknowledgement of paternity if not married', germanName: 'Vaterschaftsanerkennung' },
+      { id: 'doc-submit-bc-custody', label: 'Custody declaration if applicable', germanName: 'Sorgerechtserklärung' },
+      { id: 'doc-submit-bc-translations', label: 'Certified translations if documents are foreign', germanName: 'Beglaubigte Übersetzungen' },
+    ],
     unlocks: [
       'Elterngeld application',
       'Kindergeld application',
