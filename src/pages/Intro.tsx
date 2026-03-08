@@ -57,19 +57,19 @@ export default function Intro({ onDismiss }: IntroProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-14 md:pt-28 md:pb-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
+      <section className="flex flex-col items-center justify-center px-5 pt-14 pb-10 md:px-6 md:pt-28 md:pb-16 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-gradient-primary mb-2 md:mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl whitespace-nowrap mb-4">
+        <p className="text-base md:text-xl text-muted-foreground max-w-sm md:max-w-2xl mb-3 md:mb-4">
           The German bureaucracy survival guide for expecting parents.
         </p>
-        <p className="text-base text-muted-foreground max-w-xl mb-8 leading-relaxed">
+        <p className="text-sm md:text-base text-muted-foreground max-w-xs md:max-w-xl mb-5 md:mb-8 leading-relaxed">
           Pregnancy paperwork in Germany can be confusing. BabyAdmin shows you what to do, when to do it and which documents you need before and after birth.
         </p>
-        <p className="text-xs text-muted-foreground/85 max-w-lg mb-10 leading-relaxed">
+        <p className="text-xs text-muted-foreground/85 max-w-xs md:max-w-lg mb-8 md:mb-10 leading-relaxed">
           <span className="font-semibold">BabyAdmin is free</span> and built by a mom who went through the German bureaucracy herself. Your account only saves your progress. We never ask for document uploads.
         </p>
         <div className="flex flex-col items-center">
@@ -80,23 +80,23 @@ export default function Intro({ onDismiss }: IntroProps) {
             Get started
           </button>
         </div>
-        <p className="mt-5 text-xs text-muted-foreground/75">
+        <p className="mt-4 text-xs text-muted-foreground/75">
           Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link><span className="text-muted-foreground">.</span>
         </p>
       </section>
 
       {/* Value cards */}
-      <section className="px-6 pb-12 md:pb-14">
-        <div className="max-w-[56rem] mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="px-5 pb-8 md:px-6 md:pb-14">
+        <div className="max-w-[56rem] mx-auto grid gap-3 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
-              className="rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
+              className="rounded-2xl border border-border bg-card px-5 py-3.5 md:px-6 md:py-4 shadow-card"
             >
-              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-3">
-                <Icon className="w-[22px] h-[22px] text-primary/90" />
+              <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-secondary flex items-center justify-center mb-2 md:mb-3">
+                <Icon className="w-5 h-5 md:w-[22px] md:h-[22px] text-primary/90" />
               </div>
-              <h3 className="text-sm font-semibold text-foreground mb-1.5">{title}</h3>
+              <h3 className="text-sm font-semibold text-foreground mb-1">{title}</h3>
               <p className="text-sm text-muted-foreground leading-snug">{body}</p>
             </div>
           ))}
@@ -104,9 +104,9 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Reassurance */}
-      <section className="px-6 pb-10 md:pb-14">
+      <section className="px-5 pb-8 md:px-6 md:pb-14">
         <div className="max-w-[560px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
-          <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-8 py-5 text-center">
+          <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-5 py-4 md:px-8 md:py-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
               You don't need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
             </p>
@@ -115,7 +115,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 pt-3 pb-8">
+      <footer className="px-5 pt-2 pb-8 md:px-6 md:pt-3">
         <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/70 flex-wrap">
           <Link to="/your-data" className="hover:text-muted-foreground transition-colors">How your data is used</Link>
           <span>·</span>
