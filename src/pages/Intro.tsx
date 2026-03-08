@@ -108,7 +108,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="max-w-[600px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
           <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-8 py-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
-              You do not need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
+              You don't need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
             </p>
           </div>
         </div>
