@@ -87,7 +87,7 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Value cards */}
       <section className="px-6 pb-12 md:pb-14">
-        <div className="max-w-4xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-[56rem] mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
