@@ -75,7 +75,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="flex flex-col items-center">
           <button
             onClick={handleGetStarted}
-            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
+            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#F25DAA] via-[#8A5CF6] to-[#4F7DF3] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
           </button>
