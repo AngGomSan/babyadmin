@@ -167,6 +167,9 @@ export default function Dashboard() {
         <BabyBornPrompt variant="card" />
       )}
 
+      {/* Overdue banner */}
+      {!calc.isPostpartum && isCurrentView && <OverdueBanner />}
+
       {/* Do this now */}
       <section className="space-y-2.5">
         <h3 className="text-xs font-bold text-[hsl(215,25%,27%)] uppercase tracking-wider">Do this now</h3>

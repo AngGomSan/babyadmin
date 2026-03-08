@@ -31,6 +31,7 @@ const App = () => (
               <Route element={<Layout />}>
                 <Route path="/" element={<Index />} />
                 <Route path="/timeline" element={<Timeline />} />
+                <Route path="/overdue" element={<OverdueTasks />} />
                 <Route path="/glossary" element={<GlossaryPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
               </Route>
