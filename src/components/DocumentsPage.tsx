@@ -141,10 +141,10 @@ export default function DocumentsPage() {
                           <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                             {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
                           </span>
-                          {relatedTasks.length > 0 && !checked && (
+                          {usedFor.length > 0 && !checked && (
                             <p className="text-[11px] mt-1 leading-relaxed">
-                              <span className="text-muted-foreground/70">Needed for: </span>
-                              {relatedTasks.map((name, i) => (
+                              <span className="text-muted-foreground/70">Used for: </span>
+                              {usedFor.map((name, i) => (
                                 <span key={i}>
                                   {i > 0 && <span className="text-muted-foreground/40 mx-1">·</span>}
                                   <span className="text-muted-foreground/80">{name}</span>
