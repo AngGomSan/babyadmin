@@ -142,29 +142,31 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {resolvedDocs.length > 0 && (
-            <div className="flex gap-2.5 items-start mt-3">
-              <ClipboardList className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
-              <div className="flex-1">
-                <p className="text-[12px] font-medium text-muted-foreground mb-1.5">Documents you will need</p>
-                {resolvedDocs.map((doc) => {
-                  if (!doc) return null;
-                  const checked = isDocumentComplete(doc.id);
-                  return (
-                    <div key={doc.id} className="mt-1.5 first:mt-0">
-                      <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
+            <div className="mt-3">
+              <div className="flex gap-2.5 items-start mb-2">
+                <ClipboardList className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+                <p className="text-[12px] font-medium text-muted-foreground">Documents you will need</p>
+              </div>
+              {resolvedDocs.map((doc) => {
+                if (!doc) return null;
+                const checked = isDocumentComplete(doc.id);
+                return (
+                  <div key={doc.id} className="mt-1.5 first:mt-0 -mx-1 px-1 rounded-lg py-1">
+                    <label className="grid cursor-pointer min-h-[1.75rem]" style={{ gridTemplateColumns: '24px 1fr' }}>
+                      <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
                           checked={checked}
                           onCheckedChange={() => toggleDocument(doc.id)}
-                          className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
+                          className={`rounded h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                         />
-                        <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
-                          {doc.label} ({doc.germanName})
-                        </span>
-                      </label>
-                    </div>
-                  );
-                })}
-              </div>
+                      </span>
+                      <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground/60' : 'text-foreground'}`}>
+                        {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
+                      </span>
+                    </label>
+                  </div>
+                );
+              })}
             </div>
           )}
 
@@ -198,12 +200,12 @@ export default function TaskCard({ task }: TaskCardProps) {
                           className={`rounded h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                         />
                       </span>
-                      <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                      <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground/60' : 'text-foreground'}`}>
                         {item.label}
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-xs text-muted-foreground/70 mt-px leading-relaxed" style={{ paddingLeft: '24px' }}>{item.description}</p>
+                      <p className="text-[11px] text-muted-foreground/50 mt-px leading-relaxed" style={{ paddingLeft: '24px' }}>{item.description}</p>
                     )}
                   </div>
                 );
