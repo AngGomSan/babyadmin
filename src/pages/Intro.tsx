@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ClipboardCheck, CalendarDays, BookOpen } from 'lucide-react';
+import { ClipboardCheck, CalendarDays, BookOpen, Users } from 'lucide-react';
 
 const LogoIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
