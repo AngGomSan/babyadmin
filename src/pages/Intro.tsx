@@ -70,7 +70,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           Pregnancy paperwork in Germany can be confusing. BabyAdmin shows you what to do, when to do it and which documents you need before and after your baby arrives.
         </p>
         <p className="text-[11px] text-muted-foreground/70 max-w-md mb-8 leading-relaxed">
-          BabyAdmin is free and built by a mom who went through the German bureaucracy herself. Your account only saves your progress. No documents are uploaded or stored.
+          BabyAdmin is free and built by a mom who went through the German bureaucracy herself. Your account only saves your progress. We never ask for document uploads.
         </p>
         <div className="flex flex-col items-center">
           <button
