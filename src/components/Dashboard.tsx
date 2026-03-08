@@ -78,7 +78,7 @@ export default function Dashboard() {
             <X className="w-4 h-4" />
           </button>
           <p className="text-sm text-foreground leading-relaxed pr-8">
-            You do not need to figure everything out at once. This app helps you focus on what matters now and what to prepare next.
+            You do not need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
           </p>
         </div>
       )}
