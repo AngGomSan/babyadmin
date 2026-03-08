@@ -127,7 +127,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           {task.description && (
             <div className="flex gap-2.5 items-start -mt-2">
               <Info className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
-              <p className="text-[13px] text-foreground/50 leading-relaxed">{task.description}</p>
+              <p className="text-[13px] text-foreground/55 leading-relaxed">{task.description}</p>
             </div>
           )}
 
