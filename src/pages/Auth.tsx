@@ -80,7 +80,7 @@ export default function Auth() {
       <div className="w-full max-w-sm space-y-8 text-center fade-in">
         <div>
           <h1 className="text-3xl font-bold text-gradient-primary mb-2">BabyAdmin</h1>
-          <p className="text-sm text-muted-foreground">Your guide to pregnancy admin in Germany</p>
+          <p className="text-sm text-muted-foreground">The German bureaucracy survival guide for expecting parents.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
