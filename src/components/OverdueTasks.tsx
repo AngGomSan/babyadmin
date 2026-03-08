@@ -6,6 +6,7 @@ import TaskCard from '@/components/TaskCard';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { CATEGORY_LABELS } from '@/types';
 
 export default function OverdueTasks() {
   const { state, isTaskComplete } = useApp();
@@ -16,16 +17,16 @@ export default function OverdueTasks() {
     if (!calc || calc.isPostpartum) return [];
 
     return timelineTasks.filter(t => {
-      if (t.timing.type !== 'weekRange') return false;
-      if (t.timing.endWeek >= calc.currentWeek) return false;
+      if (t.timing.type !== 'weekRange' || t.dueWeek == null) return false;
+      if (calc.currentWeek <= t.dueWeek) return false;
+      if (calc.currentWeek > t.timing.endWeek) return false;
       if (isTaskComplete(t.id)) return false;
-      if (t.urgency !== 'do_this_now') return false;
       return true;
     }).sort((a, b) => {
-      // Sort by end week descending (most recently overdue first)
-      const aEnd = a.timing.type === 'weekRange' ? a.timing.endWeek : 0;
-      const bEnd = b.timing.type === 'weekRange' ? b.timing.endWeek : 0;
-      return bEnd - aEnd;
+      // Sort by most overdue first: (currentWeek - dueWeek) descending
+      const aOverdue = calc.currentWeek - (a.dueWeek ?? 0);
+      const bOverdue = calc.currentWeek - (b.dueWeek ?? 0);
+      return bOverdue - aOverdue;
     });
   }, [calc, state.completedTasks]);
 
@@ -55,7 +56,7 @@ export default function OverdueTasks() {
             <div key={task.id} className="relative">
               <TaskCard task={task} />
               <p className="text-[11px] text-muted-foreground mt-1 ml-12">
-                Due by week {task.timing.type === 'weekRange' ? task.timing.endWeek : '—'}
+                Due by week {task.dueWeek ?? '—'}
               </p>
             </div>
           ))}
