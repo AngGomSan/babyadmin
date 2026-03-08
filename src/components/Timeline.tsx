@@ -137,6 +137,25 @@ export default function Timeline() {
         <div>
           <h1 className="text-xl font-bold text-foreground">Your timeline</h1>
           <p className="text-xs text-muted-foreground mt-0.5">Tasks organized by pregnancy stage.</p>
+          {/* Preparation progress */}
+          {(() => {
+            const totalTasks = timelineTasks.length;
+            const completedCount = state.completedTasks.length;
+            const pct = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
+            return (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <p className="text-sm text-foreground/65 cursor-default mt-1.5">
+                    <span className="mr-1">✨</span>
+                    You're <span className="font-semibold text-foreground/80 tabular-nums">{pct}%</span> ready for baby's arrival!
+                  </p>
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="text-xs">
+                  {completedCount} of {totalTasks} tasks completed
+                </TooltipContent>
+              </Tooltip>
+            );
+          })()}
         </div>
         <div className="flex bg-muted rounded-lg p-0.5">
           <button
@@ -157,25 +176,6 @@ export default function Timeline() {
           </button>
         </div>
       </div>
-
-      {/* Preparation progress */}
-      {(() => {
-        const totalTasks = timelineTasks.length;
-        const completedCount = state.completedTasks.length;
-        const pct = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
-        return (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <p className="text-xs text-muted-foreground cursor-default -mt-2">
-                You're <span className="font-semibold text-foreground/70 tabular-nums">{pct}%</span> ready for baby's arrival
-              </p>
-            </TooltipTrigger>
-            <TooltipContent side="bottom" className="text-xs">
-              {completedCount} of {totalTasks} tasks completed
-            </TooltipContent>
-          </Tooltip>
-        );
-      })()}
 
       {viewMode === 'weekly' ? (
         <div className="space-y-5">
