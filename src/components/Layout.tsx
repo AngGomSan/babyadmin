@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { Home, CalendarDays, BookOpen, Settings, Search } from 'lucide-react';
 import { useState } from 'react';
 import SearchOverlay from '@/components/SearchOverlay';
