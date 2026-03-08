@@ -63,6 +63,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Monthly government financial support for children.',
     pronunciationHint: 'KIN-der-gelt',
     keywords: ['child benefit', 'monthly support', 'family allowance'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'vaterschaftsanerkennung',
