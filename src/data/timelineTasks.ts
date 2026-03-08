@@ -155,7 +155,14 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: true,
     optional: false,
-    description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
+     description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
+     unlocks: [
+       'Elterngeld application',
+       'Kindergeld application',
+       'health insurance registration',
+       'passport application',
+       'embassy registration',
+     ],
     checklist: [
       { id: 'understand-birth-certificate-process-why', label: 'Understand why this matters', description: 'This document is the key that unlocks most later paperwork.' },
       { id: 'understand-birth-certificate-process-where', label: 'Learn how paperwork is submitted', description: 'Many hospitals coordinate directly with the civil registry, but the exact process can vary.' },
