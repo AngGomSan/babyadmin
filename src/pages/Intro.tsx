@@ -54,17 +54,17 @@ export default function Intro({ onDismiss }: IntroProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 pt-24 pb-20 md:pt-32 md:pb-28 text-center">
-        <div className="mb-6">
+      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-12 md:pt-28 md:pb-16 text-center">
+        <div className="mb-4">
           <LogoIcon />
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-6">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-4">
           The German bureaucracy survival guide for parents-to-be.
         </p>
-        <p className="text-base text-muted-foreground/80 max-w-md mb-10 leading-relaxed">
+        <p className="text-base text-muted-foreground/80 max-w-xl mb-8 leading-relaxed">
           Administrative steps around pregnancy and birth in Germany can be confusing. BabyAdmin helps you understand what to do, when to do it and which documents to prepare before and after your baby arrives.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3">
@@ -85,7 +85,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Value cards */}
-      <section className="px-6 pb-20 md:pb-28">
+      <section className="px-6 pb-12 md:pb-16">
         <div className="max-w-3xl mx-auto grid gap-5 sm:grid-cols-3">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
@@ -103,16 +103,16 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Reassurance */}
-      <section className="px-6 pb-20 md:pb-28">
-        <div className="max-w-lg mx-auto text-center">
-          <p className="text-base text-muted-foreground leading-relaxed">
+      <section className="px-6 pb-10 md:pb-14">
+        <div className="max-w-xl mx-auto text-center rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%/0.06)] via-[hsl(278,52%,50%/0.06)] to-[hsl(220,62%,55%/0.06)] border border-border/50 px-6 py-5">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             You do not need to figure everything out at once. BabyAdmin helps you focus on what matters now and what to prepare next.
           </p>
         </div>
       </section>
 
       {/* Who it is for */}
-      <section className="px-6 pb-20 md:pb-28">
+      <section className="px-6 pb-8 md:pb-10">
         <div className="max-w-lg mx-auto text-center">
           <h2 className="text-lg font-semibold text-foreground mb-3">Who it is for</h2>
           <p className="text-base text-muted-foreground leading-relaxed">
@@ -122,7 +122,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Final CTA */}
-      <section className="px-6 pb-24 md:pb-32">
+      <section className="px-6 pb-20 md:pb-24">
         <div className="max-w-lg mx-auto text-center">
           <button
             onClick={handleGetStarted}
