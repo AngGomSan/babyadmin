@@ -109,7 +109,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       <section className="px-6 pb-10 md:pb-14">
         <div className="max-w-xl mx-auto text-center rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%/0.06)] via-[hsl(278,52%,50%/0.06)] to-[hsl(220,62%,55%/0.06)] border border-border/50 px-6 py-5">
           <p className="text-sm text-muted-foreground leading-relaxed">
-            You do not need to figure everything out at once. BabyAdmin helps you focus on what matters now and what to prepare next.
+            You do not need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
           </p>
         </div>
       </section>
