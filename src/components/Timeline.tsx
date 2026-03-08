@@ -17,6 +17,16 @@ const trimesterRanges = [
   { label: 'Postpartum (months 0–3)', start: -1, end: -1, tri: 4 },
 ];
 
+const postpartumMonthLabels = ['Month 0', 'Month 1', 'Month 2', 'Month 3'];
+
+function getPostpartumTasksForMonth(month: number): TimelineTask[] {
+  return timelineTasks.filter(t => {
+    if (t.timing.type === 'postpartumMonth') return t.timing.month === month;
+    if (t.timing.type === 'postpartumRange') return month >= t.timing.startMonth && month <= t.timing.endMonth;
+    return false;
+  });
+}
+
 function taskInWeekRange(task: TimelineTask, rangeStart: number, rangeEnd: number): boolean {
   if (task.timing.type !== 'weekRange') return false;
   return task.timing.startWeek <= rangeEnd && task.timing.endWeek >= rangeStart;
