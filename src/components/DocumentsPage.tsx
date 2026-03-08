@@ -16,7 +16,6 @@ glossaryTerms.forEach(term => {
 
 const sectionIcons: Record<string, LucideIcon> = {
   'Prepare during pregnancy': FolderOpen,
-  'Needed for birth registration': Hospital,
   'Needed after birth': Landmark,
 };
 
@@ -31,20 +30,16 @@ const sections: { title: string; docIds: string[] }[] = [
       'doc-custody-declaration',
       'doc-naming-declaration',
       'doc-certified-translations',
-    ],
-  },
-  {
-    title: 'Needed for birth registration',
-    docIds: [
-      'doc-geburtsanzeige',
-      'doc-birth-certificate',
-      'doc-birth-certificate-elterngeld',
+      'doc-mutterpass',
+      'doc-due-date-confirmation',
     ],
   },
   {
     title: 'Needed after birth',
     docIds: [
-      'doc-due-date-confirmation',
+      'doc-geburtsanzeige',
+      'doc-birth-certificate',
+      'doc-birth-certificate-elterngeld',
       'doc-elternzeit-letter',
       'doc-employer-confirmation',
       'doc-salary-statements',
@@ -54,7 +49,6 @@ const sections: { title: string; docIds: string[] }[] = [
       'doc-health-insurance-info',
       'doc-health-insurance-card',
       'doc-parent-insurance-number',
-      'doc-mutterpass',
     ],
   },
 ];
