@@ -249,21 +249,21 @@ export default function Timeline() {
           </div>
 
           {/* Trimester sections */}
-          <div className="space-y-10 mt-2">
+          <div className="space-y-12 mt-2">
             {trimesterGroups.map(group => (
               <section
                 key={group.tri}
                 ref={el => { sectionRefs.current[group.tri] = el; }}
                 className="scroll-mt-28"
               >
-                <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-foreground">{group.label}</h3>
-                  <div className="mt-2 h-px bg-border" />
+                <div className="mb-5">
+                  <h3 className="text-[13px] font-semibold text-foreground tracking-tight">{group.label}</h3>
+                  <div className="mt-2.5 h-px bg-border" />
                 </div>
                 {group.tasks.length === 0 ? (
                   <p className="text-sm text-muted-foreground">No tasks.</p>
                 ) : (
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     {group.tasks.map(task => <TaskCard key={task.id} task={task} />)}
                   </div>
                 )}
