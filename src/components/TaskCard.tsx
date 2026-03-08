@@ -122,16 +122,16 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       {/* Expanded content */}
       {expanded && hasDetails && (
-        <div className="px-4 pb-4 pl-12 space-y-3 slide-up">
+        <div className="px-4 pb-4 pl-12 slide-up">
           {task.description && (
-            <div className="flex gap-2.5 items-start -mt-1">
+            <div className="flex gap-2.5 items-start -mt-2">
               <Info className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
             </div>
           )}
 
           {task.unlocks && task.unlocks.length > 0 && (
-            <div className="flex gap-2.5 items-start">
+            <div className="flex gap-2.5 items-start mt-3">
               <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <div>
                 <p className="text-[12px] font-medium text-muted-foreground mb-1">What this unlocks</p>
@@ -147,12 +147,12 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="space-y-0.5 pt-0.5">
-              {task.checklist.map(item => {
+            <div className="mt-3.5">
+              {task.checklist.map((item, idx) => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className="py-1.5 -mx-1 px-1 rounded-lg">
-                    <label className="flex items-start gap-3 cursor-pointer min-h-[2rem]">
+                  <div key={item.id} className={`-mx-1 px-1 rounded-lg py-1 ${idx > 0 ? 'mt-2' : ''}`}>
+                    <label className="flex items-start gap-3 cursor-pointer min-h-[1.75rem]">
                       <Checkbox
                         checked={checked}
                         onCheckedChange={() => toggleChecklist(item.id)}
@@ -163,7 +163,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-0.5 leading-relaxed">{item.description}</p>
+                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-px leading-relaxed">{item.description}</p>
                     )}
                   </div>
                 );
