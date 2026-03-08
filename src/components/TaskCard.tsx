@@ -136,7 +136,7 @@ export default function TaskCard({ task }: TaskCardProps) {
               <Heart className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
               <div>
                 <p className="text-[12px] font-semibold text-foreground/65 mb-2">Why this matters</p>
-                <p className="text-[13px] text-foreground/55 leading-relaxed">{task.whyItMatters}</p>
+                <p className="text-[13px] text-foreground/45 leading-relaxed">{task.whyItMatters}</p>
               </div>
             </div>
           )}
