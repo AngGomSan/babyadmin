@@ -260,16 +260,14 @@ export default function Timeline() {
                   onClick={() => scrollToSection(range.tri)}
                   className={`shrink-0 px-3.5 py-1.5 rounded-full text-center transition-all duration-200 ${
                     activeTri === range.tri
-                      ? 'bg-card highlight-gradient-border shadow-sm'
-                      : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-accent hover:border hover:border-border'
+                      ? 'bg-card text-foreground highlight-gradient-border shadow-sm'
+                      : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                 >
-                  <span className={`text-xs font-medium leading-tight ${
-                    activeTri === range.tri ? 'text-gradient-primary' : ''
-                  }`}>{range.shortLabel}</span>
+                  <span className="text-xs font-medium leading-tight">{range.shortLabel}</span>
                   {range.tri < 4 && (
                     <span className={`block text-[10px] leading-tight ${
-                      activeTri === range.tri ? 'text-gradient-primary opacity-70' : 'text-muted-foreground/60'
+                      activeTri === range.tri ? 'text-muted-foreground' : 'text-muted-foreground/60'
                     }`}>
                       {range.tri === 1 ? '1–13' : range.tri === 2 ? '14–27' : '28–42'}
                     </span>
