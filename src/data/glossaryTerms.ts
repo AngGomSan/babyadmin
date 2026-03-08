@@ -112,6 +112,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'An employer certificate confirming income and employment details. Used when applying for Elterngeld to verify your earnings before parental leave.',
     pronunciationHint: 'AR-bites-gay-ber-buh-shy-ni-goong',
     keywords: ['employer certificate', 'income proof', 'elterngeld application', 'work confirmation'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'gehaltsnachweise',
