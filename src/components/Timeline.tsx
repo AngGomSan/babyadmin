@@ -182,7 +182,7 @@ export default function Timeline() {
                 max={42}
                 value={selectedWeek}
                 onChange={e => setSelectedWeek(Number(e.target.value))}
-                className="w-full accent-primary h-1.5"
+                className="w-full h-1.5 timeline-slider"
               />
               <div className="flex justify-between text-[10px] text-muted-foreground/60 px-0.5">
                 <span>Week 4</span>
