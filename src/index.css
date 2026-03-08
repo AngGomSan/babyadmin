@@ -35,10 +35,16 @@
     --radius: 0.75rem;
 
     /* Category colors */
-    --category-medical: 210 68% 52%;
-    --category-paperwork: 278 52% 55%;
-    --category-benefits: 165 42% 48%;
-    --category-planning: 38 78% 52%;
+    --category-medical: 217 91% 60%;
+    --category-paperwork: 330 81% 60%;
+    --category-benefits: 160 84% 39%;
+    --category-planning: 45 93% 56%;
+
+    /* Category badge backgrounds */
+    --category-medical-bg: 214 95% 93%;
+    --category-paperwork-bg: 326 78% 95%;
+    --category-benefits-bg: 149 80% 90%;
+    --category-planning-bg: 48 96% 89%;
 
     /* Highlight */
     --highlight: 45 88% 88%;
