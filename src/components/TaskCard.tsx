@@ -25,6 +25,14 @@ const categoryGlobeClass: Record<string, string> = {
   benefits_and_finances: 'text-category-benefits',
   planning_and_preparation: 'text-category-planning',
 };
+
+const categoryCheckboxClass: Record<string, string> = {
+  medical_care: 'border-category-medical',
+  paperwork: 'border-category-paperwork',
+  benefits_and_finances: 'border-category-benefits',
+  planning_and_preparation: 'border-category-planning',
+};
+
 const CATEGORY_ICON_MAP: Record<TaskCategory, React.ComponentType<{ className?: string }>> = {
   medical_care: Stethoscope,
   paperwork: FileText,
@@ -66,7 +74,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           <Checkbox
             checked={completed}
             onCheckedChange={() => toggleTask(task.id)}
-            className="rounded-md h-5 w-5"
+            className={`rounded-md h-5 w-5 ${!completed ? categoryCheckboxClass[task.category] : ''}`}
           />
         </div>
 
@@ -80,7 +88,7 @@ export default function TaskCard({ task }: TaskCardProps) {
               {CATEGORY_LABELS[task.category]}
             </span>
             {task.optional && (
-              <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+              <span className="text-[12px] font-semibold tracking-wider px-2 py-[2px] rounded-[6px] border border-[hsl(214,32%,91%)] text-[hsl(215,16%,47%)] bg-transparent">
                 Optional
               </span>
             )}
