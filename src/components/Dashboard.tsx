@@ -116,30 +116,32 @@ export default function Dashboard() {
 
         {/* Week navigation */}
         <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            className="h-9 w-9 shrink-0 bg-muted/50 border-border text-foreground/70"
-            onClick={() => setWeekOffset(o => o - 1)}
-            disabled={calc.isPostpartum ? viewMonth <= 0 : viewWeek <= 4}
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
+          <div className="flex items-center">
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-9 w-9 shrink-0 rounded-r-none border-r-0 bg-muted/50 border-border text-foreground/70"
+              onClick={() => setWeekOffset(o => o - 1)}
+              disabled={calc.isPostpartum ? viewMonth <= 0 : viewWeek <= 4}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-9 w-9 shrink-0 rounded-l-none bg-muted/50 border-border text-foreground/70"
+              onClick={() => setWeekOffset(o => o + 1)}
+              disabled={calc.isPostpartum ? viewMonth >= 3 : viewWeek >= 42}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
           <button
-            className={`text-xs font-medium px-3 py-1.5 rounded-lg highlight-gradient-border highlight-gradient-bg transition-all duration-200 text-foreground/70 hover:text-foreground ${isCurrentView ? 'invisible' : ''}`}
+            className={`text-xs text-foreground/50 hover:text-foreground/80 transition-colors ${isCurrentView ? 'invisible' : ''}`}
             onClick={() => setWeekOffset(0)}
           >
-            Return to current week
+            Back to current week
           </button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="h-9 w-9 shrink-0 bg-muted/50 border-border text-foreground/70"
-            onClick={() => setWeekOffset(o => o + 1)}
-            disabled={calc.isPostpartum ? viewMonth >= 3 : viewWeek >= 42}
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
           <div className="flex-1" />
           <Button variant="ghost" size="sm" className="text-xs text-muted-foreground" onClick={() => navigate('/timeline')}>
             Full timeline →
