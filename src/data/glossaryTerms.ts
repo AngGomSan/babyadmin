@@ -219,5 +219,6 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certified translation of a document, done by a sworn or officially recognized translator. Required when submitting foreign-language documents to German authorities.',
     pronunciationHint: 'beh-GLOW-bikh-tuh oo-ber-ZET-soong',
     keywords: ['certified translation', 'sworn translator', 'foreign documents', 'official translation'],
+    category: 'paperwork',
   },
 ];
