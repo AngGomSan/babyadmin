@@ -122,6 +122,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const setDueDate = useCallback((date: string) => {
     setState(s => ({ ...s, dueDate: date }));
+    trackEvent({ name: 'due_date_set' });
   }, []);
 
   const completeOnboarding = useCallback(() => {
