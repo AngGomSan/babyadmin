@@ -1,10 +1,47 @@
 import { useApp } from '@/contexts/AppContext';
-import { globalDocuments } from '@/data/documents';
+import { globalDocuments, GlobalDocument } from '@/data/documents';
 import { timelineTasks } from '@/data/timelineTasks';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ClipboardList } from 'lucide-react';
 
-/** For each document, find which tasks reference it */
+const sections: { title: string; docIds: string[] }[] = [
+  {
+    title: 'Prepare during pregnancy',
+    docIds: [
+      'doc-parent-passports',
+      'doc-parent-birth-certificates',
+      'doc-marriage-certificate',
+      'doc-paternity-recognition',
+      'doc-custody-declaration',
+      'doc-naming-declaration',
+      'doc-certified-translations',
+    ],
+  },
+  {
+    title: 'Needed for birth registration',
+    docIds: [
+      'doc-geburtsanzeige',
+      'doc-birth-certificate',
+      'doc-birth-certificate-elterngeld',
+    ],
+  },
+  {
+    title: 'Needed after birth',
+    docIds: [
+      'doc-due-date-confirmation',
+      'doc-elternzeit-letter',
+      'doc-employer-confirmation',
+      'doc-salary-statements',
+      'doc-parent-tax-id',
+      'doc-child-tax-id',
+      'doc-kindergeld-form',
+      'doc-health-insurance-info',
+      'doc-health-insurance-card',
+      'doc-parent-insurance-number',
+      'doc-mutterpass',
+    ],
+  },
+];
+
 function getTasksForDocument(docId: string) {
   return timelineTasks
     .filter(t => t.requiredDocuments?.includes(docId))
@@ -16,6 +53,7 @@ export default function DocumentsPage() {
 
   const completedCount = globalDocuments.filter(d => isDocumentComplete(d.id)).length;
   const totalCount = globalDocuments.length;
+  const docMap = new Map(globalDocuments.map(d => [d.id, d]));
 
   return (
     <div className="fade-in">
@@ -44,37 +82,51 @@ export default function DocumentsPage() {
         </div>
       </div>
 
-      {/* Document list */}
-      <div className="rounded-xl bg-card shadow-card divide-y divide-border">
-        {globalDocuments.map((doc) => {
-          const checked = isDocumentComplete(doc.id);
-          const relatedTasks = getTasksForDocument(doc.id);
+      {/* Grouped document list */}
+      <div className="space-y-5">
+        {sections.map((section) => {
+          const docs = section.docIds.map(id => docMap.get(id)).filter(Boolean) as GlobalDocument[];
+          if (docs.length === 0) return null;
 
           return (
-            <div key={doc.id} className="px-4 py-3.5">
-              <label className="flex items-start gap-3.5 cursor-pointer">
-                <Checkbox
-                  checked={checked}
-                  onCheckedChange={() => toggleDocument(doc.id)}
-                  className={`rounded mt-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? 'border-primary' : ''}`}
-                />
-                <div className="flex-1 min-w-0">
-                  <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
-                    {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
-                  </span>
-                  {relatedTasks.length > 0 && !checked && (
-                    <p className="text-[11px] mt-1 leading-relaxed">
-                      <span className="text-muted-foreground/70">Needed for: </span>
-                      {relatedTasks.map((name, i) => (
-                        <span key={i}>
-                          {i > 0 && <span className="text-muted-foreground/40 mx-1">·</span>}
-                          <span className="text-muted-foreground/80">{name}</span>
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                </div>
-              </label>
+            <div key={section.title}>
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 px-1">
+                {section.title}
+              </h2>
+              <div className="rounded-xl bg-card shadow-card divide-y divide-border">
+                {docs.map((doc) => {
+                  const checked = isDocumentComplete(doc.id);
+                  const relatedTasks = getTasksForDocument(doc.id);
+
+                  return (
+                    <div key={doc.id} className="px-4 py-3.5">
+                      <label className="flex items-start gap-3.5 cursor-pointer">
+                        <Checkbox
+                          checked={checked}
+                          onCheckedChange={() => toggleDocument(doc.id)}
+                          className={`rounded mt-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? 'border-primary' : ''}`}
+                        />
+                        <div className="flex-1 min-w-0">
+                          <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                            {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
+                          </span>
+                          {relatedTasks.length > 0 && !checked && (
+                            <p className="text-[11px] mt-1 leading-relaxed">
+                              <span className="text-muted-foreground/70">Needed for: </span>
+                              {relatedTasks.map((name, i) => (
+                                <span key={i}>
+                                  {i > 0 && <span className="text-muted-foreground/40 mx-1">·</span>}
+                                  <span className="text-muted-foreground/80">{name}</span>
+                                </span>
+                              ))}
+                            </p>
+                          )}
+                        </div>
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
