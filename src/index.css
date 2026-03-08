@@ -109,6 +109,45 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Brand gradient highlight — use sparingly for emphasis */
+  .highlight-gradient {
+    position: relative;
+    background: linear-gradient(
+      to right,
+      rgba(242, 93, 170, 0.06),
+      rgba(138, 92, 246, 0.05),
+      rgba(79, 125, 243, 0.06)
+    );
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3) 1;
+    border-radius: 0;
+  }
+  .highlight-gradient-rounded {
+    background: linear-gradient(
+      to right,
+      rgba(242, 93, 170, 0.06),
+      rgba(138, 92, 246, 0.05),
+      rgba(79, 125, 243, 0.06)
+    );
+  }
+  .highlight-gradient-border {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .highlight-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
   .shadow-card {
     box-shadow: 0 2px 12px -2px hsl(232 25% 16% / 0.07);
   }
