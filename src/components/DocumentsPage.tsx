@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { globalDocuments, GlobalDocument } from '@/data/documents';
 import { timelineTasks } from '@/data/timelineTasks';
+import { glossaryTerms } from '@/data/glossaryTerms';
 import { Checkbox } from '@/components/ui/checkbox';
+import GlossaryModal from '@/components/GlossaryModal';
 import { FolderOpen, Hospital, Landmark, LucideIcon } from 'lucide-react';
+import { GlossaryTerm } from '@/types';
+
+/** Map German document names to glossary entries (case-insensitive, partial match) */
+const glossaryByGerman = new Map<string, GlossaryTerm>();
+glossaryTerms.forEach(term => {
+  glossaryByGerman.set(term.germanTerm.toLowerCase(), term);
+});
 
 const sectionIcons: Record<string, LucideIcon> = {
   'Prepare during pregnancy': FolderOpen,
@@ -57,6 +67,7 @@ function getTasksForDocument(docId: string) {
 
 export default function DocumentsPage() {
   const { isDocumentComplete, toggleDocument } = useApp();
+  const [activeTerm, setActiveTerm] = useState<GlossaryTerm | null>(null);
 
   const completedCount = globalDocuments.filter(d => isDocumentComplete(d.id)).length;
   const totalCount = globalDocuments.length;
@@ -129,6 +140,19 @@ export default function DocumentsPage() {
                               ))}
                             </p>
                           )}
+                          {(() => {
+                            const match = glossaryByGerman.get(doc.germanName.toLowerCase());
+                            if (!match || checked) return null;
+                            return (
+                              <button
+                                type="button"
+                                onClick={(e) => { e.preventDefault(); setActiveTerm(match); }}
+                                className="text-[11px] mt-1 text-primary/70 hover:text-primary transition-colors"
+                              >
+                                What is this?
+                              </button>
+                            );
+                          })()}
                         </div>
                       </label>
                     </div>
@@ -139,6 +163,8 @@ export default function DocumentsPage() {
           );
         })}
       </div>
+
+      <GlossaryModal term={activeTerm} onClose={() => setActiveTerm(null)} />
     </div>
   );
 }
