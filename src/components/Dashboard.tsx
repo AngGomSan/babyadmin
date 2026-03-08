@@ -120,7 +120,7 @@ export default function Dashboard() {
             <Button
               variant="outline"
               size="icon"
-              className="h-9 w-9 shrink-0 rounded-r-none border-r-0 bg-muted/50 border-border text-foreground/70"
+              className="h-9 w-9 shrink-0 rounded-r-none border-r-0 bg-muted/50 border-border text-foreground/70 btn-gradient-hover"
               onClick={() => setWeekOffset(o => o - 1)}
               disabled={calc.isPostpartum ? viewMonth <= 0 : viewWeek <= 4}
             >
@@ -129,7 +129,7 @@ export default function Dashboard() {
             <Button
               variant="outline"
               size="icon"
-              className="h-9 w-9 shrink-0 rounded-l-none bg-muted/50 border-border text-foreground/70"
+              className="h-9 w-9 shrink-0 rounded-l-none bg-muted/50 border-border text-foreground/70 btn-gradient-hover"
               onClick={() => setWeekOffset(o => o + 1)}
               disabled={calc.isPostpartum ? viewMonth >= 3 : viewWeek >= 42}
             >
