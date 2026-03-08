@@ -207,7 +207,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-[11px] text-foreground/35 mt-1 leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
+                      <p className="text-[11px] text-foreground/45 mt-1 leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
                     )}
                   </div>
                 );
