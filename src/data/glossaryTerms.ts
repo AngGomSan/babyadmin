@@ -177,6 +177,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Health insurance provider. You will need to register your baby with a Krankenkasse shortly after birth. It also covers midwife care and birth preparation courses.',
     pronunciationHint: 'KRAN-ken-kah-suh',
     keywords: ['health insurance', 'insurance provider', 'baby registration', 'midwife coverage'],
+    category: 'medical_care',
   },
   // Processes
   {
