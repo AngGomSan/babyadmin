@@ -38,13 +38,13 @@
     --category-medical: 217 91% 60%;
     --category-paperwork: 330 81% 60%;
     --category-benefits: 160 84% 39%;
-    --category-planning: 45 93% 47%;
+    --category-planning: 41 96% 40%;
 
     /* Category badge backgrounds */
     --category-medical-bg: 214 100% 97%;
     --category-paperwork-bg: 327 73% 97%;
     --category-benefits-bg: 149 80% 95%;
-    --category-planning-bg: 48 100% 96%;
+    --category-planning-bg: 55 92% 95%;
 
     /* Highlight */
     --highlight: 45 88% 88%;
