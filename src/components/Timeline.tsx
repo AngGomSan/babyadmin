@@ -272,7 +272,7 @@ export default function Timeline() {
                 {group.tasks.length === 0 ? (
                   <p className="text-sm text-muted-foreground">No tasks.</p>
                 ) : (
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {group.tasks.map(task => <TaskCard key={task.id} task={task} />)}
                   </div>
                 )}
