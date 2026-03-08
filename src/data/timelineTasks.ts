@@ -340,6 +340,7 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: true,
     description: 'Completing this before birth can simplify the birth certificate process later.',
+    whyItMatters: 'Doing this before birth means the father can be included on the birth certificate from the start, avoiding a separate amendment process later.',
     checklist: [
       { id: 'complete-vaterschaftsanerkennung-finish', label: 'Complete recognition before birth', description: 'Doing it ahead of time can reduce stress after the baby arrives.' },
     ],
