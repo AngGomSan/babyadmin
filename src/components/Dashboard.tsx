@@ -125,11 +125,14 @@ export default function Dashboard() {
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          {!isCurrentView && (
-            <Button variant="ghost" size="sm" className="text-xs" onClick={() => setWeekOffset(0)}>
-              Back to current
-            </Button>
-          )}
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`text-xs ${isCurrentView ? 'invisible' : ''}`}
+            onClick={() => setWeekOffset(0)}
+          >
+            Back to current
+          </Button>
           <Button
             variant="outline"
             size="icon"
