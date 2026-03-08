@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { AppProvider } from "@/contexts/AppContext";
 import Layout from "@/components/Layout";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import PublicLayout from "@/components/PublicLayout";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
