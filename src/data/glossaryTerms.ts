@@ -186,6 +186,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The formal notification of a birth to the civil registry. The hospital usually handles this, but you may need to provide supporting documents before discharge.',
     pronunciationHint: 'geh-BOORTS-mel-doong',
     keywords: ['birth notification', 'birth registration', 'hospital process', 'civil registry'],
+    category: 'paperwork',
   },
   {
     id: 'mutterschutzfrist',
