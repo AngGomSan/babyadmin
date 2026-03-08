@@ -94,7 +94,7 @@ export default function Dashboard() {
                   <h2 className="text-2xl font-bold text-foreground">Month {viewMonth}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  {isCurrentView ? `Day ${calc.postpartumDay} postpartum` : `Viewing month ${viewMonth}`}
+                  {isCurrentView ? `Day ${calc.postpartumDay} postpartum` : trimesterLabel}
                 </p>
               </>
             ) : (
