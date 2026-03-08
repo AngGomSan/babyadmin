@@ -67,18 +67,12 @@ export default function Intro({ onDismiss }: IntroProps) {
         <p className="text-xs text-muted-foreground/60 max-w-md mb-8 leading-relaxed">
           BabyAdmin is free and built by a mom who went through the German bureaucracy herself. Your account simply saves your progress. No documents are uploaded or stored.
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-3">
+        <div className="flex flex-col items-center">
           <button
             onClick={handleGetStarted}
             className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
-          </button>
-          <button
-            onClick={handleExploreTimeline}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-muted-foreground font-medium text-sm hover:bg-muted transition-colors"
-          >
-            Explore the timeline
           </button>
         </div>
         <p className="mt-5 text-xs text-muted-foreground">
