@@ -125,14 +125,12 @@ export default function Dashboard() {
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className={`text-xs ${isCurrentView ? 'invisible' : ''}`}
+          <button
+            className={`text-xs font-medium px-3 py-1.5 rounded-lg card-highlight-hover transition-all duration-200 text-foreground/70 hover:text-foreground ${isCurrentView ? 'invisible' : ''}`}
             onClick={() => setWeekOffset(0)}
           >
             Return to current week
-          </Button>
+          </button>
           <Button
             variant="outline"
             size="icon"
