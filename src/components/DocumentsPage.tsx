@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { globalDocuments, GlobalDocument } from '@/data/documents';
-import { timelineTasks } from '@/data/timelineTasks';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { Checkbox } from '@/components/ui/checkbox';
 import GlossaryModal from '@/components/GlossaryModal';
@@ -53,11 +52,30 @@ const sections: { title: string; docIds: string[] }[] = [
   },
 ];
 
-function getTasksForDocument(docId: string) {
-  return timelineTasks
-    .filter(t => t.requiredDocuments?.includes(docId))
-    .map(t => t.title);
-}
+/** Simplified outcome labels per document */
+const documentUsedFor: Record<string, string[]> = {
+  'doc-parent-passports': ['Birth registration', 'Paternity recognition', 'Passport application'],
+  'doc-parent-birth-certificates': ['Birth registration', 'Paternity recognition'],
+  'doc-marriage-certificate': ['Birth registration', 'Name declaration'],
+  'doc-paternity-recognition': ['Birth registration', 'Custody declaration'],
+  'doc-custody-declaration': ['Custody rights'],
+  'doc-naming-declaration': ['Birth registration'],
+  'doc-certified-translations': ['Birth registration', 'Benefit applications'],
+  'doc-mutterpass': ['Prenatal care', 'Maternity pay'],
+  'doc-due-date-confirmation': ['Parental leave request', 'Maternity pay'],
+  'doc-geburtsanzeige': ['Birth registration'],
+  'doc-birth-certificate': ['Elterngeld', 'Kindergeld', 'Health insurance', 'Passport application'],
+  'doc-birth-certificate-elterngeld': ['Elterngeld application'],
+  'doc-elternzeit-letter': ['Parental leave request'],
+  'doc-employer-confirmation': ['Elterngeld application'],
+  'doc-salary-statements': ['Elterngeld application'],
+  'doc-parent-tax-id': ['Kindergeld', 'Elterngeld'],
+  'doc-child-tax-id': ['Kindergeld'],
+  'doc-kindergeld-form': ['Kindergeld application'],
+  'doc-health-insurance-info': ['Health insurance registration'],
+  'doc-health-insurance-card': ['Pediatrician visits'],
+  'doc-parent-insurance-number': ['Health insurance registration'],
+};
 
 export default function DocumentsPage() {
   const { isDocumentComplete, toggleDocument } = useApp();
@@ -109,7 +127,7 @@ export default function DocumentsPage() {
               <div className="rounded-xl bg-card shadow-card divide-y divide-border">
                 {docs.map((doc) => {
                   const checked = isDocumentComplete(doc.id);
-                  const relatedTasks = getTasksForDocument(doc.id);
+                  const usedFor = documentUsedFor[doc.id] || [];
 
                   return (
                     <div key={doc.id} className="px-4 py-3.5">
@@ -123,10 +141,10 @@ export default function DocumentsPage() {
                           <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                             {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
                           </span>
-                          {relatedTasks.length > 0 && !checked && (
+                          {usedFor.length > 0 && !checked && (
                             <p className="text-[11px] mt-1 leading-relaxed">
-                              <span className="text-muted-foreground/70">Needed for: </span>
-                              {relatedTasks.map((name, i) => (
+                              <span className="text-muted-foreground/70">Used for: </span>
+                              {usedFor.map((name, i) => (
                                 <span key={i}>
                                   {i > 0 && <span className="text-muted-foreground/40 mx-1">·</span>}
                                   <span className="text-muted-foreground/80">{name}</span>
