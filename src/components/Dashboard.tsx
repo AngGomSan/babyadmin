@@ -94,14 +94,14 @@ export default function Dashboard() {
                   <h2 className="text-2xl font-bold text-foreground">Month {viewMonth}</h2>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  {isCurrentView ? `Day ${calc.postpartumDay} postpartum` : `Viewing month ${viewMonth}`}
+                  {isCurrentView ? `Day ${calc.postpartumDay} postpartum` : trimesterLabel}
                 </p>
               </>
             ) : (
               <>
                 <h2 className="text-2xl font-bold text-foreground">Week {viewWeek}</h2>
                 <p className="text-sm text-muted-foreground">
-                  {isCurrentView ? `${trimesterLabel} · ${calc.daysUntilDue} days until due date` : `Viewing week ${viewWeek}`}
+                  {isCurrentView ? `${trimesterLabel} · ${calc.daysUntilDue} days until due date` : trimesterLabel}
                 </p>
               </>
             )}
@@ -120,7 +120,7 @@ export default function Dashboard() {
             <Button
               variant="outline"
               size="icon"
-              className="h-9 w-9 shrink-0 rounded-r-none border-r-0 bg-muted/50 border-border text-foreground/70"
+              className="h-9 w-9 shrink-0 rounded-r-none border-r-0 bg-muted/50 border-border text-foreground/70 btn-gradient-hover"
               onClick={() => setWeekOffset(o => o - 1)}
               disabled={calc.isPostpartum ? viewMonth <= 0 : viewWeek <= 4}
             >
@@ -129,7 +129,7 @@ export default function Dashboard() {
             <Button
               variant="outline"
               size="icon"
-              className="h-9 w-9 shrink-0 rounded-l-none bg-muted/50 border-border text-foreground/70"
+              className="h-9 w-9 shrink-0 rounded-l-none bg-muted/50 border-border text-foreground/70 btn-gradient-hover"
               onClick={() => setWeekOffset(o => o + 1)}
               disabled={calc.isPostpartum ? viewMonth >= 3 : viewWeek >= 42}
             >

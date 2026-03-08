@@ -60,10 +60,11 @@ export default function TaskCard({ task }: TaskCardProps) {
 
   return (
     <div
-      className={`rounded-xl bg-card card-highlight-hover ${categoryBorderClass[task.category]} ${
+      className={`rounded-xl overflow-hidden ${categoryBorderClass[task.category]} ${
         completed ? 'opacity-50' : ''
       }`}
     >
+      <div className="bg-card card-highlight-hover rounded-r-xl">
       {/* Header row */}
       <div
         className="flex items-start gap-3 p-4 cursor-pointer select-none active:bg-muted/30 transition-colors rounded-xl"
@@ -216,6 +217,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }

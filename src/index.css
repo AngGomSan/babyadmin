@@ -111,33 +111,29 @@
   }
 
   /* Brand gradient highlight — box-shadow based, no layout shift */
-  .card-highlight-hover {
-    box-shadow:
-      0 2px 12px -2px hsl(232 25% 16% / 0.07),
-      inset 0 0 0 1.5px transparent;
+  .btn-gradient-hover {
     transition: box-shadow 0.2s ease, background 0.2s ease;
   }
-  .card-highlight-hover:hover {
+  .btn-gradient-hover:hover:not(:disabled) {
     box-shadow:
-      0 4px 16px -4px hsl(232 25% 16% / 0.1),
-      inset 0 0 0 1.5px rgba(138, 92, 246, 0.35);
-    background: linear-gradient(
-      135deg,
-      rgba(242, 93, 170, 0.03),
-      rgba(138, 92, 246, 0.025),
-      rgba(79, 125, 243, 0.03)
-    );
-  }
-  .card-highlight-active {
-    box-shadow:
-      0 4px 16px -4px hsl(232 25% 16% / 0.1),
-      inset 0 0 0 1.5px rgba(138, 92, 246, 0.4) !important;
+      0 0 0 1.5px rgba(138, 92, 246, 0.4),
+      0 0 0 3px rgba(242, 93, 170, 0.15);
     background: linear-gradient(
       135deg,
       rgba(242, 93, 170, 0.05),
       rgba(138, 92, 246, 0.04),
       rgba(79, 125, 243, 0.05)
-    ) !important;
+    );
+  }
+  .card-highlight-hover {
+    box-shadow: 0 2px 12px -2px hsl(232 25% 16% / 0.07);
+    transition: box-shadow 0.2s ease;
+  }
+  .card-highlight-hover:hover {
+    box-shadow:
+      0 4px 16px -4px hsl(232 25% 16% / 0.12),
+      inset 0 0 0 1px rgba(138, 92, 246, 0.2),
+      inset 0 0 0 1px rgba(242, 93, 170, 0.08);
   }
   .highlight-gradient-border {
     position: relative;
