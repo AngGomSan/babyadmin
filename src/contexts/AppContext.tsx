@@ -157,6 +157,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return state.completedChecklist.includes(itemId);
   }, [state.completedChecklist]);
 
+  const toggleDocument = useCallback((docId: string) => {
+    setState(s => ({
+      ...s,
+      completedDocuments: s.completedDocuments.includes(docId)
+        ? s.completedDocuments.filter(id => id !== docId)
+        : [...s.completedDocuments, docId],
+    }));
+  }, []);
+
+  const isDocumentComplete = useCallback((docId: string) => {
+    return state.completedDocuments.includes(docId);
+  }, [state.completedDocuments]);
+
   const markBabyBorn = useCallback((birthDate: string) => {
     setState(s => ({ ...s, babyBorn: true, birthDate }));
   }, []);
