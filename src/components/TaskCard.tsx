@@ -27,7 +27,7 @@ export default function TaskCard({ task }: TaskCardProps) {
   const { isTaskComplete, isChecklistComplete, toggleTask, toggleChecklist } = useApp();
   const [expanded, setExpanded] = useState(false);
   const completed = isTaskComplete(task.id);
-  const hasDetails = task.description || (task.checklist && task.checklist.length > 0);
+  const hasDetails = task.description || task.unlocks || (task.checklist && task.checklist.length > 0);
 
   const completedChecklistCount = task.checklist
     ? task.checklist.filter(item => isChecklistComplete(item.id)).length
