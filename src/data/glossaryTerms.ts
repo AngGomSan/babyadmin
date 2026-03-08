@@ -31,6 +31,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The official birth certificate issued by the civil registry. It is needed for many later administrative steps.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh',
     keywords: ['birth certificate', 'civil registry', 'official document'],
+    category: 'paperwork',
   },
   {
     id: 'mutterschutz',
