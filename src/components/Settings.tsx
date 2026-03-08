@@ -66,7 +66,7 @@ export default function SettingsPage() {
             </Button>
           </div>
           {calc && !calc.isPostpartum && (
-            <p className="text-xs text-muted-foreground">Week {calc.currentWeek} · {calc.daysUntilDue} days to go</p>
+            <p className="text-xs text-muted-foreground">Week {calc.currentWeek} · {calc.daysUntilDue} days until due date</p>
           )}
         </div>
       </section>

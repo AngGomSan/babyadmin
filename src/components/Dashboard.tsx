@@ -100,7 +100,7 @@ export default function Dashboard() {
               <>
                 <h2 className="text-2xl font-bold text-foreground">Week {viewWeek}</h2>
                 <p className="text-sm text-muted-foreground">
-                  {isCurrentView ? `${trimesterLabel} · ${calc.daysUntilDue} days to go` : `Viewing week ${viewWeek}`}
+                  {isCurrentView ? `${trimesterLabel} · ${calc.daysUntilDue} days until due date` : `Viewing week ${viewWeek}`}
                 </p>
               </>
             )}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { TimelineTask, CATEGORY_LABELS } from '@/types';
+import { TimelineTask, CATEGORY_LABELS, CATEGORY_ICONS } from '@/types';
 import { ChevronDown, ChevronUp, Globe, Info, Unlock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
