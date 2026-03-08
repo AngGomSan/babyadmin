@@ -18,6 +18,13 @@ const categoryBadgeClass: Record<string, string> = {
   benefits_and_finances: 'badge-benefits',
   planning_and_preparation: 'badge-planning',
 };
+
+const categoryGlobeClass: Record<string, string> = {
+  medical_care: 'text-category-medical',
+  paperwork: 'text-category-paperwork',
+  benefits_and_finances: 'text-category-benefits',
+  planning_and_preparation: 'text-category-planning',
+};
 const CATEGORY_ICON_MAP: Record<TaskCategory, React.ComponentType<{ className?: string }>> = {
   medical_care: Stethoscope,
   paperwork: FileText,
