@@ -17,6 +17,7 @@ import SettingsPage from "@/components/Settings";
 import Impressum from "./pages/Impressum";
 import Privacy from "./pages/Privacy";
 import Intro from "./pages/Intro";
+import DataHandling from "./pages/DataHandling";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/privacy" element={<Privacy />} />
+                <Route path="/your-data" element={<DataHandling />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
