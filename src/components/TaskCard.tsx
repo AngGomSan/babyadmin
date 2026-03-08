@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { TimelineTask, CATEGORY_LABELS, TaskCategory, DocumentItem } from '@/types';
+import { TimelineTask, CATEGORY_LABELS, TaskCategory } from '@/types';
 import { ChevronDown, ChevronUp, Globe, Info, Unlock, Stethoscope, FileText, Wallet, Compass, ClipboardList, Heart } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentMap } from '@/data/documents';
 
 const categoryBorderClass: Record<string, string> = {
   medical_care: 'border-l-medical',
@@ -45,17 +46,15 @@ interface TaskCardProps {
 }
 
 export default function TaskCard({ task }: TaskCardProps) {
-  const { isTaskComplete, isChecklistComplete, toggleTask, toggleChecklist } = useApp();
+  const { isTaskComplete, isChecklistComplete, isDocumentComplete, toggleTask, toggleChecklist, toggleDocument } = useApp();
   const [expanded, setExpanded] = useState(false);
   const completed = isTaskComplete(task.id);
-  const hasDetails = task.description || task.whyItMatters || task.documents?.length || task.unlocks || (task.checklist && task.checklist.length > 0);
+  const resolvedDocs = (task.requiredDocuments || []).map(id => documentMap.get(id)).filter(Boolean);
+  const hasDetails = task.description || task.whyItMatters || resolvedDocs.length || task.unlocks || (task.checklist && task.checklist.length > 0);
 
-  const allCheckableItems = [
-    ...(task.checklist || []).map(i => i.id),
-    ...(task.documents || []).map(i => i.id),
-  ];
-  const completedChecklistCount = allCheckableItems.filter(id => isChecklistComplete(id)).length;
-  const totalChecklistCount = allCheckableItems.length;
+  const completedChecklistCount = (task.checklist || []).filter(i => isChecklistComplete(i.id)).length
+    + resolvedDocs.filter(d => d && isDocumentComplete(d.id)).length;
+  const totalChecklistCount = (task.checklist?.length || 0) + resolvedDocs.length;
 
   const CategoryIcon = CATEGORY_ICON_MAP[task.category];
 
@@ -142,23 +141,24 @@ export default function TaskCard({ task }: TaskCardProps) {
             </div>
           )}
 
-          {task.documents && task.documents.length > 0 && (
+          {resolvedDocs.length > 0 && (
             <div className="flex gap-2.5 items-start mt-3">
               <ClipboardList className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <div className="flex-1">
                 <p className="text-[12px] font-medium text-muted-foreground mb-1.5">Documents you will need</p>
-                {task.documents.map((doc) => {
-                  const checked = isChecklistComplete(doc.id);
+                {resolvedDocs.map((doc) => {
+                  if (!doc) return null;
+                  const checked = isDocumentComplete(doc.id);
                   return (
                     <div key={doc.id} className="mt-1.5 first:mt-0">
                       <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
                         <Checkbox
                           checked={checked}
-                          onCheckedChange={() => toggleChecklist(doc.id)}
+                          onCheckedChange={() => toggleDocument(doc.id)}
                           className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                         />
                         <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
-                          {doc.label}{doc.germanName ? ` (${doc.germanName})` : ''}
+                          {doc.label} ({doc.germanName})
                         </span>
                       </label>
                     </div>

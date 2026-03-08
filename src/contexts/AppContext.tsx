@@ -11,6 +11,7 @@ const defaultState: AppState = {
   introSeen: false,
   completedTasks: [],
   completedChecklist: [],
+  completedDocuments: [],
   babyBorn: false,
   birthDate: null,
   reassuranceDismissed: false,
@@ -24,8 +25,10 @@ interface AppContextType {
   dismissIntro: () => void;
   toggleTask: (taskId: string) => void;
   toggleChecklist: (itemId: string) => void;
+  toggleDocument: (docId: string) => void;
   isTaskComplete: (taskId: string) => boolean;
   isChecklistComplete: (itemId: string) => boolean;
+  isDocumentComplete: (docId: string) => boolean;
   markBabyBorn: (birthDate: string) => void;
   dismissReassurance: () => void;
   resetState: () => void;
@@ -69,6 +72,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
             introSeen: data.intro_seen,
             completedTasks: data.completed_tasks || [],
             completedChecklist: data.completed_checklist || [],
+            completedDocuments: (data as any).completed_documents || [],
             babyBorn: data.baby_born,
             birthDate: data.birth_date,
             reassuranceDismissed: data.reassurance_dismissed,
@@ -105,10 +109,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
           intro_seen: state.introSeen,
           completed_tasks: state.completedTasks,
           completed_checklist: state.completedChecklist,
+          completed_documents: state.completedDocuments,
           baby_born: state.babyBorn,
           birth_date: state.birthDate,
           reassurance_dismissed: state.reassuranceDismissed,
-        })
+        } as any)
         .eq('user_id', user.id)
         .then();
     }, 500);
@@ -152,6 +157,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return state.completedChecklist.includes(itemId);
   }, [state.completedChecklist]);
 
+  const toggleDocument = useCallback((docId: string) => {
+    setState(s => ({
+      ...s,
+      completedDocuments: s.completedDocuments.includes(docId)
+        ? s.completedDocuments.filter(id => id !== docId)
+        : [...s.completedDocuments, docId],
+    }));
+  }, []);
+
+  const isDocumentComplete = useCallback((docId: string) => {
+    return state.completedDocuments.includes(docId);
+  }, [state.completedDocuments]);
+
   const markBabyBorn = useCallback((birthDate: string) => {
     setState(s => ({ ...s, babyBorn: true, birthDate }));
   }, []);
@@ -172,10 +190,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
           intro_seen: false,
           completed_tasks: [],
           completed_checklist: [],
+          completed_documents: [],
           baby_born: false,
           birth_date: null,
           reassurance_dismissed: false,
-        })
+        } as any)
         .eq('user_id', user.id)
         .then();
     }
@@ -190,8 +209,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
       dismissIntro,
       toggleTask,
       toggleChecklist,
+      toggleDocument,
       isTaskComplete,
       isChecklistComplete,
+      isDocumentComplete,
       markBabyBorn,
       dismissReassurance,
       resetState,

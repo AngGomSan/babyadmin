@@ -19,6 +19,7 @@ export type Database = {
           baby_born: boolean
           birth_date: string | null
           completed_checklist: string[]
+          completed_documents: string[]
           completed_tasks: string[]
           created_at: string
           due_date: string | null
@@ -33,6 +34,7 @@ export type Database = {
           baby_born?: boolean
           birth_date?: string | null
           completed_checklist?: string[]
+          completed_documents?: string[]
           completed_tasks?: string[]
           created_at?: string
           due_date?: string | null
@@ -47,6 +49,7 @@ export type Database = {
           baby_born?: boolean
           birth_date?: string | null
           completed_checklist?: string[]
+          completed_documents?: string[]
           completed_tasks?: string[]
           created_at?: string
           due_date?: string | null

@@ -1,0 +1,1 @@
+ALTER TABLE public.user_app_state ADD COLUMN completed_documents text[] NOT NULL DEFAULT '{}';
