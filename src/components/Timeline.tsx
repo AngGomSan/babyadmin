@@ -114,7 +114,7 @@ export default function Timeline() {
           </div>
 
           {/* Baby born inline prompt — week 36+ */}
-          {!state.babyBorn && calc && calc.currentWeek >= 36 && selectedWeek >= 36 && (
+          {!state.babyBorn && selectedWeek >= 36 && (
             <BabyBornPrompt variant="inline" />
           )}
 
