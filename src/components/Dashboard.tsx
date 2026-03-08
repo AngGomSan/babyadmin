@@ -131,7 +131,7 @@ export default function Dashboard() {
             className={`text-xs ${isCurrentView ? 'invisible' : ''}`}
             onClick={() => setWeekOffset(0)}
           >
-            Back to current
+            Return to current week
           </Button>
           <Button
             variant="outline"
