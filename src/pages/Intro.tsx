@@ -93,8 +93,8 @@ export default function Intro({ onDismiss }: IntroProps) {
               key={title}
               className="rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
             >
-              <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center mb-4">
-                <Icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-4">
+                <Icon className="w-5.5 h-5.5 text-primary" />
               </div>
               <h3 className="text-sm font-semibold text-foreground mb-2">{title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
