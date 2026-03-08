@@ -91,7 +91,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
-              className="rounded-2xl border border-border bg-card p-6 shadow-card"
+              className="rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
             >
               <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center mb-4">
                 <Icon className="w-5 h-5 text-primary" />
