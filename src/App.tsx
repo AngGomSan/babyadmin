@@ -16,6 +16,7 @@ import DocumentsPage from "@/components/DocumentsPage";
 import SettingsPage from "@/components/Settings";
 import Impressum from "./pages/Impressum";
 import Privacy from "./pages/Privacy";
+import Intro from "./pages/Intro";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
