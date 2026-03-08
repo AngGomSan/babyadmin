@@ -70,7 +70,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         role={hasDetails ? 'button' : undefined}
         aria-expanded={hasDetails ? expanded : undefined}
       >
-        <div className="pt-0.5" onClick={e => e.stopPropagation()}>
+        <div className="pt-[3px]" onClick={e => e.stopPropagation()}>
           <Checkbox
             checked={completed}
             onCheckedChange={() => toggleTask(task.id)}
