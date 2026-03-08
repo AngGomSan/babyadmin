@@ -512,6 +512,11 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'Confirming a pediatrician before birth avoids last-minute stress if the baby comes early.',
+    whyItMatters: 'Newborns need their first check-up within days of birth. Without a confirmed pediatrician, you may struggle to find one accepting new patients on short notice.',
+    documents: [
+      { id: 'doc-pediatrician-health-card', label: 'Health insurance card', germanName: 'Krankenversicherungskarte' },
+      { id: 'doc-pediatrician-birth-cert', label: 'Birth certificate if requested', germanName: 'Geburtsurkunde' },
+    ],
     checklist: [
       { id: 'confirm-pediatrician-research', label: 'Research practices', description: 'Make sure you know which pediatricians fit your needs.' },
       { id: 'confirm-pediatrician-contact', label: 'Contact practices', description: 'Ask about availability for newborn appointments.' },
