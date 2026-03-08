@@ -147,7 +147,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                 <ClipboardList className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
                 <p className="text-[12px] font-semibold text-foreground/65">Documents you will need</p>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {resolvedDocs.map((doc) => {
                   if (!doc) return null;
                   const checked = isDocumentComplete(doc.id);
