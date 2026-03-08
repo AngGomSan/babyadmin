@@ -143,7 +143,7 @@ export default function TaskCard({ task }: TaskCardProps) {
 
           {resolvedDocs.length > 0 && (
             <div>
-              <div className="flex items-start gap-2.5 mb-2">
+              <div className="flex items-start gap-2.5 mb-3">
                 <ClipboardList className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
                 <p className="text-[12px] font-semibold text-foreground/65">Documents you will need</p>
               </div>
