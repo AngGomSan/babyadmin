@@ -7,6 +7,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certified midwife. In Germany, this care is generally covered by health insurance and often includes home visits, especially postpartum, to check on both the mother and the baby.',
     pronunciationHint: 'HAY-bam-uh',
     keywords: ['midwife', 'postpartum care', 'home visits', 'pregnancy support'],
+    category: 'medical_care',
   },
   {
     id: 'mutterpass',
