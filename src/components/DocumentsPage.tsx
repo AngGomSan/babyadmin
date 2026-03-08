@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { globalDocuments, GlobalDocument } from '@/data/documents';
 import { timelineTasks } from '@/data/timelineTasks';
+import { glossaryTerms } from '@/data/glossaryTerms';
 import { Checkbox } from '@/components/ui/checkbox';
+import GlossaryModal from '@/components/GlossaryModal';
 import { FolderOpen, Hospital, Landmark, LucideIcon } from 'lucide-react';
+import { GlossaryTerm } from '@/types';
+
+/** Map German document names to glossary entries (case-insensitive, partial match) */
+const glossaryByGerman = new Map<string, GlossaryTerm>();
+glossaryTerms.forEach(term => {
+  glossaryByGerman.set(term.germanTerm.toLowerCase(), term);
+});
 
 const sectionIcons: Record<string, LucideIcon> = {
   'Prepare during pregnancy': FolderOpen,
