@@ -6,6 +6,7 @@ import TaskCard from '@/components/TaskCard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import BabyBornPrompt from '@/components/BabyBornPrompt';
 
 type ViewMode = 'weekly' | 'trimester';
@@ -43,7 +44,7 @@ function taskInWeek(task: TimelineTask, week: number): boolean {
 
 export default function Timeline() {
   const calc = usePregnancyCalc();
-  const { state } = useApp();
+  const { state, isTaskComplete } = useApp();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
   const [activeTri, setActiveTri] = useState(1);
@@ -156,6 +157,33 @@ export default function Timeline() {
           </button>
         </div>
       </div>
+
+      {/* Progress indicator */}
+      {(() => {
+        const totalTasks = timelineTasks.length;
+        const completedCount = state.completedTasks.length;
+        const pct = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
+        return (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="flex items-center gap-3 px-1 cursor-default">
+                <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <span className="text-xs font-medium text-foreground/70 shrink-0 tabular-nums">
+                  {pct}% ready
+                </span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs">
+              {completedCount} of {totalTasks} tasks completed
+            </TooltipContent>
+          </Tooltip>
+        );
+      })()}
 
       {viewMode === 'weekly' ? (
         <div className="space-y-5">
