@@ -20,7 +20,7 @@ const valueCards = [
   {
     icon: CalendarDays,
     title: 'Know what to do',
-    body: 'Follow a clear week-by-week timeline from pregnancy to the early weeks after birth.',
+    body: 'Follow a clear timeline from pregnancy through the first weeks after birth.',
   },
   {
     icon: ClipboardCheck,
