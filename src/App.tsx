@@ -16,6 +16,7 @@ import DocumentsPage from "@/components/DocumentsPage";
 import SettingsPage from "@/components/Settings";
 import Impressum from "./pages/Impressum";
 import Privacy from "./pages/Privacy";
+import Intro from "./pages/Intro";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/auth" element={<Auth />} />
+              <Route path="/intro" element={<Intro />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route element={<Layout />}>
                 <Route path="/" element={<Index />} />
