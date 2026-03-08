@@ -7,6 +7,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certified midwife. In Germany, this care is generally covered by health insurance and often includes home visits, especially postpartum, to check on both the mother and the baby.',
     pronunciationHint: 'HAY-bam-uh',
     keywords: ['midwife', 'postpartum care', 'home visits', 'pregnancy support'],
+    category: 'medical_care',
   },
   {
     id: 'mutterpass',
@@ -14,6 +15,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The official pregnancy record used during prenatal care. Bring it to every pregnancy-related appointment.',
     pronunciationHint: 'MOOT-er-pass',
     keywords: ['pregnancy record', 'prenatal appointments', 'pregnancy booklet'],
+    category: 'medical_care',
   },
   {
     id: 'geburtsanzeige',
@@ -21,6 +23,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A hospital-issued document confirming the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
     pronunciationHint: 'geh-BOORTS-an-tsy-guh',
     keywords: ['birth notification', 'temporary proof of birth', 'hospital document'],
+    category: 'paperwork',
   },
   {
     id: 'geburtsurkunde',
@@ -28,6 +31,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The official birth certificate issued by the civil registry. It is needed for many later administrative steps.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh',
     keywords: ['birth certificate', 'civil registry', 'official document'],
+    category: 'paperwork',
   },
   {
     id: 'mutterschutz',
@@ -35,6 +39,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The legal maternity protection period before and after birth.',
     pronunciationHint: 'MOOT-er-shoots',
     keywords: ['maternity protection', 'leave', 'work protection'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'elternzeit',
@@ -42,6 +47,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Parental leave that allows parents to take protected time away from work after a child is born.',
     pronunciationHint: 'EL-tern-tsite',
     keywords: ['parental leave', 'leave from work', 'baby leave'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'elterngeld',
@@ -49,6 +55,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A government benefit that replaces part of a parent\'s income during parental leave.',
     pronunciationHint: 'EL-tern-gelt',
     keywords: ['benefit', 'income replacement', 'parental leave money'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'kindergeld',
@@ -56,6 +63,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Monthly government financial support for children.',
     pronunciationHint: 'KIN-der-gelt',
     keywords: ['child benefit', 'monthly support', 'family allowance'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'vaterschaftsanerkennung',
@@ -63,6 +71,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Legal recognition of paternity, usually relevant if the parents are not married.',
     pronunciationHint: 'FAH-ter-shafts-an-air-ken-noong',
     keywords: ['paternity recognition', 'unmarried parents', 'legal paternity'],
+    category: 'paperwork',
   },
   {
     id: 'namensklarung',
@@ -70,6 +79,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The name declaration used to determine and register the baby\'s name. In some cases, families may choose naming rules based on another nationality.',
     pronunciationHint: 'NAH-mens-klair-oong',
     keywords: ['name declaration', 'baby name', 'naming law', 'surname rules'],
+    category: 'paperwork',
   },
   {
     id: 'meldebescheinigung',
@@ -77,6 +87,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certificate confirming registration of residence. It may need to be requested separately for certain registrations.',
     pronunciationHint: 'MEL-duh-buh-shy-ni-goong',
     keywords: ['registration certificate', 'residence registration', 'official address'],
+    category: 'paperwork',
   },
   // Documents
   {
@@ -85,6 +96,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A specific version of the birth certificate issued for the Elterngeld application. You usually need to request extra copies when registering the birth.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh foor EL-tern-gelt',
     keywords: ['birth certificate', 'elterngeld', 'extra copy', 'benefit application'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'geburtsurkunde-kindergeld',
@@ -92,6 +104,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A version of the birth certificate issued specifically for the Kindergeld application. Like the Elterngeld copy, request it when registering the birth.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh foor KIN-der-gelt',
     keywords: ['birth certificate', 'kindergeld', 'child benefit', 'extra copy'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'arbeitgeberbescheinigung',
@@ -99,6 +112,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'An employer certificate confirming income and employment details. Used when applying for Elterngeld to verify your earnings before parental leave.',
     pronunciationHint: 'AR-bites-gay-ber-buh-shy-ni-goong',
     keywords: ['employer certificate', 'income proof', 'elterngeld application', 'work confirmation'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'gehaltsnachweise',
@@ -106,6 +120,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Salary statements or payslips. Typically the last 12 months are needed when applying for Elterngeld to calculate the benefit amount.',
     pronunciationHint: 'geh-HALTS-nahkh-vy-zuh',
     keywords: ['payslips', 'salary proof', 'income statements', 'elterngeld'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'steuer-id',
@@ -113,6 +128,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A unique tax identification number assigned to every person registered in Germany. Your baby receives one automatically by mail after birth registration. Needed for Kindergeld and other benefit applications.',
     pronunciationHint: 'SHTOY-er ee-den-tee-fee-kah-tsee-OHNS-noo-mer',
     keywords: ['tax ID', 'tax number', 'steuer-id', 'kindergeld', 'identification'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'geburtsbescheinigung',
@@ -120,6 +136,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A birth confirmation certificate, sometimes used interchangeably with Geburtsanzeige. It serves as early proof of birth before the official birth certificate is issued.',
     pronunciationHint: 'geh-BOORTS-buh-shy-ni-goong',
     keywords: ['birth confirmation', 'proof of birth', 'hospital certificate'],
+    category: 'paperwork',
   },
   // Institutions
   {
@@ -128,6 +145,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The civil registry office that handles birth registrations, marriage certificates and name declarations. After birth, the hospital usually forwards paperwork here to issue the official birth certificate.',
     pronunciationHint: 'SHTAN-des-amt',
     keywords: ['civil registry', 'birth registration', 'marriage office', 'government office'],
+    category: 'paperwork',
   },
   {
     id: 'elterngeldstelle',
@@ -135,6 +153,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The parental benefit office that processes Elterngeld applications. Each region has its own office, and processing times can vary.',
     pronunciationHint: 'EL-tern-gelt-shtel-uh',
     keywords: ['parental benefit office', 'elterngeld office', 'benefit processing'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'familienkasse',
@@ -142,6 +161,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The family benefits office that handles Kindergeld applications. It is part of the Federal Employment Agency and processes monthly child benefit payments.',
     pronunciationHint: 'fah-MEE-lee-en-kah-suh',
     keywords: ['family benefits office', 'kindergeld office', 'child benefit'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'jugendamt',
@@ -149,6 +169,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The youth welfare office. Relevant for paternity recognition and custody declarations if the parents are not married. Also handles Kita vouchers in some areas.',
     pronunciationHint: 'YOO-gent-amt',
     keywords: ['youth welfare office', 'paternity', 'custody', 'kita voucher'],
+    category: 'paperwork',
   },
   {
     id: 'krankenkasse',
@@ -156,6 +177,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Health insurance provider. You will need to register your baby with a Krankenkasse shortly after birth. It also covers midwife care and birth preparation courses.',
     pronunciationHint: 'KRAN-ken-kah-suh',
     keywords: ['health insurance', 'insurance provider', 'baby registration', 'midwife coverage'],
+    category: 'medical_care',
   },
   // Processes
   {
@@ -164,6 +186,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The formal notification of a birth to the civil registry. The hospital usually handles this, but you may need to provide supporting documents before discharge.',
     pronunciationHint: 'geh-BOORTS-mel-doong',
     keywords: ['birth notification', 'birth registration', 'hospital process', 'civil registry'],
+    category: 'paperwork',
   },
   {
     id: 'mutterschutzfrist',
@@ -171,6 +194,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The specific protected period during which a pregnant person is prohibited from working. It begins 6 weeks before the due date and ends 8 weeks after birth (12 weeks for premature or multiple births).',
     pronunciationHint: 'MOOT-er-shoots-frist',
     keywords: ['maternity protection period', 'work ban', 'pre-birth leave', 'post-birth leave'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'mutterschaftsgeld',
@@ -178,6 +202,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Maternity pay received during the Mutterschutz period. It is paid partly by health insurance and partly topped up by the employer to match your previous net salary.',
     pronunciationHint: 'MOOT-er-shafts-gelt',
     keywords: ['maternity pay', 'maternity benefit', 'mutterschutz income', 'health insurance payment'],
+    category: 'benefits_and_finances',
   },
   // International document terms
   {
@@ -186,6 +211,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'An international certification that authenticates a document for use in another country. If your birth certificate or other documents were issued outside Germany, an apostille may be required before they are accepted.',
     pronunciationHint: 'ah-po-STEEL-uh',
     keywords: ['international certification', 'document authentication', 'foreign documents', 'hague convention'],
+    category: 'paperwork',
   },
   {
     id: 'beglaubigte-uebersetzung',
@@ -193,5 +219,6 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certified translation of a document, done by a sworn or officially recognized translator. Required when submitting foreign-language documents to German authorities.',
     pronunciationHint: 'beh-GLOW-bikh-tuh oo-ber-ZET-soong',
     keywords: ['certified translation', 'sworn translator', 'foreign documents', 'official translation'],
+    category: 'paperwork',
   },
 ];

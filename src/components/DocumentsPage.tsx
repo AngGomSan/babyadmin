@@ -4,7 +4,8 @@ import { globalDocuments, GlobalDocument } from '@/data/documents';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { Checkbox } from '@/components/ui/checkbox';
 import GlossaryModal from '@/components/GlossaryModal';
-import { FolderOpen, Hospital, Landmark, LucideIcon } from 'lucide-react';
+import CategoryBadge from '@/components/CategoryBadge';
+import { FolderOpen, Landmark, LucideIcon } from 'lucide-react';
 import { GlossaryTerm } from '@/types';
 
 /** Map German document names to glossary entries (case-insensitive, partial match) */
@@ -95,7 +96,7 @@ export default function DocumentsPage() {
       </div>
 
       {/* Progress */}
-      <div className="rounded-xl bg-card shadow-card p-4 mb-5">
+      <div className="rounded-xl bg-card shadow-card p-4 mb-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-medium text-foreground">
             Documents ready: {completedCount} / {totalCount}
@@ -113,18 +114,25 @@ export default function DocumentsPage() {
       </div>
 
       {/* Grouped document list */}
-      <div className="space-y-5">
+      <div className="space-y-6">
         {sections.map((section) => {
           const docs = section.docIds.map(id => docMap.get(id)).filter(Boolean) as GlobalDocument[];
           if (docs.length === 0) return null;
+          const Icon = sectionIcons[section.title];
+          const sectionCompleted = docs.filter(d => isDocumentComplete(d.id)).length;
 
           return (
             <div key={section.title}>
-              <h2 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 px-1">
-                {(() => { const Icon = sectionIcons[section.title]; return Icon ? <Icon className="h-3.5 w-3.5" /> : null; })()}
-                {section.title}
-              </h2>
-              <div className="rounded-xl bg-card shadow-card divide-y divide-border">
+              <div className="flex items-center justify-between mb-2.5 px-1">
+                <h2 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {Icon && <Icon className="h-3.5 w-3.5" />}
+                  {section.title}
+                </h2>
+                <span className="text-[11px] text-muted-foreground/60">
+                  {sectionCompleted} / {docs.length}
+                </span>
+              </div>
+              <div className="rounded-xl bg-card shadow-card border border-border divide-y divide-border">
                 {docs.map((doc) => {
                   const checked = isDocumentComplete(doc.id);
                   const usedFor = documentUsedFor[doc.id] || [];
@@ -138,9 +146,14 @@ export default function DocumentsPage() {
                           className={`rounded mt-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? 'border-primary' : ''}`}
                         />
                         <div className="flex-1 min-w-0">
-                          <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
-                            {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
-                          </span>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                              {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
+                            </span>
+                            {doc.category && !checked && (
+                              <CategoryBadge category={doc.category} />
+                            )}
+                          </div>
                           {doc.description && !checked && (
                             <p className="text-[11px] mt-0.5 leading-relaxed text-muted-foreground/70">{doc.description}</p>
                           )}

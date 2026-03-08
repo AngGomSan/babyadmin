@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { GlossaryTerm } from '@/types';
 import GlossaryModal from '@/components/GlossaryModal';
+import CategoryBadge from '@/components/CategoryBadge';
 import { Input } from '@/components/ui/input';
 import { Search, BookOpen, ChevronRight } from 'lucide-react';
 
@@ -49,11 +50,16 @@ export default function GlossaryPage() {
             <button
               key={term.id}
               onClick={() => setSelected(term)}
-              className="w-full text-left rounded-xl bg-card shadow-card hover:shadow-card-hover transition-all duration-200 p-4 flex items-center gap-3 group active:scale-[0.99]"
+              className="w-full text-left rounded-xl bg-card border border-border shadow-card hover:shadow-card-hover transition-all duration-200 px-4 py-3.5 flex items-center gap-3 group active:scale-[0.99]"
             >
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{term.germanTerm}</p>
-                <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{term.englishExplanation}</p>
+                <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                  <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{term.germanTerm}</p>
+                  {term.category && (
+                    <CategoryBadge category={term.category} />
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground line-clamp-1">{term.englishExplanation}</p>
               </div>
               {term.pronunciationHint && (
                 <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full shrink-0 hidden sm:inline">

@@ -41,7 +41,6 @@ const App = () => (
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/your-data" element={<DataHandling />} />
-                <Route path="/glossary" element={<GlossaryPage />} />
               </Route>
 
               {/* Protected routes */}
@@ -51,6 +50,7 @@ const App = () => (
                   <Route path="/timeline" element={<Timeline />} />
                   <Route path="/overdue" element={<OverdueTasks />} />
                   <Route path="/documents" element={<DocumentsPage />} />
+                  <Route path="/glossary" element={<GlossaryPage />} />
                   <Route path="/settings" element={<SettingsPage />} />
                 </Route>
               </Route>
