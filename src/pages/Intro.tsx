@@ -55,9 +55,6 @@ export default function Intro({ onDismiss }: IntroProps) {
     <div className="min-h-screen bg-background">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-6 pt-20 pb-12 md:pt-28 md:pb-16 text-center">
-        <div className="mb-4">
-          <LogoIcon />
-        </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
