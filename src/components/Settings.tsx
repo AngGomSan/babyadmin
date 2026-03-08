@@ -107,6 +107,17 @@ export default function SettingsPage() {
         </div>
       </section>
 
+      {/* About */}
+      <section className="space-y-2">
+        <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">About</h2>
+        <div className="rounded-xl bg-card shadow-card p-4">
+          <Link to="/intro" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Info className="w-4 h-4" />
+            About BabyAdmin
+          </Link>
+        </div>
+      </section>
+
       {/* Reset */}
       <section>
         <Button variant="ghost" className="text-destructive hover:text-destructive" onClick={() => setConfirmReset(true)}>
