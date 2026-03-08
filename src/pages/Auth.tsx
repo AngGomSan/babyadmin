@@ -125,7 +125,6 @@ export default function Auth() {
             ) : (
               <>
                 {mode === 'login' ? 'Log in' : mode === 'signup' ? 'Create account' : 'Send reset link'}
-                <ArrowRight className="ml-2 h-4 w-4" />
               </>
             )}
           </Button>
