@@ -56,7 +56,7 @@ export default function Layout() {
         <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60">
           <Link to="/impressum" className="hover:text-muted-foreground transition-colors">Impressum</Link>
           <span>·</span>
-          <Link to="/privacy" className="hover:text-muted-foreground transition-colors">Privacy Policy</Link>
+          <Link to="/privacy" className="hover:text-muted-foreground transition-colors">Privacy policy</Link>
         </div>
       </footer>
 
