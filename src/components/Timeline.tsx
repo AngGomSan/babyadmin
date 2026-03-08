@@ -158,6 +158,33 @@ export default function Timeline() {
         </div>
       </div>
 
+      {/* Progress indicator */}
+      {(() => {
+        const totalTasks = timelineTasks.length;
+        const completedCount = state.completedTasks.length;
+        const pct = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
+        return (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="flex items-center gap-3 px-1 cursor-default">
+                <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <span className="text-xs font-medium text-foreground/70 shrink-0 tabular-nums">
+                  {pct}% ready
+                </span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs">
+              {completedCount} of {totalTasks} tasks completed
+            </TooltipContent>
+          </Tooltip>
+        );
+      })()}
+
       {viewMode === 'weekly' ? (
         <div className="space-y-5">
           {/* Week/month selector */}
