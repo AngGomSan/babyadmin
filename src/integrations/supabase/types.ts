@@ -88,7 +88,15 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      user_task_completion_stats: {
+        Row: {
+          first_task_completed_at: string | null
+          last_task_completed_at: string | null
+          tasks_completed_count: number | null
+          user_id: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
