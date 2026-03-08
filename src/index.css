@@ -207,7 +207,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 1px;
+    padding: 2px;
     background: linear-gradient(90deg, #F25DAA 0%, #8A5CF6 50%, #4F7DF3 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
