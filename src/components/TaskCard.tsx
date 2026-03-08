@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { TimelineTask, CATEGORY_LABELS, TaskCategory, DocumentItem } from '@/types';
+import { TimelineTask, CATEGORY_LABELS, TaskCategory } from '@/types';
 import { ChevronDown, ChevronUp, Globe, Info, Unlock, Stethoscope, FileText, Wallet, Compass, ClipboardList, Heart } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { documentMap } from '@/data/documents';
 
 const categoryBorderClass: Record<string, string> = {
   medical_care: 'border-l-medical',
@@ -45,17 +46,15 @@ interface TaskCardProps {
 }
 
 export default function TaskCard({ task }: TaskCardProps) {
-  const { isTaskComplete, isChecklistComplete, toggleTask, toggleChecklist } = useApp();
+  const { isTaskComplete, isChecklistComplete, isDocumentComplete, toggleTask, toggleChecklist, toggleDocument } = useApp();
   const [expanded, setExpanded] = useState(false);
   const completed = isTaskComplete(task.id);
-  const hasDetails = task.description || task.whyItMatters || task.documents?.length || task.unlocks || (task.checklist && task.checklist.length > 0);
+  const resolvedDocs = (task.requiredDocuments || []).map(id => documentMap.get(id)).filter(Boolean);
+  const hasDetails = task.description || task.whyItMatters || resolvedDocs.length || task.unlocks || (task.checklist && task.checklist.length > 0);
 
-  const allCheckableItems = [
-    ...(task.checklist || []).map(i => i.id),
-    ...(task.documents || []).map(i => i.id),
-  ];
-  const completedChecklistCount = allCheckableItems.filter(id => isChecklistComplete(id)).length;
-  const totalChecklistCount = allCheckableItems.length;
+  const completedChecklistCount = (task.checklist || []).filter(i => isChecklistComplete(i.id)).length
+    + resolvedDocs.filter(d => d && isDocumentComplete(d.id)).length;
+  const totalChecklistCount = (task.checklist?.length || 0) + resolvedDocs.length;
 
   const CategoryIcon = CATEGORY_ICON_MAP[task.category];
 
