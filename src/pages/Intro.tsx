@@ -119,7 +119,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="max-w-lg mx-auto text-center">
           <h2 className="text-lg font-semibold text-foreground mb-3">Who it is for</h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            Built for parents-to-be in Germany, especially international families navigating paperwork in a second language.
+            Built for expecting parents in Germany, especially international families navigating paperwork in a second language.
           </p>
         </div>
       </section>
