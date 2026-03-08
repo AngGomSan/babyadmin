@@ -32,6 +32,11 @@ const valueCards = [
     title: 'Understand the German terms',
     body: 'Use the glossary to quickly understand official terms, offices and required documents.',
   },
+  {
+    icon: Users,
+    title: 'Who it is for',
+    body: 'Built for expecting parents in Germany, especially international families navigating paperwork in a second language.',
+  },
 ];
 
 interface IntroProps {
