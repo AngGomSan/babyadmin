@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      user_app_state: {
+        Row: {
+          baby_born: boolean
+          birth_date: string | null
+          completed_checklist: string[]
+          completed_tasks: string[]
+          created_at: string
+          due_date: string | null
+          id: string
+          intro_seen: boolean
+          onboarding_complete: boolean
+          reassurance_dismissed: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          baby_born?: boolean
+          birth_date?: string | null
+          completed_checklist?: string[]
+          completed_tasks?: string[]
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          intro_seen?: boolean
+          onboarding_complete?: boolean
+          reassurance_dismissed?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          baby_born?: boolean
+          birth_date?: string | null
+          completed_checklist?: string[]
+          completed_tasks?: string[]
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          intro_seen?: boolean
+          onboarding_complete?: boolean
+          reassurance_dismissed?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
