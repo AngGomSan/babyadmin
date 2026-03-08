@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ClipboardCheck, CalendarDays, BookOpen, ArrowRight } from 'lucide-react';
 
 const LogoIcon = () => (
@@ -34,7 +34,23 @@ const valueCards = [
   },
 ];
 
-export default function Intro() {
+interface IntroProps {
+  onDismiss?: () => void;
+}
+
+export default function Intro({ onDismiss }: IntroProps) {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    onDismiss?.();
+    navigate('/auth');
+  };
+
+  const handleExploreTimeline = () => {
+    onDismiss?.();
+    navigate('/timeline');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
@@ -52,19 +68,19 @@ export default function Intro() {
           Administrative steps around pregnancy and birth in Germany can be confusing. BabyAdmin helps you understand what to do, when to do it and which documents to prepare before and after your baby arrives.
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-3">
-          <Link
-            to="/auth"
+          <button
+            onClick={handleGetStarted}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
             <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/timeline"
+          </button>
+          <button
+            onClick={handleExploreTimeline}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-muted-foreground font-medium text-sm hover:bg-muted transition-colors"
           >
             Explore the timeline
-          </Link>
+          </button>
         </div>
       </section>
 
@@ -108,13 +124,13 @@ export default function Intro() {
       {/* Final CTA */}
       <section className="px-6 pb-24 md:pb-32">
         <div className="max-w-lg mx-auto text-center">
-          <Link
-            to="/auth"
+          <button
+            onClick={handleGetStarted}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Start organizing your pregnancy admin
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </section>
 

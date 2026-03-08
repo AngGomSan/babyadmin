@@ -5,7 +5,8 @@ import { usePregnancyCalc } from '@/hooks/usePregnancyCalc';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarDays, Baby, Trash2, LogOut } from 'lucide-react';
+import { CalendarDays, Baby, Trash2, LogOut, Info } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -103,6 +104,17 @@ export default function SettingsPage() {
         <div className="rounded-xl bg-card shadow-card p-4 space-y-1">
           <p className="text-sm text-foreground">{state.completedTasks.length} tasks completed</p>
           <p className="text-sm text-foreground">{state.completedChecklist.length} checklist items completed</p>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="space-y-2">
+        <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">About</h2>
+        <div className="rounded-xl bg-card shadow-card p-4">
+          <Link to="/intro" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Info className="w-4 h-4" />
+            About BabyAdmin
+          </Link>
         </div>
       </section>
 

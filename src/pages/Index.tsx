@@ -2,12 +2,13 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useApp } from '@/contexts/AppContext';
 import Onboarding from '@/components/Onboarding';
 import Dashboard from '@/components/Dashboard';
+import Intro from '@/pages/Intro';
 import { Navigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 
 export default function Index() {
   const { user, loading: authLoading } = useAuth();
-  const { state, loading: appLoading } = useApp();
+  const { state, loading: appLoading, dismissIntro } = useApp();
 
   if (authLoading || appLoading) {
     return (
@@ -15,6 +16,11 @@ export default function Index() {
         <Loader2 className="w-6 h-6 animate-spin text-primary" />
       </div>
     );
+  }
+
+  // Show intro on first visit (works for both logged-out and logged-in users)
+  if (!state.introSeen) {
+    return <Intro onDismiss={dismissIntro} />;
   }
 
   if (!user) {
