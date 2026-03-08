@@ -183,6 +183,9 @@ export default function Timeline() {
                 value={selectedWeek}
                 onChange={e => setSelectedWeek(Number(e.target.value))}
                 className="w-full h-1.5 timeline-slider"
+                style={{
+                  background: `linear-gradient(90deg, hsl(330,81%,60%), hsl(248,74%,66%) ${((selectedWeek - 4) / (42 - 4)) * 100}%) ${((selectedWeek - 4) / (42 - 4)) * 100}%, hsl(220,13%,91%) ${((selectedWeek - 4) / (42 - 4)) * 100}%`
+                }}
               />
               <div className="flex justify-between text-[10px] text-muted-foreground/60 px-0.5">
                 <span>Week 4</span>
