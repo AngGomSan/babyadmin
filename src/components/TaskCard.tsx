@@ -117,14 +117,14 @@ export default function TaskCard({ task }: TaskCardProps) {
         <div className="px-4 pb-5 pl-12 space-y-4 slide-up">
           {task.description && (
             <div className="flex gap-2.5 items-start">
-              <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary/40" />
+              <Info className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
             </div>
           )}
 
           {task.unlocks && task.unlocks.length > 0 && (
             <div className="flex gap-2.5 items-start">
-              <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-primary/40" />
+              <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <div>
                 <p className="text-[12px] font-medium text-muted-foreground mb-1">What this unlocks</p>
                 <ul className="space-y-0.5">
