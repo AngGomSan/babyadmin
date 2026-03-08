@@ -7,6 +7,7 @@ import logoIcon from '@/assets/logo-icon.png';
 const navItems = [
   { to: '/', icon: Home, label: 'Home' },
   { to: '/timeline', icon: CalendarDays, label: 'Timeline' },
+  { to: '/documents', icon: ClipboardList, label: 'Documents' },
   { to: '/glossary', icon: BookOpen, label: 'Glossary' },
   { to: '/settings', icon: Settings, label: 'Settings' },
 ];
