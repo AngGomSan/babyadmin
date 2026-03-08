@@ -87,6 +87,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A certificate confirming registration of residence. It may need to be requested separately for certain registrations.',
     pronunciationHint: 'MEL-duh-buh-shy-ni-goong',
     keywords: ['registration certificate', 'residence registration', 'official address'],
+    category: 'paperwork',
   },
   // Documents
   {
