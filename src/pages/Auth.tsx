@@ -1,17 +1,24 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowRight, Mail, Lock, Loader2 } from 'lucide-react';
+import { ArrowRight, Mail, Lock, Loader2, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function Auth() {
-  const { signIn, signUp, resetPassword } = useAuth();
+  const { user, loading: authLoading, signIn, signUp, resetPassword } = useAuth();
   const { toast } = useToast();
   const [mode, setMode] = useState<'login' | 'signup' | 'forgot'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [signupDone, setSignupDone] = useState(false);
+
+  // Redirect authenticated users to the app
+  if (!authLoading && user) {
+    return <Navigate to="/" replace />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,16 +36,44 @@ export default function Auth() {
       return;
     }
 
-    const fn = mode === 'login' ? signIn : signUp;
-    const { error } = await fn(email, password);
-    setLoading(false);
+    if (mode === 'signup') {
+      const { error } = await signUp(email, password);
+      setLoading(false);
+      if (error) {
+        toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
+      } else {
+        setSignupDone(true);
+      }
+      return;
+    }
 
+    const { error } = await signIn(email, password);
+    setLoading(false);
     if (error) {
       toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
-    } else if (mode === 'signup') {
-      toast({ title: 'Account created', description: 'Check your email to confirm your account.' });
     }
+    // On successful login, onAuthStateChange sets user → Navigate above fires
   };
+
+  if (signupDone) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
+        <div className="w-full max-w-sm space-y-6 text-center fade-in">
+          <CheckCircle className="w-12 h-12 text-primary mx-auto" />
+          <h2 className="text-lg font-semibold text-foreground">Check your email</h2>
+          <p className="text-sm text-muted-foreground">
+            We sent a confirmation link to <strong className="text-foreground">{email}</strong>. Click the link to activate your account, then come back here to log in.
+          </p>
+          <button
+            onClick={() => { setSignupDone(false); setMode('login'); }}
+            className="text-sm text-primary hover:underline font-medium"
+          >
+            Back to log in
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
@@ -120,7 +155,7 @@ export default function Auth() {
           )}
           {mode === 'forgot' && (
             <button onClick={() => setMode('login')} className="text-muted-foreground hover:text-foreground transition-colors">
-              Back to login
+              Back to log in
             </button>
           )}
         </div>

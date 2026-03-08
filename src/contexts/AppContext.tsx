@@ -61,7 +61,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       .select('*')
       .eq('user_id', user.id)
       .maybeSingle()
-      .then(({ data }) => {
+      .then(({ data, error }) => {
         if (data) {
           const dbState: AppState = {
             dueDate: data.due_date,
@@ -75,6 +75,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
           };
           setState(dbState);
           localStorage.setItem(STORAGE_KEY, JSON.stringify(dbState));
+        } else if (!data && !error) {
+          // Row doesn't exist yet (trigger may not have fired); create it
+          supabase
+            .from('user_app_state')
+            .insert({ user_id: user.id })
+            .then(() => {
+              setState(defaultState);
+            });
         }
         setLoading(false);
       });
