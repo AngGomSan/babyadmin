@@ -2,6 +2,13 @@ import { useApp } from '@/contexts/AppContext';
 import { globalDocuments, GlobalDocument } from '@/data/documents';
 import { timelineTasks } from '@/data/timelineTasks';
 import { Checkbox } from '@/components/ui/checkbox';
+import { FolderOpen, Hospital, Landmark, LucideIcon } from 'lucide-react';
+
+const sectionIcons: Record<string, LucideIcon> = {
+  'Prepare during pregnancy': FolderOpen,
+  'Needed for birth registration': Hospital,
+  'Needed after birth': Landmark,
+};
 
 const sections: { title: string; docIds: string[] }[] = [
   {
