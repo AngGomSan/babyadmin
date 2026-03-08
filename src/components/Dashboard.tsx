@@ -72,7 +72,7 @@ export default function Dashboard() {
     <div className="space-y-5 fade-in">
       {/* Reassurance */}
       {!state.reassuranceDismissed && (
-        <div className="bg-gradient-primary-soft rounded-xl p-4 relative">
+        <div className="bg-gradient-primary-soft rounded-xl p-4 relative opacity-[0.85]">
           <button onClick={dismissReassurance} className="absolute top-3 right-3 p-1 text-muted-foreground hover:text-foreground transition-colors" aria-label="Dismiss">
             <X className="w-4 h-4" />
           </button>
