@@ -59,7 +59,7 @@ export default function Intro({ onDismiss }: IntroProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-8 md:pt-28 md:pb-10 text-center">
+      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-14 md:pt-28 md:pb-16 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
@@ -75,26 +75,26 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="flex flex-col items-center">
           <button
             onClick={handleGetStarted}
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
+            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
           </button>
         </div>
-        <p className="mt-5 text-xs text-muted-foreground">
+        <p className="mt-5 text-xs text-muted-foreground/75">
           Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link><span className="text-muted-foreground">.</span>
         </p>
       </section>
 
       {/* Value cards */}
       <section className="px-6 pb-12 md:pb-14">
-        <div className="max-w-4xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-[56rem] mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
               className="rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
             >
               <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-3">
-                <Icon className="w-[22px] h-[22px] text-primary" />
+                <Icon className="w-[22px] h-[22px] text-primary/90" />
               </div>
               <h3 className="text-sm font-semibold text-foreground mb-1.5">{title}</h3>
               <p className="text-sm text-muted-foreground leading-snug">{body}</p>
@@ -105,7 +105,7 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Reassurance */}
       <section className="px-6 pb-10 md:pb-14">
-        <div className="max-w-[600px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
+        <div className="max-w-[560px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
           <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-8 py-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
               You don't need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
@@ -115,7 +115,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 pb-8">
+      <footer className="px-6 pt-3 pb-8">
         <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/70 flex-wrap">
           <Link to="/your-data" className="hover:text-muted-foreground transition-colors">How your data is used</Link>
           <span>·</span>
