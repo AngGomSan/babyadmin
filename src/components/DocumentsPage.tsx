@@ -63,8 +63,14 @@ export default function DocumentsPage() {
                     {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
                   </span>
                   {relatedTasks.length > 0 && !checked && (
-                    <p className="text-[11px] text-muted-foreground/70 mt-1 leading-relaxed">
-                      Needed for: {relatedTasks.join(' · ')}
+                    <p className="text-[11px] mt-1 leading-relaxed">
+                      <span className="text-muted-foreground/70">Needed for: </span>
+                      {relatedTasks.map((name, i) => (
+                        <span key={i}>
+                          {i > 0 && <span className="text-muted-foreground/40 mx-1">·</span>}
+                          <span className="text-muted-foreground/80">{name}</span>
+                        </span>
+                      ))}
                     </p>
                   )}
                 </div>
