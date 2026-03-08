@@ -33,6 +33,8 @@ export interface TimelineTask {
   optional: boolean;
   dueWeek?: number;
   description?: string;
+  whyItMatters?: string;
+  documents?: DocumentItem[];
   unlocks?: string[];
   checklist?: ChecklistItem[];
 }
