@@ -5,9 +5,9 @@ const LogoIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="intro-logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="hsl(340, 72%, 65%)" />
-        <stop offset="50%" stopColor="hsl(278, 52%, 50%)" />
-        <stop offset="100%" stopColor="hsl(220, 62%, 55%)" />
+        <stop offset="0%" stopColor="#F25DAA" />
+        <stop offset="50%" stopColor="#8A5CF6" />
+        <stop offset="100%" stopColor="#4F7DF3" />
       </linearGradient>
     </defs>
     <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="url(#intro-logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -75,7 +75,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="flex flex-col items-center">
           <button
             onClick={handleGetStarted}
-            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
+            className="inline-flex items-center px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#F25DAA] via-[#8A5CF6] to-[#4F7DF3] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
           </button>
@@ -105,7 +105,7 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Reassurance */}
       <section className="px-5 pb-8 md:px-6 md:pb-14">
-        <div className="max-w-[560px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
+        <div className="max-w-[560px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[#F25DAA] via-[#8A5CF6] to-[#4F7DF3]">
           <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-5 py-4 md:px-8 md:py-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
               You don't need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.

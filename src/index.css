@@ -51,9 +51,9 @@
     --highlight: 45 88% 88%;
 
     /* Gradient anchors */
-    --gradient-pink: 340 72% 65%;
-    --gradient-violet: 278 52% 50%;
-    --gradient-blue: 220 62% 55%;
+    --gradient-pink: 330 87% 65%;
+    --gradient-violet: 259 91% 66%;
+    --gradient-blue: 222 88% 63%;
     --gradient-mint: 152 47% 53%;
 
     --sidebar-background: 0 0% 98%;
@@ -82,25 +82,26 @@
 @layer utilities {
   .bg-gradient-primary {
     background: linear-gradient(
-      135deg,
-      hsl(330, 81%, 60%),
-      hsl(248, 74%, 66%)
+      to right,
+      #F25DAA,
+      #8A5CF6,
+      #4F7DF3
     );
   }
   .bg-gradient-primary-soft {
     background: linear-gradient(
-      135deg,
-      hsl(340, 72%, 65%, 0.12),
-      hsl(278, 52%, 50%, 0.08),
-      hsl(220, 62%, 55%, 0.12)
+      to right,
+      rgba(242, 93, 170, 0.12),
+      rgba(138, 92, 246, 0.08),
+      rgba(79, 125, 243, 0.12)
     );
   }
   .text-gradient-primary {
     background: linear-gradient(
-      135deg,
-      hsl(340, 72%, 65%),
-      hsl(278, 52%, 50%),
-      hsl(220, 62%, 55%)
+      to right,
+      #F25DAA,
+      #8A5CF6,
+      #4F7DF3
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
