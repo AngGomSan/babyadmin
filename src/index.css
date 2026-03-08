@@ -30,7 +30,10 @@
 
     --border: 230 18% 91%;
     --input: 230 18% 91%;
-    --ring: 278 52% 50%;
+    --ring: 263 70% 76%;
+
+    /* Accent lavender for interactive elements */
+    --lavender-accent: 263 83% 70%;
 
     --radius: 0.75rem;
 
