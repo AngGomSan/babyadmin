@@ -55,6 +55,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A government benefit that replaces part of a parent\'s income during parental leave.',
     pronunciationHint: 'EL-tern-gelt',
     keywords: ['benefit', 'income replacement', 'parental leave money'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'kindergeld',
