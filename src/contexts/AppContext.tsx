@@ -180,6 +180,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const markBabyBorn = useCallback((birthDate: string) => {
     setState(s => ({ ...s, babyBorn: true, birthDate }));
+    trackEvent({ name: 'baby_marked_born' });
   }, []);
 
   const dismissReassurance = useCallback(() => {
