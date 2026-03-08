@@ -4,7 +4,6 @@ import { usePregnancyCalc } from '@/hooks/usePregnancyCalc';
 import { timelineTasks } from '@/data/timelineTasks';
 import { TimelineTask } from '@/types';
 import TaskCard from '@/components/TaskCard';
-import { Progress } from '@/components/ui/progress';
 import { X, ChevronLeft, ChevronRight, Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -69,14 +68,14 @@ export default function Dashboard() {
   const trimesterLabel = calc.currentTrimester === 1 ? 'First trimester' : calc.currentTrimester === 2 ? 'Second trimester' : 'Third trimester';
 
   return (
-    <div className="space-y-6 fade-in">
+    <div className="space-y-5 fade-in">
       {/* Reassurance */}
       {!state.reassuranceDismissed && (
         <div className="bg-gradient-primary-soft rounded-xl p-4 relative">
-          <button onClick={dismissReassurance} className="absolute top-3 right-3 text-muted-foreground hover:text-foreground" aria-label="Dismiss">
+          <button onClick={dismissReassurance} className="absolute top-3 right-3 p-1 text-muted-foreground hover:text-foreground transition-colors" aria-label="Dismiss">
             <X className="w-4 h-4" />
           </button>
-          <p className="text-sm text-foreground leading-relaxed pr-6">
+          <p className="text-sm text-foreground leading-relaxed pr-8">
             You do not need to figure everything out at once. This app helps you focus on what matters now and what to prepare next.
           </p>
         </div>
@@ -88,7 +87,7 @@ export default function Dashboard() {
           <div>
             {calc.isPostpartum ? (
               <>
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2 mb-0.5">
                   <Baby className="w-5 h-5 text-primary" />
                   <h2 className="text-2xl font-bold text-foreground">Month {viewMonth}</h2>
                 </div>
@@ -105,10 +104,12 @@ export default function Dashboard() {
               </>
             )}
           </div>
-          <div className="text-right">
-            <span className="text-sm font-medium text-primary">{completedNow}/{nowTasks.length}</span>
-            <p className="text-xs text-muted-foreground">completed</p>
-          </div>
+          {nowTasks.length > 0 && (
+            <div className="text-right">
+              <span className="text-sm font-medium text-primary">{completedNow}/{nowTasks.length}</span>
+              <p className="text-[11px] text-muted-foreground">completed</p>
+            </div>
+          )}
         </div>
 
         {/* Week navigation */}
@@ -116,7 +117,7 @@ export default function Dashboard() {
           <Button
             variant="outline"
             size="icon"
-            className="h-8 w-8"
+            className="h-9 w-9 shrink-0"
             onClick={() => setWeekOffset(o => o - 1)}
             disabled={calc.isPostpartum ? viewMonth <= 0 : viewWeek <= 4}
           >
@@ -130,7 +131,7 @@ export default function Dashboard() {
           <Button
             variant="outline"
             size="icon"
-            className="h-8 w-8"
+            className="h-9 w-9 shrink-0"
             onClick={() => setWeekOffset(o => o + 1)}
             disabled={calc.isPostpartum ? viewMonth >= 3 : viewWeek >= 42}
           >
@@ -145,11 +146,11 @@ export default function Dashboard() {
         {/* Progress bar */}
         {!calc.isPostpartum && isCurrentView && (
           <div className="space-y-1.5">
-            <div className="flex justify-between text-xs text-muted-foreground">
+            <div className="flex justify-between text-[11px] text-muted-foreground">
               <span>{trimesterLabel}</span>
               <span>{Math.round(calc.trimesterProgress)}%</span>
             </div>
-            <div className="h-2 rounded-full bg-muted overflow-hidden">
+            <div className="h-1.5 rounded-full bg-muted overflow-hidden">
               <div
                 className="h-full rounded-full bg-gradient-primary transition-all duration-500"
                 style={{ width: `${calc.trimesterProgress}%` }}
@@ -160,10 +161,10 @@ export default function Dashboard() {
       </div>
 
       {/* Do this now */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide">Do this now</h3>
+      <section className="space-y-2.5">
+        <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
         {nowTasks.length === 0 ? (
-          <p className="text-sm text-muted-foreground py-4">No tasks for this period.</p>
+          <p className="text-sm text-muted-foreground py-6">No tasks for this period.</p>
         ) : (
           nowTasks.map(task => <TaskCard key={task.id} task={task} />)
         )}
@@ -171,8 +172,8 @@ export default function Dashboard() {
 
       {/* Plan ahead */}
       {planTasks.length > 0 && (
-        <section className="space-y-3">
-          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Plan ahead</h3>
+        <section className="space-y-2.5">
+          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
           {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
         </section>
       )}

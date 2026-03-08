@@ -35,12 +35,12 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-8 fade-in">
+    <div className="space-y-6 fade-in">
       <h1 className="text-xl font-bold text-foreground">Settings</h1>
 
       {/* Account */}
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Account</h2>
+      <section className="space-y-2">
+        <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Account</h2>
         <div className="rounded-xl bg-card shadow-card p-4 space-y-3">
           <p className="text-sm text-muted-foreground">{user?.email}</p>
           <Button variant="outline" size="sm" onClick={signOut}>
@@ -51,9 +51,9 @@ export default function SettingsPage() {
       </section>
 
       {/* Due date */}
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Due date</h2>
-        <div className="rounded-xl bg-card shadow-card p-4 space-y-3">
+      <section className="space-y-2">
+        <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Due date</h2>
+        <div className="rounded-xl bg-card shadow-card p-4 space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-primary" />
@@ -73,8 +73,8 @@ export default function SettingsPage() {
 
       {/* Baby born */}
       {!state.babyBorn && (
-        <section className="space-y-3">
-          <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Baby is born</h2>
+        <section className="space-y-2">
+          <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Baby is born</h2>
           <div className="rounded-xl bg-card shadow-card p-4">
             <p className="text-sm text-muted-foreground mb-3">
               When the baby arrives, switch to postpartum mode to see your next steps.
@@ -88,8 +88,8 @@ export default function SettingsPage() {
       )}
 
       {state.babyBorn && state.birthDate && (
-        <section className="space-y-3">
-          <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Birth</h2>
+        <section className="space-y-2">
+          <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Birth</h2>
           <div className="rounded-xl bg-card shadow-card p-4 flex items-center gap-2">
             <Baby className="w-4 h-4 text-primary" />
             <span className="text-sm text-foreground">Born {format(new Date(state.birthDate), 'PPP')}</span>
@@ -98,8 +98,8 @@ export default function SettingsPage() {
       )}
 
       {/* Progress */}
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Progress</h2>
+      <section className="space-y-2">
+        <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Progress</h2>
         <div className="rounded-xl bg-card shadow-card p-4 space-y-1">
           <p className="text-sm text-foreground">{state.completedTasks.length} tasks completed</p>
           <p className="text-sm text-foreground">{state.completedChecklist.length} checklist items completed</p>
@@ -116,7 +116,7 @@ export default function SettingsPage() {
 
       {/* Edit due date dialog */}
       <Dialog open={editingDueDate} onOpenChange={setEditingDueDate}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm mx-4 rounded-2xl">
           <DialogHeader>
             <DialogTitle>Edit due date</DialogTitle>
           </DialogHeader>
@@ -139,7 +139,7 @@ export default function SettingsPage() {
 
       {/* Baby born dialog */}
       <Dialog open={babyBornDialog} onOpenChange={setBabyBornDialog}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm mx-4 rounded-2xl">
           <DialogHeader>
             <DialogTitle>When was the baby born?</DialogTitle>
           </DialogHeader>
@@ -162,7 +162,7 @@ export default function SettingsPage() {
 
       {/* Reset confirmation */}
       <Dialog open={confirmReset} onOpenChange={setConfirmReset}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm mx-4 rounded-2xl">
           <DialogHeader>
             <DialogTitle>Reset all data?</DialogTitle>
           </DialogHeader>
