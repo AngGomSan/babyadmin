@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ClipboardCheck, CalendarDays, BookOpen } from 'lucide-react';
+import { ClipboardCheck, CalendarDays, BookOpen, Users } from 'lucide-react';
 
 const LogoIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,6 +31,11 @@ const valueCards = [
     icon: BookOpen,
     title: 'Understand the German terms',
     body: 'Use the glossary to quickly understand official terms, offices and required documents.',
+  },
+  {
+    icon: Users,
+    title: 'Who it is for',
+    body: 'Built for expecting parents in Germany, especially international families navigating paperwork in a second language.',
   },
 ];
 
@@ -82,7 +87,7 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Value cards */}
       <section className="px-6 pb-12 md:pb-16">
-        <div className="max-w-3xl mx-auto grid gap-5 sm:grid-cols-3">
+        <div className="max-w-3xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
@@ -107,17 +112,6 @@ export default function Intro({ onDismiss }: IntroProps) {
         </div>
       </section>
 
-      {/* Who it is for */}
-      <section className="px-6 pb-12 md:pb-16">
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-card text-center">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Who it is for</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Built for expecting parents in Germany, especially international families navigating paperwork in a second language.
-            </p>
-          </div>
-        </div>
-      </section>
 
 
       {/* Footer */}
