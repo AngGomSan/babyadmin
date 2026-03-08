@@ -203,13 +203,13 @@ export default function Timeline() {
           ) : (
             <>
               {doNowTasks.length > 0 && (
-                <section className="space-y-2.5">
+                <section className="space-y-3">
                   <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
                   {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
               )}
               {planTasks.length > 0 && (
-                <section className="space-y-2.5">
+                <section className="space-y-3">
                   <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
                   {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
