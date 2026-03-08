@@ -161,6 +161,11 @@ export default function Dashboard() {
         )}
       </div>
 
+      {/* Baby born prompt — visible from week 36 onward, pre-birth only */}
+      {!calc.isPostpartum && calc.currentWeek >= 36 && isCurrentView && (
+        <BabyBornPrompt variant="card" />
+      )}
+
       {/* Do this now */}
       <section className="space-y-2.5">
         <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>

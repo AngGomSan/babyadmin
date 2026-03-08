@@ -113,6 +113,11 @@ export default function Timeline() {
             </div>
           </div>
 
+          {/* Baby born inline prompt — week 36+ */}
+          {!state.babyBorn && calc && calc.currentWeek >= 36 && selectedWeek >= 36 && (
+            <BabyBornPrompt variant="inline" />
+          )}
+
           {/* Tasks split by urgency */}
           {weeklyTasks.length === 0 ? (
             <p className="text-sm text-muted-foreground py-8 text-center">No tasks for week {selectedWeek}.</p>
