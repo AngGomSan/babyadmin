@@ -190,18 +190,20 @@ export default function TaskCard({ task }: TaskCardProps) {
                 const checked = isChecklistComplete(item.id);
                 return (
                   <div key={item.id} className={`-mx-1 px-1 rounded-lg py-1 ${idx > 0 ? 'mt-2' : ''}`}>
-                    <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
-                      <Checkbox
-                        checked={checked}
-                        onCheckedChange={() => toggleChecklist(item.id)}
-                        className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
-                      />
+                    <label className="grid cursor-pointer min-h-[1.75rem]" style={{ gridTemplateColumns: '24px 1fr' }}>
+                      <span className="flex items-start justify-center pt-[3px]">
+                        <Checkbox
+                          checked={checked}
+                          onCheckedChange={() => toggleChecklist(item.id)}
+                          className={`rounded h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
+                        />
+                      </span>
                       <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                         {item.label}
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-px leading-relaxed">{item.description}</p>
+                      <p className="text-xs text-muted-foreground/70 mt-px leading-relaxed" style={{ paddingLeft: '24px' }}>{item.description}</p>
                     )}
                   </div>
                 );
