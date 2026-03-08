@@ -124,13 +124,13 @@ export default function Intro({ onDismiss }: IntroProps) {
       {/* Final CTA */}
       <section className="px-6 pb-24 md:pb-32">
         <div className="max-w-lg mx-auto text-center">
-          <Link
-            to="/auth"
+          <button
+            onClick={handleGetStarted}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Start organizing your pregnancy admin
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </button>
         </div>
       </section>
 
