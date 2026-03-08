@@ -189,7 +189,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {task.checklist.map((item) => {
                 const checked = isChecklistComplete(item.id);
                 return (
