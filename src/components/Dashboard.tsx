@@ -6,6 +6,7 @@ import { TimelineTask } from '@/types';
 import TaskCard from '@/components/TaskCard';
 import { X, ChevronLeft, ChevronRight, Baby } from 'lucide-react';
 import BabyBornPrompt from '@/components/BabyBornPrompt';
+import OverdueBanner from '@/components/OverdueBanner';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
