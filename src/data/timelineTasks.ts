@@ -288,7 +288,11 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: false,
     optional: true,
-    description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
+     description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
+     unlocks: [
+       'father listed on birth certificate',
+       'shared custody declaration',
+     ],
     checklist: [
       { id: 'review-vaterschaftsanerkennung-check', label: 'Check if this applies to you', description: 'This is relevant for some families, but not all.' },
     ],
