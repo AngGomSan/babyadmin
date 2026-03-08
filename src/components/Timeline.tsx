@@ -212,13 +212,13 @@ export default function Timeline() {
           ) : (
             <div className="mt-6 space-y-5">
               {doNowTasks.length > 0 && (
-                <section className="space-y-3">
+                <section className="space-y-2.5">
                   <h3 className="text-xs font-bold text-[hsl(215,25%,27%)] uppercase tracking-wider">Do this now</h3>
                   {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
               )}
               {planTasks.length > 0 && (
-                <section className="space-y-3">
+                <section className="space-y-2.5">
                   <h3 className="text-xs font-semibold text-[hsl(215,16%,47%)] uppercase tracking-wider">Plan ahead</h3>
                   {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
@@ -272,7 +272,7 @@ export default function Timeline() {
                 {group.tasks.length === 0 ? (
                   <p className="text-sm text-muted-foreground">No tasks.</p>
                 ) : (
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {group.tasks.map(task => <TaskCard key={task.id} task={task} />)}
                   </div>
                 )}

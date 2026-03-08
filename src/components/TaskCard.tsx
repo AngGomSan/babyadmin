@@ -123,11 +123,11 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       {/* Expanded content */}
       {expanded && hasDetails && (
-        <div className="px-4 pb-5 pl-12 slide-up space-y-4">
+        <div className="px-4 pb-5 pl-12 slide-up space-y-3.5">
           {task.description && (
             <div className="flex gap-2.5 items-start -mt-2">
               <Info className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
-              <p className="text-[13px] text-foreground/60 leading-relaxed">{task.description}</p>
+              <p className="text-[13px] text-foreground/55 leading-relaxed">{task.description}</p>
             </div>
           )}
 
@@ -147,7 +147,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                 <ClipboardList className="w-4 h-4 shrink-0 mt-[2px] text-muted-foreground/40" />
                 <p className="text-[12px] font-semibold text-foreground/65">Documents you will need</p>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {resolvedDocs.map((doc) => {
                   if (!doc) return null;
                   const checked = isDocumentComplete(doc.id);
@@ -162,7 +162,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                           />
                         </span>
                         <span className={`text-[13px] leading-[20px] ${checked ? 'line-through text-muted-foreground/50' : 'text-foreground/85'}`}>
-                          {doc.label} <span className="text-foreground/45">({doc.germanName})</span>
+                          {doc.label} <span className="text-foreground/50">({doc.germanName})</span>
                         </span>
                       </label>
                     </div>
@@ -189,7 +189,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {task.checklist.map((item) => {
                 const checked = isChecklistComplete(item.id);
                 return (
@@ -207,7 +207,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-[11px] text-foreground/40 mt-1 leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
+                      <p className="text-[11px] text-foreground/45 mt-1 leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
                     )}
                   </div>
                 );
