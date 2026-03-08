@@ -50,10 +50,12 @@ export default function TaskCard({ task }: TaskCardProps) {
   const completed = isTaskComplete(task.id);
   const hasDetails = task.description || task.whyItMatters || task.documents?.length || task.unlocks || (task.checklist && task.checklist.length > 0);
 
-  const completedChecklistCount = task.checklist
-    ? task.checklist.filter(item => isChecklistComplete(item.id)).length
-    : 0;
-  const totalChecklistCount = task.checklist?.length || 0;
+  const allCheckableItems = [
+    ...(task.checklist || []).map(i => i.id),
+    ...(task.documents || []).map(i => i.id),
+  ];
+  const completedChecklistCount = allCheckableItems.filter(id => isChecklistComplete(id)).length;
+  const totalChecklistCount = allCheckableItems.length;
 
   const CategoryIcon = CATEGORY_ICON_MAP[task.category];
 
