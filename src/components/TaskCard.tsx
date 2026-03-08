@@ -70,7 +70,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         role={hasDetails ? 'button' : undefined}
         aria-expanded={hasDetails ? expanded : undefined}
       >
-        <div className="pt-0.5" onClick={e => e.stopPropagation()}>
+        <div className="pt-[3px]" onClick={e => e.stopPropagation()}>
           <Checkbox
             checked={completed}
             onCheckedChange={() => toggleTask(task.id)}
@@ -152,11 +152,11 @@ export default function TaskCard({ task }: TaskCardProps) {
                 const checked = isChecklistComplete(item.id);
                 return (
                   <div key={item.id} className={`-mx-1 px-1 rounded-lg py-1 ${idx > 0 ? 'mt-2' : ''}`}>
-                    <label className="flex items-start gap-3 cursor-pointer min-h-[1.75rem]">
+                    <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
                       <Checkbox
                         checked={checked}
                         onCheckedChange={() => toggleChecklist(item.id)}
-                        className={`rounded mt-0.5 h-[18px] w-[18px] ${!checked ? categoryCheckboxClass[task.category] : ''}`}
+                        className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                       />
                       <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                         {item.label}
