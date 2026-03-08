@@ -39,6 +39,7 @@ export interface GlossaryTerm {
   englishExplanation: string;
   pronunciationHint?: string;
   keywords?: string[];
+  category?: TaskCategory;
 }
 
 export interface AppState {
