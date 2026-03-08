@@ -139,6 +139,41 @@
       rgba(79, 125, 243, 0.05)
     ) !important;
   }
+  .highlight-gradient-border {
+    position: relative;
+    background: transparent;
+    border: none;
+    z-index: 0;
+  }
+  .highlight-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .highlight-gradient-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(242, 93, 170, 0.04),
+      rgba(138, 92, 246, 0.03),
+      rgba(79, 125, 243, 0.04)
+    );
+  }
+  .highlight-gradient-bg:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(242, 93, 170, 0.07),
+      rgba(138, 92, 246, 0.05),
+      rgba(79, 125, 243, 0.07)
+    );
+  }
   .shadow-card {
     box-shadow: 0 2px 12px -2px hsl(232 25% 16% / 0.07);
   }
