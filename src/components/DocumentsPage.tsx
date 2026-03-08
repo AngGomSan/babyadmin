@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { globalDocuments, GlobalDocument } from '@/data/documents';
-import { timelineTasks } from '@/data/timelineTasks';
+import { glossaryTerms } from '@/data/glossaryTerms';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { Checkbox } from '@/components/ui/checkbox';
 import GlossaryModal from '@/components/GlossaryModal';
