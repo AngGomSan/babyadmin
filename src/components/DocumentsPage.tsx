@@ -51,19 +51,19 @@ export default function DocumentsPage() {
           const relatedTasks = getTasksForDocument(doc.id);
 
           return (
-            <div key={doc.id} className="px-4 py-3">
-              <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
+            <div key={doc.id} className="px-4 py-3.5">
+              <label className="flex items-start gap-3.5 cursor-pointer">
                 <Checkbox
                   checked={checked}
                   onCheckedChange={() => toggleDocument(doc.id)}
-                  className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? 'border-primary' : ''}`}
+                  className={`rounded mt-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? 'border-primary' : ''}`}
                 />
                 <div className="flex-1 min-w-0">
-                  <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                  <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                     {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
                   </span>
                   {relatedTasks.length > 0 && !checked && (
-                    <p className="text-[11px] text-muted-foreground/70 mt-0.5 leading-relaxed">
+                    <p className="text-[11px] text-muted-foreground/70 mt-1 leading-relaxed">
                       Needed for: {relatedTasks.join(' · ')}
                     </p>
                   )}
