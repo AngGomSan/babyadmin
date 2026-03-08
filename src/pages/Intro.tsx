@@ -34,7 +34,23 @@ const valueCards = [
   },
 ];
 
-export default function Intro() {
+interface IntroProps {
+  onDismiss?: () => void;
+}
+
+export default function Intro({ onDismiss }: IntroProps) {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    onDismiss?.();
+    navigate('/auth');
+  };
+
+  const handleExploreTimeline = () => {
+    onDismiss?.();
+    navigate('/timeline');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
