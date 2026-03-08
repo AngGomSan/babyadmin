@@ -53,11 +53,30 @@ const sections: { title: string; docIds: string[] }[] = [
   },
 ];
 
-function getTasksForDocument(docId: string) {
-  return timelineTasks
-    .filter(t => t.requiredDocuments?.includes(docId))
-    .map(t => t.title);
-}
+/** Simplified outcome labels per document */
+const documentUsedFor: Record<string, string[]> = {
+  'doc-parent-passports': ['Birth registration', 'Paternity recognition', 'Passport application'],
+  'doc-parent-birth-certificates': ['Birth registration', 'Paternity recognition'],
+  'doc-marriage-certificate': ['Birth registration', 'Name declaration'],
+  'doc-paternity-recognition': ['Birth registration', 'Custody declaration'],
+  'doc-custody-declaration': ['Custody rights'],
+  'doc-naming-declaration': ['Birth registration'],
+  'doc-certified-translations': ['Birth registration', 'Benefit applications'],
+  'doc-mutterpass': ['Prenatal care', 'Maternity pay'],
+  'doc-due-date-confirmation': ['Parental leave request', 'Maternity pay'],
+  'doc-geburtsanzeige': ['Birth registration'],
+  'doc-birth-certificate': ['Elterngeld', 'Kindergeld', 'Health insurance', 'Passport application'],
+  'doc-birth-certificate-elterngeld': ['Elterngeld application'],
+  'doc-elternzeit-letter': ['Parental leave request'],
+  'doc-employer-confirmation': ['Elterngeld application'],
+  'doc-salary-statements': ['Elterngeld application'],
+  'doc-parent-tax-id': ['Kindergeld', 'Elterngeld'],
+  'doc-child-tax-id': ['Kindergeld'],
+  'doc-kindergeld-form': ['Kindergeld application'],
+  'doc-health-insurance-info': ['Health insurance registration'],
+  'doc-health-insurance-card': ['Pediatrician visits'],
+  'doc-parent-insurance-number': ['Health insurance registration'],
+};
 
 export default function DocumentsPage() {
   const { isDocumentComplete, toggleDocument } = useApp();
