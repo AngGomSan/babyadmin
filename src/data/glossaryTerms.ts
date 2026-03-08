@@ -194,6 +194,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The specific protected period during which a pregnant person is prohibited from working. It begins 6 weeks before the due date and ends 8 weeks after birth (12 weeks for premature or multiple births).',
     pronunciationHint: 'MOOT-er-shoots-frist',
     keywords: ['maternity protection period', 'work ban', 'pre-birth leave', 'post-birth leave'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'mutterschaftsgeld',
