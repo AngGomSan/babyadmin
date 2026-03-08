@@ -50,9 +50,9 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
         <div className="flex items-start gap-3">
           <Baby className="w-5 h-5 text-primary mt-0.5 shrink-0" />
           <div className="space-y-1">
-            <p className="text-sm font-medium text-foreground">Getting close</p>
+             <p className="text-sm font-medium text-foreground">Almost there</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              When your baby arrives, mark the birth date here so the app can switch to postpartum tasks.
+              When your baby arrives, click the button below to record the birth date so the app can switch to postpartum tasks.
             </p>
           </div>
         </div>
