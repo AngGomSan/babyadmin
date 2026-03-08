@@ -126,16 +126,16 @@ export default function TaskCard({ task }: TaskCardProps) {
         <div className="px-4 pb-4 pl-12 slide-up">
           {task.description && (
             <div className="flex gap-2.5 items-start -mt-2">
-              <Info className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+              <Info className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
             </div>
           )}
 
           {task.whyItMatters && (
             <div className="flex gap-2.5 items-start mt-3">
-              <Heart className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+              <Heart className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <div>
-                <p className="text-[12px] font-medium text-muted-foreground mb-1">Why this matters</p>
+                <p className="text-[12px] font-medium text-foreground/70 mb-0.5">Why this matters</p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">{task.whyItMatters}</p>
               </div>
             </div>
@@ -143,17 +143,17 @@ export default function TaskCard({ task }: TaskCardProps) {
 
           {resolvedDocs.length > 0 && (
             <div className="mt-3">
-              <div className="flex items-center gap-1.5 mb-2">
-                <ClipboardList className="w-4 h-4 shrink-0 text-[hsl(213,27%,68%)]" />
-                <p className="text-[12px] font-medium text-muted-foreground">Documents you will need</p>
+              <div className="flex items-start gap-2.5 mb-2">
+                <ClipboardList className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
+                <p className="text-[12px] font-medium text-foreground/70">Documents you will need</p>
               </div>
               {resolvedDocs.map((doc) => {
                 if (!doc) return null;
                 const checked = isDocumentComplete(doc.id);
                 return (
-                  <div key={doc.id} className="py-1">
+                  <div key={doc.id} className="py-0.5">
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
-                      <span className="flex items-start justify-center pt-[2px]">
+                      <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
                           checked={checked}
                           onCheckedChange={() => toggleDocument(doc.id)}
@@ -172,9 +172,9 @@ export default function TaskCard({ task }: TaskCardProps) {
 
           {task.unlocks && task.unlocks.length > 0 && (
             <div className="flex gap-2.5 items-start mt-3">
-              <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+              <Unlock className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <div>
-                <p className="text-[12px] font-medium text-muted-foreground mb-1">What this unlocks</p>
+                <p className="text-[12px] font-medium text-foreground/70 mb-0.5">What this unlocks</p>
                 <ul className="space-y-0.5">
                   {task.unlocks.map((item, i) => (
                     <li key={i} className="text-[13px] text-muted-foreground leading-relaxed">
@@ -191,9 +191,9 @@ export default function TaskCard({ task }: TaskCardProps) {
               {task.checklist.map((item, idx) => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className={`py-1 ${idx > 0 ? 'mt-1' : ''}`}>
+                  <div key={item.id} className={`py-0.5 ${idx > 0 ? 'mt-1' : ''}`}>
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
-                      <span className="flex items-start justify-center pt-[2px]">
+                      <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
                           checked={checked}
                           onCheckedChange={() => toggleChecklist(item.id)}
@@ -205,7 +205,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-[11px] text-muted-foreground/50 mt-px leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
+                      <p className="text-[11px] text-muted-foreground/50 mt-[1px] leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
                     )}
                   </div>
                 );

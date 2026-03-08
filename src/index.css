@@ -136,16 +136,16 @@
 
   /* Category left borders */
   .border-l-medical {
-    border-left: 3px solid hsl(var(--category-medical));
+    border-left: 2.5px solid hsl(var(--category-medical) / 0.7);
   }
   .border-l-paperwork {
-    border-left: 3px solid hsl(var(--category-paperwork));
+    border-left: 2.5px solid hsl(var(--category-paperwork) / 0.7);
   }
   .border-l-benefits {
-    border-left: 3px solid hsl(var(--category-benefits));
+    border-left: 2.5px solid hsl(var(--category-benefits) / 0.7);
   }
   .border-l-planning {
-    border-left: 3px solid hsl(var(--category-planning-border));
+    border-left: 2.5px solid hsl(var(--category-planning-border) / 0.7);
   }
 
   .fade-in {
