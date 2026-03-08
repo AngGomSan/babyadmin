@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { Home, CalendarDays, BookOpen, Settings, Search } from 'lucide-react';
 import { useState } from 'react';
 import SearchOverlay from '@/components/SearchOverlay';
@@ -50,6 +50,15 @@ export default function Layout() {
       <main className="container max-w-2xl mx-auto px-4 py-5 md:py-8">
         <Outlet />
       </main>
+
+      {/* Footer */}
+      <footer className="container max-w-2xl mx-auto px-4 pb-24 md:pb-8 pt-4">
+        <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60">
+          <Link to="/impressum" className="hover:text-muted-foreground transition-colors">Impressum</Link>
+          <span>·</span>
+          <Link to="/privacy" className="hover:text-muted-foreground transition-colors">Privacy Policy</Link>
+        </div>
+      </footer>
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-40 safe-area-bottom">
