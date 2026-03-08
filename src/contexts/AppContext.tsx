@@ -72,6 +72,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
             introSeen: data.intro_seen,
             completedTasks: data.completed_tasks || [],
             completedChecklist: data.completed_checklist || [],
+            completedDocuments: (data as any).completed_documents || [],
             babyBorn: data.baby_born,
             birthDate: data.birth_date,
             reassuranceDismissed: data.reassurance_dismissed,
