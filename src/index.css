@@ -110,35 +110,96 @@
     background-clip: text;
   }
 
-  /* Brand gradient highlight — box-shadow based, no layout shift */
+  /* BabyAdmin gradient highlight system
+     Uses ::before pseudo-element for true gradient borders (box-shadow can't do gradients).
+     Gradient: #F25DAA → #8A5CF6 → #4F7DF3, 90deg, matching intro/logo. */
+
+  /* Gradient border mixin — always present but transparent by default, visible on hover */
+  .gradient-highlight {
+    position: relative;
+    z-index: 0;
+  }
+  .gradient-highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #F25DAA 0%, #8A5CF6 50%, #4F7DF3 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .gradient-highlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Button gradient hover — for small controls like arrows */
   .btn-gradient-hover {
-    transition: box-shadow 0.2s ease, background 0.2s ease;
+    position: relative;
+    z-index: 0;
+    transition: background 0.2s ease;
+  }
+  .btn-gradient-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #F25DAA 0%, #8A5CF6 50%, #4F7DF3 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .btn-gradient-hover:hover:not(:disabled)::before {
+    opacity: 1;
   }
   .btn-gradient-hover:hover:not(:disabled) {
-    box-shadow:
-      0 0 0 1.5px rgba(138, 92, 246, 0.4),
-      0 0 0 3px rgba(242, 93, 170, 0.15);
     background: linear-gradient(
-      135deg,
+      90deg,
       rgba(242, 93, 170, 0.05),
       rgba(138, 92, 246, 0.04),
       rgba(79, 125, 243, 0.05)
     );
   }
+
+  /* Card gradient hover — for task cards, includes shadow */
   .card-highlight-hover {
+    position: relative;
+    z-index: 0;
     box-shadow: 0 2px 12px -2px hsl(232 25% 16% / 0.07);
     transition: box-shadow 0.2s ease;
   }
-  .card-highlight-hover:hover {
-    box-shadow:
-      0 4px 16px -4px hsl(232 25% 16% / 0.12),
-      inset 0 0 0 1px rgba(138, 92, 246, 0.2),
-      inset 0 0 0 1px rgba(242, 93, 170, 0.08);
+  .card-highlight-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #F25DAA 0%, #8A5CF6 50%, #4F7DF3 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
+  .card-highlight-hover:hover {
+    box-shadow: 0 4px 16px -4px hsl(232 25% 16% / 0.12);
+  }
+  .card-highlight-hover:hover::before {
+    opacity: 1;
+  }
+
+  /* Static gradient border — always visible (for "Back to current week", notices) */
   .highlight-gradient-border {
     position: relative;
-    background: transparent;
-    border: none;
     z-index: 0;
   }
   .highlight-gradient-border::before {
@@ -147,16 +208,17 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3);
+    background: linear-gradient(90deg, #F25DAA 0%, #8A5CF6 50%, #4F7DF3 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    z-index: -1;
   }
+
+  /* Gradient background tint */
   .highlight-gradient-bg {
     background: linear-gradient(
-      135deg,
+      90deg,
       rgba(242, 93, 170, 0.04),
       rgba(138, 92, 246, 0.03),
       rgba(79, 125, 243, 0.04)
@@ -164,7 +226,7 @@
   }
   .highlight-gradient-bg:hover {
     background: linear-gradient(
-      135deg,
+      90deg,
       rgba(242, 93, 170, 0.07),
       rgba(138, 92, 246, 0.05),
       rgba(79, 125, 243, 0.07)
