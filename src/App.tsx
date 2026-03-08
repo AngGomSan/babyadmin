@@ -32,20 +32,26 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Public routes */}
               <Route path="/auth" element={<Auth />} />
               <Route path="/intro" element={<Intro />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route element={<Layout />}>
-                <Route path="/" element={<Index />} />
-                <Route path="/timeline" element={<Timeline />} />
-                <Route path="/overdue" element={<OverdueTasks />} />
-                <Route path="/documents" element={<DocumentsPage />} />
-                <Route path="/glossary" element={<GlossaryPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/impressum" element={<Impressum />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/your-data" element={<DataHandling />} />
+              <Route path="/impressum" element={<Impressum />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/your-data" element={<DataHandling />} />
+              <Route path="/glossary" element={<GlossaryPage />} />
+
+              {/* Protected routes */}
+              <Route element={<ProtectedRoute />}>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/timeline" element={<Timeline />} />
+                  <Route path="/overdue" element={<OverdueTasks />} />
+                  <Route path="/documents" element={<DocumentsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                </Route>
               </Route>
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
