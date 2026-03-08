@@ -68,7 +68,7 @@ export default function TaskCard({ task }: TaskCardProps) {
             {task.title}
           </p>
           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
-            <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
+            <span className={`text-[12px] font-semibold tracking-wider px-2 py-[3px] rounded-lg inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
               <CategoryIcon className="w-3 h-3" />
               {CATEGORY_LABELS[task.category]}
             </span>

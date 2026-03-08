@@ -35,10 +35,16 @@
     --radius: 0.75rem;
 
     /* Category colors */
-    --category-medical: 210 68% 52%;
-    --category-paperwork: 278 52% 55%;
-    --category-benefits: 165 42% 48%;
-    --category-planning: 38 78% 52%;
+    --category-medical: 217 91% 60%;
+    --category-paperwork: 330 81% 60%;
+    --category-benefits: 160 84% 39%;
+    --category-planning: 45 93% 56%;
+
+    /* Category badge backgrounds */
+    --category-medical-bg: 214 95% 93%;
+    --category-paperwork-bg: 326 78% 95%;
+    --category-benefits-bg: 149 80% 90%;
+    --category-planning-bg: 48 96% 89%;
 
     /* Highlight */
     --highlight: 45 88% 88%;
@@ -76,9 +82,8 @@
   .bg-gradient-primary {
     background: linear-gradient(
       135deg,
-      hsl(340, 72%, 65%),
-      hsl(278, 52%, 50%),
-      hsl(220, 62%, 55%)
+      hsl(330, 81%, 60%),
+      hsl(239, 84%, 67%)
     );
   }
   .bg-gradient-primary-soft {
@@ -109,34 +114,34 @@
 
   /* Category badges */
   .badge-medical {
-    background-color: hsl(210, 68%, 52%, 0.12);
-    color: hsl(210, 68%, 42%);
+    background-color: hsl(var(--category-medical-bg));
+    color: hsl(var(--category-medical));
   }
   .badge-paperwork {
-    background-color: hsl(278, 52%, 55%, 0.12);
-    color: hsl(278, 52%, 42%);
+    background-color: hsl(var(--category-paperwork-bg));
+    color: hsl(var(--category-paperwork));
   }
   .badge-benefits {
-    background-color: hsl(165, 42%, 48%, 0.12);
-    color: hsl(165, 42%, 35%);
+    background-color: hsl(var(--category-benefits-bg));
+    color: hsl(var(--category-benefits));
   }
   .badge-planning {
-    background-color: hsl(38, 78%, 52%, 0.12);
-    color: hsl(38, 78%, 36%);
+    background-color: hsl(var(--category-planning-bg));
+    color: hsl(var(--category-planning));
   }
 
   /* Category left borders */
   .border-l-medical {
-    border-left: 3px solid hsl(210, 68%, 52%);
+    border-left: 3px solid hsl(var(--category-medical));
   }
   .border-l-paperwork {
-    border-left: 3px solid hsl(278, 52%, 55%);
+    border-left: 3px solid hsl(var(--category-paperwork));
   }
   .border-l-benefits {
-    border-left: 3px solid hsl(165, 42%, 48%);
+    border-left: 3px solid hsl(var(--category-benefits));
   }
   .border-l-planning {
-    border-left: 3px solid hsl(38, 78%, 52%);
+    border-left: 3px solid hsl(var(--category-planning));
   }
 
   .fade-in {
