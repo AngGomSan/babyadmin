@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useApp } from '@/contexts/AppContext';
 import { Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,13 +27,20 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
   if (variant === 'inline') {
     return (
       <>
-        <button
-          onClick={() => setDialogOpen(true)}
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-        >
-          <Baby className="w-4 h-4 text-primary" />
-          <span>Baby arrived? <span className="underline underline-offset-2">Mark as born</span></span>
-        </button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={() => setDialogOpen(true)}
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+            >
+              <Baby className="w-4 h-4 text-primary" />
+              <span>Baby arrived? <span className="underline underline-offset-2">Mark as born</span></span>
+            </button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom" className="text-xs max-w-[260px]">
+            Record your baby's birth date so the timeline can switch to postpartum tasks.
+          </TooltipContent>
+        </Tooltip>
         <BabyBornDialog
           open={dialogOpen}
           onOpenChange={setDialogOpen}
