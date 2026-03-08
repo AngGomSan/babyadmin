@@ -153,6 +153,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The parental benefit office that processes Elterngeld applications. Each region has its own office, and processing times can vary.',
     pronunciationHint: 'EL-tern-gelt-shtel-uh',
     keywords: ['parental benefit office', 'elterngeld office', 'benefit processing'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'familienkasse',
