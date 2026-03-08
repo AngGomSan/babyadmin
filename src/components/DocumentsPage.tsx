@@ -67,6 +67,7 @@ function getTasksForDocument(docId: string) {
 
 export default function DocumentsPage() {
   const { isDocumentComplete, toggleDocument } = useApp();
+  const [activeTerm, setActiveTerm] = useState<GlossaryTerm | null>(null);
 
   const completedCount = globalDocuments.filter(d => isDocumentComplete(d.id)).length;
   const totalCount = globalDocuments.length;
