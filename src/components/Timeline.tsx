@@ -44,7 +44,7 @@ function taskInWeek(task: TimelineTask, week: number): boolean {
 
 export default function Timeline() {
   const calc = usePregnancyCalc();
-  const { state } = useApp();
+  const { state, isTaskComplete } = useApp();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
   const [activeTri, setActiveTri] = useState(1);
