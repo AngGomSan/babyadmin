@@ -21,7 +21,7 @@ export default function Layout() {
       {/* Desktop top nav */}
       <header className="hidden md:flex items-center justify-between px-6 py-3 border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-40">
         <Link to="/" className="flex items-center gap-1.5">
-          <img src={logoIcon} alt="BabyAdmin" className="w-7 h-7" />
+          <img src={logoIcon} alt="BabyAdmin" className="w-6 h-6" />
           <span className="text-lg font-bold text-gradient-primary">BabyAdmin</span>
         </Link>
         <nav className="flex items-center gap-1">
