@@ -134,12 +134,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTask = useCallback((taskId: string) => {
-    setState(s => ({
-      ...s,
-      completedTasks: s.completedTasks.includes(taskId)
-        ? s.completedTasks.filter(id => id !== taskId)
-        : [...s.completedTasks, taskId],
-    }));
+    setState(s => {
+      const wasComplete = s.completedTasks.includes(taskId);
+      if (!wasComplete) {
+        trackEvent({ name: 'task_completed', data: { task_id: taskId } });
+      }
+      return {
+        ...s,
+        completedTasks: wasComplete
+          ? s.completedTasks.filter(id => id !== taskId)
+          : [...s.completedTasks, taskId],
+      };
+    });
   }, []);
 
   const toggleChecklist = useCallback((itemId: string) => {
