@@ -14,13 +14,11 @@ export default function OverdueBanner() {
     if (!calc || calc.isPostpartum) return 0;
 
     return timelineTasks.filter(t => {
-      if (t.timing.type !== 'weekRange') return false;
-      // Task's window has passed (endWeek < current week)
-      if (t.timing.endWeek >= calc.currentWeek) return false;
-      // Not completed and not optional
+      if (t.timing.type !== 'weekRange' || t.dueWeek == null) return false;
+      // Overdue: past dueWeek but still within expiresWeek (endWeek)
+      if (calc.currentWeek <= t.dueWeek) return false;
+      if (calc.currentWeek > t.timing.endWeek) return false;
       if (isTaskComplete(t.id)) return false;
-      // Only count "do_this_now" urgency tasks as overdue
-      if (t.urgency !== 'do_this_now') return false;
       return true;
     }).length;
   }, [calc, state.completedTasks]);

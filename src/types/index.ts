@@ -25,6 +25,7 @@ export interface TimelineTask {
   category: TaskCategory;
   international: boolean;
   optional: boolean;
+  dueWeek?: number;
   description?: string;
   unlocks?: string[];
   checklist?: ChecklistItem[];
