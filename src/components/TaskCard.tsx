@@ -217,6 +217,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }
