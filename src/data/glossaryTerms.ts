@@ -71,6 +71,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Legal recognition of paternity, usually relevant if the parents are not married.',
     pronunciationHint: 'FAH-ter-shafts-an-air-ken-noong',
     keywords: ['paternity recognition', 'unmarried parents', 'legal paternity'],
+    category: 'paperwork',
   },
   {
     id: 'namensklarung',
