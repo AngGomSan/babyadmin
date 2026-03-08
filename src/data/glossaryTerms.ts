@@ -202,6 +202,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Maternity pay received during the Mutterschutz period. It is paid partly by health insurance and partly topped up by the employer to match your previous net salary.',
     pronunciationHint: 'MOOT-er-shafts-gelt',
     keywords: ['maternity pay', 'maternity benefit', 'mutterschutz income', 'health insurance payment'],
+    category: 'benefits_and_finances',
   },
   // International document terms
   {
