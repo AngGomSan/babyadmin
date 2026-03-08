@@ -179,7 +179,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                 <p className="text-[12px] font-semibold text-foreground/65 mb-2">What this unlocks</p>
                 <ul className="space-y-1">
                   {task.unlocks.map((item, i) => (
-                    <li key={i} className="text-[13px] text-foreground/45 leading-relaxed">
+                    <li key={i} className="text-[13px] text-foreground/55 leading-relaxed">
                       • {item}
                     </li>
                   ))}
