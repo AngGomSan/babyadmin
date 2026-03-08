@@ -59,7 +59,7 @@ export default function Intro({ onDismiss }: IntroProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-12 md:pt-28 md:pb-16 text-center">
+      <section className="flex flex-col items-center justify-center px-6 pt-20 pb-8 md:pt-28 md:pb-10 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
@@ -86,7 +86,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Value cards */}
-      <section className="px-6 pb-12 md:pb-16">
+      <section className="px-6 pb-6 md:pb-8">
         <div className="max-w-4xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
