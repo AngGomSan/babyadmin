@@ -145,6 +145,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The civil registry office that handles birth registrations, marriage certificates and name declarations. After birth, the hospital usually forwards paperwork here to issue the official birth certificate.',
     pronunciationHint: 'SHTAN-des-amt',
     keywords: ['civil registry', 'birth registration', 'marriage office', 'government office'],
+    category: 'paperwork',
   },
   {
     id: 'elterngeldstelle',
