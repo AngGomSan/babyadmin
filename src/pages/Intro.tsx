@@ -20,22 +20,22 @@ const valueCards = [
   {
     icon: CalendarDays,
     title: 'Know what to do',
-    body: 'Follow a clear timeline from pregnancy through the first weeks after birth.',
+    body: 'Follow a clear timeline from pregnancy to the first weeks after birth.',
   },
   {
     icon: ClipboardCheck,
     title: 'Prepare the right documents',
-    body: 'Track the paperwork you will need across multiple steps, without losing progress.',
+    body: 'Track the documents you need across multiple steps without losing progress.',
   },
   {
     icon: BookOpen,
     title: 'Understand the German terms',
-    body: 'Use the glossary to quickly understand official terms, offices and required documents.',
+    body: 'Use the glossary to quickly understand German paperwork and official terms.',
   },
   {
     icon: Users,
     title: 'Who it is for',
-    body: 'Built for expecting parents in Germany, especially international families navigating paperwork in a second language.',
+    body: 'Built for expecting parents in Germany, especially international families.',
   },
 ];
 
