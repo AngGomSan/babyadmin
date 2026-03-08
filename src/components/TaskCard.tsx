@@ -122,9 +122,9 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       {/* Expanded content */}
       {expanded && hasDetails && (
-        <div className="px-4 pb-5 pl-12 space-y-4 slide-up">
+        <div className="px-4 pb-4 pl-12 space-y-3 slide-up">
           {task.description && (
-            <div className="flex gap-2.5 items-start">
+            <div className="flex gap-2.5 items-start -mt-1">
               <Info className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
             </div>
@@ -147,23 +147,23 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="space-y-1 pt-0.5">
+            <div className="space-y-0.5 pt-0.5">
               {task.checklist.map(item => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className="py-2 -mx-1 px-1 rounded-lg">
-                    <label className="flex items-start gap-3 cursor-pointer min-h-[2.25rem]">
+                  <div key={item.id} className="py-1.5 -mx-1 px-1 rounded-lg">
+                    <label className="flex items-start gap-3 cursor-pointer min-h-[2rem]">
                       <Checkbox
                         checked={checked}
                         onCheckedChange={() => toggleChecklist(item.id)}
-                        className="rounded mt-0.5 h-[18px] w-[18px]"
+                        className={`rounded mt-0.5 h-[18px] w-[18px] ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                       />
                       <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                         {item.label}
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-1 leading-relaxed">{item.description}</p>
+                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-0.5 leading-relaxed">{item.description}</p>
                     )}
                   </div>
                 );
