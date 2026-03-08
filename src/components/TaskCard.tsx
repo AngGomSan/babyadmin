@@ -74,8 +74,8 @@ export default function TaskCard({ task }: TaskCardProps) {
           <p className={`text-sm font-medium leading-snug ${completed ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
             {task.title}
           </p>
-          <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
-            <span className={`text-[12px] font-semibold tracking-wider px-2 py-[3px] rounded-lg inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
+          <div className="flex items-center gap-2 flex-wrap mt-1.5">
+            <span className={`text-[12px] font-semibold tracking-wider px-2 py-[2px] rounded-[6px] inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
               <CategoryIcon className="w-3 h-3" />
               {CATEGORY_LABELS[task.category]}
             </span>
@@ -88,7 +88,7 @@ export default function TaskCard({ task }: TaskCardProps) {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span className="inline-flex items-center">
-                    <Globe className="w-3.5 h-3.5 text-primary cursor-help" />
+                    <Globe className={`w-3.5 h-3.5 cursor-help ${categoryGlobeClass[task.category]}`} />
                   </span>
                 </TooltipTrigger>
                 <TooltipContent side="top" className="max-w-[260px] text-xs leading-relaxed">
