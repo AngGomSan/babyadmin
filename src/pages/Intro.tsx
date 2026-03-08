@@ -112,17 +112,6 @@ export default function Intro({ onDismiss }: IntroProps) {
         </div>
       </section>
 
-      {/* Who it is for */}
-      <section className="px-6 pb-12 md:pb-16">
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl border border-border bg-card p-6 shadow-card text-center">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Who it is for</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Built for expecting parents in Germany, especially international families navigating paperwork in a second language.
-            </p>
-          </div>
-        </div>
-      </section>
 
 
       {/* Footer */}
