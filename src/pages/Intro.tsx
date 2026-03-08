@@ -81,8 +81,8 @@ export default function Intro({ onDismiss }: IntroProps) {
             Explore the timeline
           </button>
         </div>
-        <p className="mt-4 text-xs text-muted-foreground/60">
-          Already using BabyAdmin? <Link to="/auth" className="underline hover:text-muted-foreground transition-colors">Log in</Link>
+        <p className="mt-5 text-xs text-muted-foreground">
+          Already using BabyAdmin? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link>
         </p>
       </section>
 
