@@ -1,17 +1,24 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowRight, Mail, Lock, Loader2 } from 'lucide-react';
+import { ArrowRight, Mail, Lock, Loader2, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function Auth() {
-  const { signIn, signUp, resetPassword } = useAuth();
+  const { user, loading: authLoading, signIn, signUp, resetPassword } = useAuth();
   const { toast } = useToast();
   const [mode, setMode] = useState<'login' | 'signup' | 'forgot'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [signupDone, setSignupDone] = useState(false);
+
+  // Redirect authenticated users to the app
+  if (!authLoading && user) {
+    return <Navigate to="/" replace />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,15 +36,23 @@ export default function Auth() {
       return;
     }
 
-    const fn = mode === 'login' ? signIn : signUp;
-    const { error } = await fn(email, password);
-    setLoading(false);
+    if (mode === 'signup') {
+      const { error } = await signUp(email, password);
+      setLoading(false);
+      if (error) {
+        toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
+      } else {
+        setSignupDone(true);
+      }
+      return;
+    }
 
+    const { error } = await signIn(email, password);
+    setLoading(false);
     if (error) {
       toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
-    } else if (mode === 'signup') {
-      toast({ title: 'Account created', description: 'Check your email to confirm your account.' });
     }
+    // On successful login, onAuthStateChange sets user → Navigate above fires
   };
 
   return (
