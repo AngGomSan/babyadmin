@@ -315,10 +315,10 @@ export const timelineTasks: TimelineTask[] = [
     optional: true,
     description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
     whyItMatters: 'Without Vaterschaftsanerkennung, the father may not be listed on the birth certificate, which affects custody, benefits and legal rights.',
-    documents: [
-      { id: 'doc-vater-parent-ids', label: 'Both parents\' passports or ID cards', germanName: 'Personalausweise oder Reisepässe' },
-      { id: 'doc-vater-parent-birth-certs', label: 'Both parents\' birth certificates', germanName: 'Geburtsurkunden beider Eltern' },
-      { id: 'doc-vater-mutterpass', label: 'Mutterpass (pregnancy record)', germanName: 'Mutterpass' },
+    requiredDocuments: [
+      'doc-parent-passports',
+      'doc-parent-birth-certificates',
+      'doc-mutterpass',
     ],
     unlocks: [
       'father listed on birth certificate',
