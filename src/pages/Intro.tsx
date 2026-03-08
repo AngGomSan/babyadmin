@@ -66,7 +66,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl whitespace-nowrap mb-4">
           The German bureaucracy survival guide for expecting parents.
         </p>
-        <p className="text-base text-muted-foreground/80 max-w-3xl mb-6 leading-relaxed">
+        <p className="text-base text-muted-foreground/80 max-w-4xl mb-6 leading-relaxed">
           Pregnancy paperwork in Germany can be confusing. BabyAdmin shows you what to do, when to do it and which documents you need before and after your baby arrives.
         </p>
         <p className="text-[11px] text-muted-foreground/70 max-w-md mb-8 leading-relaxed">
@@ -81,7 +81,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           </button>
         </div>
         <p className="mt-5 text-xs text-muted-foreground">
-          Already using BabyAdmin? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link>
+          Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link>
         </p>
       </section>
 
