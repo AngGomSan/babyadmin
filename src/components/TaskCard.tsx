@@ -174,7 +174,7 @@ export default function TaskCard({ task }: TaskCardProps) {
             <div className="flex gap-2.5 items-start mt-3">
               <Unlock className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <div>
-                <p className="text-[12px] font-medium text-foreground/70 mb-0.5">What this unlocks</p>
+                <p className="text-[12px] font-medium text-foreground/70 mb-[6px]">What this unlocks</p>
                 <ul className="space-y-0.5">
                   {task.unlocks.map((item, i) => (
                     <li key={i} className="text-[13px] text-muted-foreground leading-relaxed">
