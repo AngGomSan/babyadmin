@@ -212,7 +212,7 @@ export default function Timeline() {
           ) : (
             <div className="mt-6 space-y-5">
               {doNowTasks.length > 0 && (
-                <section className="space-y-3">
+                <section className="space-y-2.5">
                   <h3 className="text-xs font-bold text-[hsl(215,25%,27%)] uppercase tracking-wider">Do this now</h3>
                   {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
