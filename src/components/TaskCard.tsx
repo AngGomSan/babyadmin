@@ -132,6 +132,42 @@ export default function TaskCard({ task }: TaskCardProps) {
             </div>
           )}
 
+          {task.whyItMatters && (
+            <div className="flex gap-2.5 items-start mt-3">
+              <Heart className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+              <div>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">Why this matters</p>
+                <p className="text-[13px] text-muted-foreground leading-relaxed">{task.whyItMatters}</p>
+              </div>
+            </div>
+          )}
+
+          {task.documents && task.documents.length > 0 && (
+            <div className="flex gap-2.5 items-start mt-3">
+              <ClipboardList className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
+              <div className="flex-1">
+                <p className="text-[12px] font-medium text-muted-foreground mb-1.5">Documents you will need</p>
+                {task.documents.map((doc) => {
+                  const checked = isChecklistComplete(doc.id);
+                  return (
+                    <div key={doc.id} className="mt-1.5 first:mt-0">
+                      <label className="flex items-baseline gap-3 cursor-pointer min-h-[1.75rem]">
+                        <Checkbox
+                          checked={checked}
+                          onCheckedChange={() => toggleChecklist(doc.id)}
+                          className={`rounded relative top-[3px] h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
+                        />
+                        <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                          {doc.label}{doc.germanName ? ` (${doc.germanName})` : ''}
+                        </span>
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {task.unlocks && task.unlocks.length > 0 && (
             <div className="flex gap-2.5 items-start mt-3">
               <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-[hsl(213,27%,68%)]" />
