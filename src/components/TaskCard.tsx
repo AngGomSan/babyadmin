@@ -151,7 +151,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                 if (!doc) return null;
                 const checked = isDocumentComplete(doc.id);
                 return (
-                  <div key={doc.id} className="py-0.5">
+                  <div key={doc.id} className="mt-[6px] first:mt-0">
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
                       <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
