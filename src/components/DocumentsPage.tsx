@@ -16,7 +16,7 @@ glossaryTerms.forEach(term => {
 
 const sectionIcons: Record<string, LucideIcon> = {
   'Prepare during pregnancy': FolderOpen,
-  'Needed after birth': Landmark,
+  'After the baby arrives': Landmark,
 };
 
 const sections: { title: string; docIds: string[] }[] = [
@@ -35,7 +35,7 @@ const sections: { title: string; docIds: string[] }[] = [
     ],
   },
   {
-    title: 'Needed after birth',
+    title: 'After the baby arrives',
     docIds: [
       'doc-geburtsanzeige',
       'doc-birth-certificate',
