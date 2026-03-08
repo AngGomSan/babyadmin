@@ -105,9 +105,9 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Reassurance */}
       <section className="px-6 pb-10 md:pb-14">
-        <div className="max-w-lg mx-auto p-[1px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%/0.35)] via-[hsl(278,52%,50%/0.35)] to-[hsl(220,62%,55%/0.35)]">
-          <div className="rounded-2xl bg-card px-6 py-5 text-center">
-            <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="max-w-[700px] mx-auto p-[2px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
+          <div className="rounded-[calc(1rem-2px)] bg-[hsl(278,30%,98%)] px-8 py-6 text-center">
+            <p className="text-sm text-foreground/70 leading-relaxed">
               You do not need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
             </p>
           </div>
