@@ -158,7 +158,7 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* Progress indicator */}
+      {/* Preparation progress */}
       {(() => {
         const totalTasks = timelineTasks.length;
         const completedCount = state.completedTasks.length;
@@ -166,17 +166,9 @@ export default function Timeline() {
         return (
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="flex items-center gap-3 px-1 cursor-default">
-                <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
-                    style={{ width: `${pct}%` }}
-                  />
-                </div>
-                <span className="text-xs font-medium text-foreground/70 shrink-0 tabular-nums">
-                  {pct}% ready
-                </span>
-              </div>
+              <p className="text-xs text-muted-foreground cursor-default -mt-2">
+                You're <span className="font-semibold text-foreground/70 tabular-nums">{pct}%</span> ready for baby's arrival
+              </p>
             </TooltipTrigger>
             <TooltipContent side="bottom" className="text-xs">
               {completedCount} of {totalTasks} tasks completed
