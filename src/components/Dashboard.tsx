@@ -9,6 +9,17 @@ import { X, ChevronLeft, ChevronRight, Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
+function getTaskWeekRange(task: TimelineTask): { start: number; end: number } | null {
+  if (task.timing.type === 'weekRange') return { start: task.timing.startWeek, end: task.timing.endWeek };
+  return null;
+}
+
+function getTaskPostpartumRange(task: TimelineTask): { start: number; end: number } | null {
+  if (task.timing.type === 'postpartumMonth') return { start: task.timing.month, end: task.timing.month };
+  if (task.timing.type === 'postpartumRange') return { start: task.timing.startMonth, end: task.timing.endMonth };
+  return null;
+}
+
 export default function Dashboard() {
   const { state, dismissReassurance } = useApp();
   const calc = usePregnancyCalc();
@@ -16,7 +27,7 @@ export default function Dashboard() {
   const [weekOffset, setWeekOffset] = useState(0);
 
   const viewWeek = calc ? (calc.isPostpartum ? calc.currentWeek : Math.min(42, Math.max(4, calc.currentWeek + weekOffset))) : 4;
-  const viewMonth = calc ? (calc.isPostpartum ? Math.min(3, calc.postpartumMonth + weekOffset) : 0) : 0;
+  const viewMonth = calc ? (calc.isPostpartum ? Math.min(3, Math.max(0, calc.postpartumMonth + weekOffset)) : 0) : 0;
   const isCurrentView = weekOffset === 0;
 
   const { nowTasks, planTasks } = useMemo(() => {
@@ -25,18 +36,29 @@ export default function Dashboard() {
     let plan: TimelineTask[] = [];
 
     if (calc.isPostpartum) {
-      now = timelineTasks.filter(t => t.postpartumMonth !== undefined && t.postpartumMonth === viewMonth);
-      plan = timelineTasks.filter(t => t.postpartumMonth !== undefined && t.postpartumMonth === viewMonth + 1);
+      now = timelineTasks.filter(t => {
+        const range = getTaskPostpartumRange(t);
+        return range && viewMonth >= range.start && viewMonth <= range.end && t.urgency === 'do_this_now';
+      });
+      plan = timelineTasks.filter(t => {
+        const range = getTaskPostpartumRange(t);
+        if (!range) return false;
+        if (t.urgency === 'plan_ahead' && viewMonth >= range.start && viewMonth <= range.end) return true;
+        if (range.start > viewMonth && range.start <= viewMonth + 1) return true;
+        return false;
+      }).filter(t => !now.includes(t));
     } else {
-      now = timelineTasks.filter(t =>
-        t.weekStart !== undefined && t.weekEnd !== undefined &&
-        viewWeek >= t.weekStart && viewWeek <= t.weekEnd
-      );
-      plan = timelineTasks.filter(t =>
-        t.weekStart !== undefined && t.weekEnd !== undefined &&
-        t.weekStart > viewWeek && t.weekStart <= viewWeek + 6 &&
-        !now.includes(t)
-      );
+      now = timelineTasks.filter(t => {
+        const range = getTaskWeekRange(t);
+        return range && viewWeek >= range.start && viewWeek <= range.end && t.urgency === 'do_this_now';
+      });
+      plan = timelineTasks.filter(t => {
+        const range = getTaskWeekRange(t);
+        if (!range) return false;
+        if (t.urgency === 'plan_ahead' && viewWeek >= range.start && viewWeek <= range.end) return true;
+        if (range.start > viewWeek && range.start <= viewWeek + 6 && !now.some(n => n.id === t.id)) return true;
+        return false;
+      }).filter(t => !now.includes(t));
     }
     return { nowTasks: now, planTasks: plan };
   }, [calc, viewWeek, viewMonth]);
