@@ -167,11 +167,11 @@ export const timelineTasks: TimelineTask[] = [
     optional: false,
     description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
     whyItMatters: 'Without the birth certificate, you cannot apply for Elterngeld, Kindergeld, register the baby for health insurance, or apply for a passport. Delays here cascade into every other step.',
-    documents: [
-      { id: 'doc-bc-parent-birth-certs', label: 'Parent birth certificates', germanName: 'Geburtsurkunden der Eltern' },
-      { id: 'doc-bc-passports', label: 'Passports or ID cards', germanName: 'Reisepässe oder Personalausweise' },
-      { id: 'doc-bc-marriage-cert', label: 'Marriage certificate (if married)', germanName: 'Eheurkunde' },
-      { id: 'doc-bc-paternity', label: 'Paternity recognition (if unmarried)', germanName: 'Vaterschaftsanerkennung' },
+    requiredDocuments: [
+      'doc-parent-birth-certificates',
+      'doc-parent-passports',
+      'doc-marriage-certificate',
+      'doc-paternity-recognition',
     ],
     unlocks: [
       'Elterngeld application',
