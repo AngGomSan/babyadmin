@@ -719,10 +719,10 @@ export const timelineTasks: TimelineTask[] = [
     optional: false,
     description: 'Your baby should be registered with a health insurance provider shortly after birth.',
     whyItMatters: 'Your baby needs health insurance coverage from day one. Delaying registration can cause issues with medical appointments and prescriptions.',
-    documents: [
-      { id: 'doc-health-ins-birth-cert', label: 'Birth certificate', germanName: 'Geburtsurkunde' },
-      { id: 'doc-health-ins-parent-number', label: 'Parent insurance details', germanName: 'Versicherungsnummer' },
-      { id: 'doc-health-ins-marriage', label: 'Marriage certificate if relevant', germanName: 'Heiratsurkunde' },
+    requiredDocuments: [
+      'doc-birth-certificate',
+      'doc-parent-insurance-number',
+      'doc-marriage-certificate',
     ],
     checklist: [
       { id: 'enroll-baby-health-insurance-contact', label: 'Contact health insurance provider', description: 'Ask what they need to enroll the baby.' },
