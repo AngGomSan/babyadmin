@@ -22,8 +22,8 @@
     --muted: 230 20% 96%;
     --muted-foreground: 230 12% 48%;
 
-    --accent: 152 47% 53%;
-    --accent-foreground: 152 50% 12%;
+    --accent: 142 58% 49%;
+    --accent-foreground: 142 58% 10%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -37,15 +37,15 @@
     /* Category colors */
     --category-medical: 217 91% 60%;
     --category-paperwork: 330 81% 60%;
-    --category-benefits: 152 47% 40%;
-    --category-planning: 41 96% 40%;
-    --category-planning-border: 48 96% 53%;
+    --category-benefits: 142 58% 49%;
+    --category-planning: 44 100% 48%;
+    --category-planning-border: 44 100% 48%;
 
     /* Category badge backgrounds */
     --category-medical-bg: 214 100% 97%;
     --category-paperwork-bg: 327 73% 97%;
-    --category-benefits-bg: 152 45% 95%;
-    --category-planning-bg: 55 92% 95%;
+    --category-benefits-bg: 150 52% 93%;
+    --category-planning-bg: 43 100% 92%;
 
     /* Highlight */
     --highlight: 45 88% 88%;
