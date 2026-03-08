@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
+import { trackEvent } from '@/lib/analytics';
 
 interface AuthContextType {
   user: User | null;
@@ -41,6 +42,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       password,
       options: { emailRedirectTo: window.location.origin },
     });
+    if (!error) {
+      // Fire after a short delay to let the session establish
+      setTimeout(() => trackEvent({ name: 'account_created' }), 1000);
+    }
     return { error: error as Error | null };
   };
 

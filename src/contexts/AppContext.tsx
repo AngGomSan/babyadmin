@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect, useCallback, useRef, Re
 import { AppState } from '@/types';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
+import { trackEvent } from '@/lib/analytics';
 
 const STORAGE_KEY = 'babyadmin-state';
 
@@ -121,6 +122,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const setDueDate = useCallback((date: string) => {
     setState(s => ({ ...s, dueDate: date }));
+    trackEvent({ name: 'due_date_set' });
   }, []);
 
   const completeOnboarding = useCallback(() => {
@@ -132,12 +134,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTask = useCallback((taskId: string) => {
-    setState(s => ({
-      ...s,
-      completedTasks: s.completedTasks.includes(taskId)
-        ? s.completedTasks.filter(id => id !== taskId)
-        : [...s.completedTasks, taskId],
-    }));
+    setState(s => {
+      const wasComplete = s.completedTasks.includes(taskId);
+      if (!wasComplete) {
+        trackEvent({ name: 'task_completed', data: { task_id: taskId } });
+      }
+      return {
+        ...s,
+        completedTasks: wasComplete
+          ? s.completedTasks.filter(id => id !== taskId)
+          : [...s.completedTasks, taskId],
+      };
+    });
   }, []);
 
   const toggleChecklist = useCallback((itemId: string) => {
@@ -172,6 +180,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const markBabyBorn = useCallback((birthDate: string) => {
     setState(s => ({ ...s, babyBorn: true, birthDate }));
+    trackEvent({ name: 'baby_marked_born' });
   }, []);
 
   const dismissReassurance = useCallback(() => {
