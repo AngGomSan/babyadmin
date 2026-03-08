@@ -2,6 +2,7 @@ export interface GlobalDocument {
   id: string;
   label: string;
   germanName: string;
+  description?: string;
 }
 
 /**
