@@ -61,8 +61,8 @@ export default function Intro({ onDismiss }: IntroProps) {
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-4">
-          The German bureaucracy survival guide for parents-to-be.
+        <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4">
+          The German bureaucracy survival guide for expecting parents.
         </p>
         <p className="text-base text-muted-foreground/80 max-w-xl mb-8 leading-relaxed">
           Administrative steps around pregnancy and birth in Germany can be confusing. BabyAdmin helps you understand what to do, when to do it and which documents to prepare before and after your baby arrives.
