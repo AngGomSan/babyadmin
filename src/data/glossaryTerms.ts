@@ -120,6 +120,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Salary statements or payslips. Typically the last 12 months are needed when applying for Elterngeld to calculate the benefit amount.',
     pronunciationHint: 'geh-HALTS-nahkh-vy-zuh',
     keywords: ['payslips', 'salary proof', 'income statements', 'elterngeld'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'steuer-id',
