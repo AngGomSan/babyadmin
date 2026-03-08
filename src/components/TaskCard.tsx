@@ -42,7 +42,7 @@ export default function TaskCard({ task }: TaskCardProps) {
     >
       {/* Header row */}
       <div
-        className="flex items-start gap-3 p-4 cursor-pointer select-none"
+        className="flex items-start gap-3 p-4 cursor-pointer select-none active:bg-muted/30 transition-colors rounded-xl"
         onClick={() => hasDetails && setExpanded(!expanded)}
         role={hasDetails ? 'button' : undefined}
         aria-expanded={hasDetails ? expanded : undefined}
@@ -56,7 +56,10 @@ export default function TaskCard({ task }: TaskCardProps) {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5 flex-wrap mb-1">
+          <p className={`text-sm font-medium leading-snug ${completed ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+            {task.title}
+          </p>
+          <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
             <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${categoryBadgeClass[task.category]}`}>
               {CATEGORY_LABELS[task.category]}
             </span>
@@ -78,12 +81,9 @@ export default function TaskCard({ task }: TaskCardProps) {
               </Tooltip>
             )}
           </div>
-          <p className={`text-sm font-medium leading-snug ${completed ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
-            {task.title}
-          </p>
           {/* Checklist progress hint when collapsed */}
           {!expanded && totalChecklistCount > 0 && completedChecklistCount > 0 && (
-            <p className="text-[11px] text-muted-foreground mt-1">
+            <p className="text-[11px] text-muted-foreground mt-1.5">
               {completedChecklistCount}/{totalChecklistCount} steps done
             </p>
           )}
@@ -98,32 +98,32 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       {/* Expanded content */}
       {expanded && hasDetails && (
-        <div className="px-4 pb-4 pl-12 space-y-3 slide-up">
+        <div className="px-4 pb-5 pl-12 space-y-4 slide-up">
           {task.description && (
-            <div className="flex gap-2 items-start">
-              <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary/50" />
+            <div className="flex gap-2.5 items-start">
+              <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary/40" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
             </div>
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="space-y-2.5 pt-1">
+            <div className="space-y-1 pt-0.5">
               {task.checklist.map(item => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className="space-y-0.5">
-                    <label className="flex items-start gap-2.5 cursor-pointer">
+                  <div key={item.id} className="py-2 -mx-1 px-1 rounded-lg">
+                    <label className="flex items-start gap-3 cursor-pointer min-h-[2.25rem]">
                       <Checkbox
                         checked={checked}
                         onCheckedChange={() => toggleChecklist(item.id)}
-                        className="rounded mt-0.5 h-4 w-4"
+                        className="rounded mt-0.5 h-[18px] w-[18px]"
                       />
                       <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                         {item.label}
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-xs text-muted-foreground/80 ml-[26px] leading-relaxed">{item.description}</p>
+                      <p className="text-xs text-muted-foreground/70 ml-[30px] mt-1 leading-relaxed">{item.description}</p>
                     )}
                   </div>
                 );
