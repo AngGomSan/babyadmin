@@ -70,7 +70,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           Pregnancy paperwork in Germany can be confusing. BabyAdmin shows you what to do, when to do it and which documents you need before and after birth.
         </p>
         <p className="text-xs text-muted-foreground/85 max-w-lg mb-10 leading-relaxed">
-          BabyAdmin is free and built by a mom who went through the German bureaucracy herself. Your account only saves your progress. We never ask for document uploads.
+          <span className="text-primary font-medium">BabyAdmin is free</span> and built by a mom who went through the German bureaucracy herself. Your account only saves your progress. We never ask for document uploads.
         </p>
         <div className="flex flex-col items-center">
           <button
@@ -86,7 +86,7 @@ export default function Intro({ onDismiss }: IntroProps) {
       </section>
 
       {/* Value cards */}
-      <section className="px-6 pb-5 md:pb-6">
+      <section className="px-6 pb-12 md:pb-14">
         <div className="max-w-4xl mx-auto grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map(({ icon: Icon, title, body }) => (
             <div
@@ -108,7 +108,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="max-w-[600px] mx-auto p-[1.5px] rounded-2xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)]">
           <div className="rounded-[calc(1rem-1.5px)] bg-[hsl(278,25%,98.5%)] px-8 py-5 text-center">
             <p className="text-sm text-foreground/65 leading-relaxed">
-              You do not need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
+              You don't need to figure everything out at once. BabyAdmin shows you what matters now and what to prepare next.
             </p>
           </div>
         </div>
