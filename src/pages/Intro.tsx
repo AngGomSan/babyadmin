@@ -5,9 +5,9 @@ const LogoIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="intro-logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="hsl(340, 72%, 65%)" />
-        <stop offset="50%" stopColor="hsl(278, 52%, 50%)" />
-        <stop offset="100%" stopColor="hsl(220, 62%, 55%)" />
+        <stop offset="0%" stopColor="#F25DAA" />
+        <stop offset="50%" stopColor="#8A5CF6" />
+        <stop offset="100%" stopColor="#4F7DF3" />
       </linearGradient>
     </defs>
     <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="url(#intro-logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
