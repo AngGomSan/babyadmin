@@ -39,6 +39,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The legal maternity protection period before and after birth.',
     pronunciationHint: 'MOOT-er-shoots',
     keywords: ['maternity protection', 'leave', 'work protection'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'elternzeit',
