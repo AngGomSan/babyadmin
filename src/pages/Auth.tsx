@@ -55,6 +55,26 @@ export default function Auth() {
     // On successful login, onAuthStateChange sets user → Navigate above fires
   };
 
+  if (signupDone) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
+        <div className="w-full max-w-sm space-y-6 text-center fade-in">
+          <CheckCircle className="w-12 h-12 text-primary mx-auto" />
+          <h2 className="text-lg font-semibold text-foreground">Check your email</h2>
+          <p className="text-sm text-muted-foreground">
+            We sent a confirmation link to <strong className="text-foreground">{email}</strong>. Click the link to activate your account, then come back here to log in.
+          </p>
+          <button
+            onClick={() => { setSignupDone(false); setMode('login'); }}
+            className="text-sm text-primary hover:underline font-medium"
+          >
+            Back to log in
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
       <div className="w-full max-w-sm space-y-8 text-center fade-in">
@@ -135,7 +155,7 @@ export default function Auth() {
           )}
           {mode === 'forgot' && (
             <button onClick={() => setMode('login')} className="text-muted-foreground hover:text-foreground transition-colors">
-              Back to login
+              Back to log in
             </button>
           )}
         </div>
