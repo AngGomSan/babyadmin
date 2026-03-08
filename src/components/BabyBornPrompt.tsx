@@ -46,7 +46,7 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
 
   return (
     <>
-      <div className="bg-gradient-primary-soft rounded-xl p-4 space-y-3">
+      <div className="bg-gradient-primary-soft rounded-xl p-4 space-y-3 opacity-[0.85]">
         <div className="flex items-start gap-3">
           <Baby className="w-5 h-5 text-primary mt-0.5 shrink-0" />
           <div className="space-y-1">
