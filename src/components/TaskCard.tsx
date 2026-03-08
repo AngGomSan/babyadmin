@@ -135,7 +135,7 @@ export default function TaskCard({ task }: TaskCardProps) {
             <div className="flex gap-2.5 items-start mt-3">
               <Heart className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <div>
-                <p className="text-[12px] font-medium text-foreground/70 mb-0.5">Why this matters</p>
+                <p className="text-[12px] font-medium text-foreground/70 mb-[6px]">Why this matters</p>
                 <p className="text-[13px] text-muted-foreground leading-relaxed">{task.whyItMatters}</p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function TaskCard({ task }: TaskCardProps) {
 
           {resolvedDocs.length > 0 && (
             <div className="mt-3">
-              <div className="flex items-start gap-2.5 mb-2">
+              <div className="flex items-start gap-2.5 mb-[6px]">
                 <ClipboardList className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
                 <p className="text-[12px] font-medium text-foreground/70">Documents you will need</p>
               </div>
@@ -151,7 +151,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                 if (!doc) return null;
                 const checked = isDocumentComplete(doc.id);
                 return (
-                  <div key={doc.id} className="py-0.5">
+                  <div key={doc.id} className="mt-[6px] first:mt-0">
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
                       <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
@@ -174,7 +174,7 @@ export default function TaskCard({ task }: TaskCardProps) {
             <div className="flex gap-2.5 items-start mt-3">
               <Unlock className="w-4 h-4 shrink-0 mt-[3px] text-[hsl(213,27%,68%)]" />
               <div>
-                <p className="text-[12px] font-medium text-foreground/70 mb-0.5">What this unlocks</p>
+                <p className="text-[12px] font-medium text-foreground/70 mb-[6px]">What this unlocks</p>
                 <ul className="space-y-0.5">
                   {task.unlocks.map((item, i) => (
                     <li key={i} className="text-[13px] text-muted-foreground leading-relaxed">
@@ -187,11 +187,11 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="mt-3.5">
-              {task.checklist.map((item, idx) => {
+            <div className="mt-3.5 space-y-[6px]">
+              {task.checklist.map((item) => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className={`py-0.5 ${idx > 0 ? 'mt-1' : ''}`}>
+                  <div key={item.id}>
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
                       <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
