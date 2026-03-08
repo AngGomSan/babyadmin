@@ -168,7 +168,7 @@ export default function Dashboard() {
 
       {/* Do this now */}
       <section className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
+        <h3 className="text-xs font-bold text-[hsl(215,25%,27%)] uppercase tracking-wider">Do this now</h3>
         {nowTasks.length === 0 ? (
           <p className="text-sm text-muted-foreground py-6">No tasks for this period.</p>
         ) : (
@@ -179,7 +179,7 @@ export default function Dashboard() {
       {/* Plan ahead */}
       {planTasks.length > 0 && (
         <section className="space-y-2.5">
-          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
+          <h3 className="text-xs font-semibold text-[hsl(215,16%,47%)] uppercase tracking-wider">Plan ahead</h3>
           {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
         </section>
       )}

@@ -160,15 +160,15 @@ export default function Timeline() {
       {viewMode === 'weekly' ? (
         <div className="space-y-5">
           {/* Week/month selector */}
-          <div className="flex items-center gap-3">
-            <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => w - 1)} disabled={selectedWeek <= 4}>
+          <div className="flex items-center gap-1.5 justify-center">
+            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" onClick={() => setSelectedWeek(w => w - 1)} disabled={selectedWeek <= 4}>
               <ChevronLeft className="w-4 h-4" />
             </Button>
-            <div className="flex-1 text-center">
+            <div className="text-center min-w-[100px]">
               <span className="text-lg font-semibold text-foreground">{headerLabel}</span>
               <p className="text-xs text-muted-foreground">{subLabel}</p>
             </div>
-            <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => w + 1)} disabled={selectedWeek >= 46}>
+            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" onClick={() => setSelectedWeek(w => w + 1)} disabled={selectedWeek >= 46}>
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
@@ -186,7 +186,7 @@ export default function Timeline() {
                 style={{
                   background: (() => {
                     const pct = ((selectedWeek - 4) / (42 - 4)) * 100;
-                    return `linear-gradient(90deg, hsl(330,81%,60%) 0%, hsl(248,74%,66%) ${pct}%, hsl(220,13%,91%) ${pct}%)`;
+                    return `linear-gradient(90deg, #EC4899 0%, #7C6AE6 ${pct}%, #E5E7EB ${pct}%)`;
                   })()
                 }}
               />
@@ -210,20 +210,20 @@ export default function Timeline() {
               No tasks for {isPostpartumView ? postpartumMonthLabels[postpartumMonth].toLowerCase() : `week ${selectedWeek}`}.
             </p>
           ) : (
-            <>
+            <div className="mt-6 space-y-5">
               {doNowTasks.length > 0 && (
                 <section className="space-y-3">
-                  <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
+                  <h3 className="text-xs font-bold text-[hsl(215,25%,27%)] uppercase tracking-wider">Do this now</h3>
                   {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
               )}
               {planTasks.length > 0 && (
                 <section className="space-y-3">
-                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
+                  <h3 className="text-xs font-semibold text-[hsl(215,16%,47%)] uppercase tracking-wider">Plan ahead</h3>
                   {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
               )}
-            </>
+            </div>
           )}
         </div>
       ) : (
