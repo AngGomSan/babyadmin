@@ -61,7 +61,7 @@ export default function Intro({ onDismiss }: IntroProps) {
         <h1 className="text-4xl md:text-5xl font-bold text-gradient-primary mb-3 leading-tight pb-1">
           BabyAdmin
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4">
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl whitespace-nowrap mb-4">
           The German bureaucracy survival guide for expecting parents.
         </p>
         <p className="text-base text-muted-foreground/80 max-w-xl mb-8 leading-relaxed">
