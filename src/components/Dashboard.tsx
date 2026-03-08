@@ -17,6 +17,7 @@ export default function Dashboard() {
 
   if (!calc) return null;
 
+
   const viewWeek = calc.isPostpartum ? calc.currentWeek : Math.min(42, Math.max(4, calc.currentWeek + weekOffset));
   const viewMonth = calc.isPostpartum ? Math.min(3, calc.postpartumMonth + weekOffset) : 0;
   const isCurrentView = weekOffset === 0;
