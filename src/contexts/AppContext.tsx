@@ -109,10 +109,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
           intro_seen: state.introSeen,
           completed_tasks: state.completedTasks,
           completed_checklist: state.completedChecklist,
+          completed_documents: state.completedDocuments,
           baby_born: state.babyBorn,
           birth_date: state.birthDate,
           reassurance_dismissed: state.reassuranceDismissed,
-        })
+        } as any)
         .eq('user_id', user.id)
         .then();
     }, 500);
