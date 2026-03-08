@@ -47,6 +47,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'Parental leave that allows parents to take protected time away from work after a child is born.',
     pronunciationHint: 'EL-tern-tsite',
     keywords: ['parental leave', 'leave from work', 'baby leave'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'elterngeld',
