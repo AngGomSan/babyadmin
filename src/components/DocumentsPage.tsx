@@ -127,7 +127,7 @@ export default function DocumentsPage() {
               <div className="rounded-xl bg-card shadow-card divide-y divide-border">
                 {docs.map((doc) => {
                   const checked = isDocumentComplete(doc.id);
-                  const relatedTasks = getTasksForDocument(doc.id);
+                  const usedFor = documentUsedFor[doc.id] || [];
 
                   return (
                     <div key={doc.id} className="px-4 py-3.5">
