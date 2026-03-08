@@ -35,7 +35,7 @@ const sections: { title: string; docIds: string[] }[] = [
     ],
   },
   {
-    title: 'Needed after birth',
+    title: 'After the baby arrives',
     docIds: [
       'doc-geburtsanzeige',
       'doc-birth-certificate',
