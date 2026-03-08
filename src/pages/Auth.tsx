@@ -77,7 +77,7 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
-      <div className="w-full max-w-sm space-y-8 text-center fade-in">
+      <div className="w-full max-w-md space-y-8 text-center fade-in">
         <div>
           <h1 className="text-3xl font-bold text-gradient-primary mb-2">BabyAdmin</h1>
           <p className="text-sm text-muted-foreground">The German bureaucracy survival guide for expecting parents.</p>
