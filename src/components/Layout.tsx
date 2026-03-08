@@ -68,8 +68,10 @@ export default function Layout() {
 
       {/* Footer */}
       <footer className="container max-w-2xl mx-auto px-4 pb-24 md:pb-8 pt-4">
-        <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60">
+        <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60 flex-wrap">
           <Link to="/intro" className="hover:text-muted-foreground transition-colors">About BabyAdmin</Link>
+          <span>·</span>
+          <Link to="/your-data" className="hover:text-muted-foreground transition-colors">Your data</Link>
           <span>·</span>
           <Link to="/impressum" className="hover:text-muted-foreground transition-colors">Impressum</Link>
           <span>·</span>
