@@ -6,6 +6,7 @@ import { TimelineTask } from '@/types';
 import TaskCard from '@/components/TaskCard';
 import { X, ChevronLeft, ChevronRight, Baby } from 'lucide-react';
 import BabyBornPrompt from '@/components/BabyBornPrompt';
+import OverdueBanner from '@/components/OverdueBanner';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
@@ -165,6 +166,9 @@ export default function Dashboard() {
       {!calc.isPostpartum && viewWeek >= 36 && (
         <BabyBornPrompt variant="card" />
       )}
+
+      {/* Overdue banner */}
+      {!calc.isPostpartum && isCurrentView && <OverdueBanner />}
 
       {/* Do this now */}
       <section className="space-y-2.5">
