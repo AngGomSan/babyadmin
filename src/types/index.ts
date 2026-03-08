@@ -26,6 +26,7 @@ export interface TimelineTask {
   international: boolean;
   optional: boolean;
   description?: string;
+  unlocks?: string[];
   checklist?: ChecklistItem[];
 }
 

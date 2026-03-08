@@ -155,7 +155,14 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: true,
     optional: false,
-    description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
+     description: 'The birth certificate unlocks most administrative steps after birth, including Elterngeld, Kindergeld, health insurance registration, passports and other registrations. In some places it can take weeks or longer to be issued, so preparing early matters.',
+     unlocks: [
+       'Elterngeld application',
+       'Kindergeld application',
+       'health insurance registration',
+       'passport application',
+       'embassy registration',
+     ],
     checklist: [
       { id: 'understand-birth-certificate-process-why', label: 'Understand why this matters', description: 'This document is the key that unlocks most later paperwork.' },
       { id: 'understand-birth-certificate-process-where', label: 'Learn how paperwork is submitted', description: 'Many hospitals coordinate directly with the civil registry, but the exact process can vary.' },
@@ -281,7 +288,11 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: false,
     optional: true,
-    description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
+     description: 'If the parents are not married, legal paternity recognition may be required before the father can appear on the birth certificate.',
+     unlocks: [
+       'father listed on birth certificate',
+       'shared custody declaration',
+     ],
     checklist: [
       { id: 'review-vaterschaftsanerkennung-check', label: 'Check if this applies to you', description: 'This is relevant for some families, but not all.' },
     ],
@@ -583,7 +594,11 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: false,
     optional: false,
-    description: 'This document confirms the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
+     description: 'This document confirms the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
+     unlocks: [
+       'employer notification',
+       'health insurance enrollment (temporary)',
+     ],
     checklist: [
       { id: 'request-geburtsanzeige-ask', label: 'Ask hospital before discharge', description: 'Do this before discharge so you do not leave without temporary proof of birth.' },
     ],
@@ -614,7 +629,14 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: true,
     optional: false,
-    description: 'The birth certificate unlocks most later administrative steps including benefits, insurance registration, passports and other registrations.',
+     description: 'The birth certificate unlocks most later administrative steps including benefits, insurance registration, passports and other registrations.',
+     unlocks: [
+       'Elterngeld application',
+       'Kindergeld application',
+       'health insurance registration',
+       'passport application',
+       'embassy registration',
+     ],
     checklist: [
       { id: 'submit-birth-certificate-paperwork-file', label: 'Submit the full document file', description: 'Make sure the full prepared document set is actually handed in.' },
     ],

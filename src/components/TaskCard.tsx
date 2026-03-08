@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { TimelineTask, CATEGORY_LABELS } from '@/types';
-import { ChevronDown, ChevronUp, Globe, Info } from 'lucide-react';
+import { ChevronDown, ChevronUp, Globe, Info, Unlock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -27,7 +27,7 @@ export default function TaskCard({ task }: TaskCardProps) {
   const { isTaskComplete, isChecklistComplete, toggleTask, toggleChecklist } = useApp();
   const [expanded, setExpanded] = useState(false);
   const completed = isTaskComplete(task.id);
-  const hasDetails = task.description || (task.checklist && task.checklist.length > 0);
+  const hasDetails = task.description || task.unlocks || (task.checklist && task.checklist.length > 0);
 
   const completedChecklistCount = task.checklist
     ? task.checklist.filter(item => isChecklistComplete(item.id)).length
@@ -103,6 +103,22 @@ export default function TaskCard({ task }: TaskCardProps) {
             <div className="flex gap-2.5 items-start">
               <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary/40" />
               <p className="text-[13px] text-muted-foreground leading-relaxed">{task.description}</p>
+            </div>
+          )}
+
+          {task.unlocks && task.unlocks.length > 0 && (
+            <div className="flex gap-2.5 items-start">
+              <Unlock className="w-4 h-4 shrink-0 mt-0.5 text-primary/40" />
+              <div>
+                <p className="text-[12px] font-medium text-muted-foreground mb-1">What this unlocks</p>
+                <ul className="space-y-0.5">
+                  {task.unlocks.map((item, i) => (
+                    <li key={i} className="text-[13px] text-muted-foreground leading-relaxed">
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
 
