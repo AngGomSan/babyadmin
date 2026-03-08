@@ -96,6 +96,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A specific version of the birth certificate issued for the Elterngeld application. You usually need to request extra copies when registering the birth.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh foor EL-tern-gelt',
     keywords: ['birth certificate', 'elterngeld', 'extra copy', 'benefit application'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'geburtsurkunde-kindergeld',
