@@ -19,8 +19,19 @@ export default function Layout() {
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       {/* Desktop top nav */}
       <header className="hidden md:flex items-center justify-between px-6 py-3 border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-40">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logoIcon} alt="BabyAdmin" className="w-7 h-7 block" />
+        <Link to="/" className="flex items-center gap-1.5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(340, 72%, 65%)" />
+                <stop offset="50%" stopColor="hsl(278, 52%, 50%)" />
+                <stop offset="100%" stopColor="hsl(220, 62%, 55%)" />
+              </linearGradient>
+            </defs>
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <rect x="9" y="3" width="6" height="4" rx="1" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M9 14l2 2 4-4" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
           <span className="text-lg font-bold text-gradient-primary">BabyAdmin</span>
         </Link>
         <nav className="flex items-center gap-1">
