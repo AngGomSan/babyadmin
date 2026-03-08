@@ -67,7 +67,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           The German bureaucracy survival guide for expecting parents.
         </p>
         <p className="text-base text-muted-foreground/80 max-w-2xl mb-4 leading-relaxed">
-          Pregnancy paperwork in Germany can be confusing. BabyAdmin helps you understand what to do, when to do it and which documents to prepare before and after your baby arrives.
+          Pregnancy paperwork in Germany can be confusing. BabyAdmin shows you what to do, when to do it and which documents to prepare before and after your baby arrives.
         </p>
         <p className="text-xs text-muted-foreground/80 max-w-md mb-8 leading-relaxed">
           BabyAdmin is free and built by a mom who went through the German bureaucracy herself. Your account simply saves your progress. No documents are uploaded or stored.
