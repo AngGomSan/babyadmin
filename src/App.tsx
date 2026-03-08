@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import Timeline from "@/components/Timeline";
+import OverdueTasks from "@/components/OverdueTasks";
 import GlossaryPage from "@/components/GlossaryPage";
 import SettingsPage from "@/components/Settings";
 import NotFound from "./pages/NotFound";
