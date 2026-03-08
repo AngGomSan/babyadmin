@@ -629,7 +629,14 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: true,
     optional: false,
-    description: 'The birth certificate unlocks most later administrative steps including benefits, insurance registration, passports and other registrations.',
+     description: 'The birth certificate unlocks most later administrative steps including benefits, insurance registration, passports and other registrations.',
+     unlocks: [
+       'Elterngeld application',
+       'Kindergeld application',
+       'health insurance registration',
+       'passport application',
+       'embassy registration',
+     ],
     checklist: [
       { id: 'submit-birth-certificate-paperwork-file', label: 'Submit the full document file', description: 'Make sure the full prepared document set is actually handed in.' },
     ],
