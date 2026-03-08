@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 232 25% 16%;
 
-    --primary: 263 70% 76%;
+    --primary: 248 74% 66%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 278 30% 96%;
@@ -30,10 +30,7 @@
 
     --border: 230 18% 91%;
     --input: 230 18% 91%;
-    --ring: 263 70% 76%;
-
-    /* Accent lavender for interactive elements */
-    --lavender-accent: 263 83% 70%;
+    --ring: 248 74% 66%;
 
     --radius: 0.75rem;
 
@@ -86,7 +83,7 @@
     background: linear-gradient(
       135deg,
       hsl(330, 81%, 60%),
-      hsl(263, 83%, 70%)
+      hsl(248, 74%, 66%)
     );
   }
   .bg-gradient-primary-soft {
