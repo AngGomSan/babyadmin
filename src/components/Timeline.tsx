@@ -6,6 +6,7 @@ import TaskCard from '@/components/TaskCard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import BabyBornPrompt from '@/components/BabyBornPrompt';
 
 type ViewMode = 'weekly' | 'trimester';
