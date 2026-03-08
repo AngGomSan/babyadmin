@@ -187,11 +187,11 @@ export default function TaskCard({ task }: TaskCardProps) {
           )}
 
           {task.checklist && task.checklist.length > 0 && (
-            <div className="mt-3.5">
-              {task.checklist.map((item, idx) => {
+            <div className="mt-3.5 space-y-[6px]">
+              {task.checklist.map((item) => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className={`py-0.5 ${idx > 0 ? 'mt-1' : ''}`}>
+                  <div key={item.id}>
                     <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
                       <span className="flex items-start justify-center pt-[3px]">
                         <Checkbox
