@@ -36,6 +36,8 @@ const App = () => (
                 <Route path="/overdue" element={<OverdueTasks />} />
                 <Route path="/glossary" element={<GlossaryPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/impressum" element={<Impressum />} />
+                <Route path="/privacy" element={<Privacy />} />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
