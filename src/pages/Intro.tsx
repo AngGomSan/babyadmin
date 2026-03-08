@@ -139,7 +139,9 @@ export default function Intro({ onDismiss }: IntroProps) {
 
       {/* Footer */}
       <footer className="px-6 pb-8">
-        <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60">
+        <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60 flex-wrap">
+          <Link to="/your-data" className="hover:text-muted-foreground transition-colors">Your data</Link>
+          <span>·</span>
           <Link to="/impressum" className="hover:text-muted-foreground transition-colors">Impressum</Link>
           <span>·</span>
           <Link to="/privacy" className="hover:text-muted-foreground transition-colors">Privacy policy</Link>
