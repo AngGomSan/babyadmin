@@ -133,7 +133,10 @@ export default function Timeline() {
   return (
     <div className="space-y-5 fade-in">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-foreground">Your timeline</h1>
+        <div>
+          <h1 className="text-xl font-bold text-foreground">Your timeline</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">Tasks organized by pregnancy stage.</p>
+        </div>
         <div className="flex bg-muted rounded-lg p-0.5">
           <button
             onClick={() => setViewMode('weekly')}

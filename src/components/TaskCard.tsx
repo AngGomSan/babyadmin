@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { TimelineTask, CATEGORY_LABELS } from '@/types';
+import { TimelineTask, CATEGORY_LABELS, CATEGORY_ICONS } from '@/types';
 import { ChevronDown, ChevronUp, Globe, Info, Unlock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -60,7 +60,8 @@ export default function TaskCard({ task }: TaskCardProps) {
             {task.title}
           </p>
           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
-            <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${categoryBadgeClass[task.category]}`}>
+            <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
+              <span className="text-[9px] leading-none">{CATEGORY_ICONS[task.category]}</span>
               {CATEGORY_LABELS[task.category]}
             </span>
             {task.optional && (
