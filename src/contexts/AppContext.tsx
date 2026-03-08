@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
 import { AppState } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const STORAGE_KEY = 'babyadmin-state';
 
@@ -16,6 +18,7 @@ const defaultState: AppState = {
 
 interface AppContextType {
   state: AppState;
+  loading: boolean;
   setDueDate: (date: string) => void;
   completeOnboarding: () => void;
   dismissIntro: () => void;
@@ -30,22 +33,78 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | null>(null);
 
-function loadState(): AppState {
+function loadLocalState(): AppState {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      return { ...defaultState, ...JSON.parse(stored) };
-    }
+    if (stored) return { ...defaultState, ...JSON.parse(stored) };
   } catch {}
   return defaultState;
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<AppState>(loadState);
+  const { user } = useAuth();
+  const [state, setState] = useState<AppState>(loadLocalState);
+  const [loading, setLoading] = useState(true);
+  const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Load state from DB when user logs in
+  useEffect(() => {
+    if (!user) {
+      setState(loadLocalState());
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    supabase
+      .from('user_app_state')
+      .select('*')
+      .eq('user_id', user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data) {
+          const dbState: AppState = {
+            dueDate: data.due_date,
+            onboardingComplete: data.onboarding_complete,
+            introSeen: data.intro_seen,
+            completedTasks: data.completed_tasks || [],
+            completedChecklist: data.completed_checklist || [],
+            babyBorn: data.baby_born,
+            birthDate: data.birth_date,
+            reassuranceDismissed: data.reassurance_dismissed,
+          };
+          setState(dbState);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(dbState));
+        }
+        setLoading(false);
+      });
+  }, [user]);
+
+  // Persist state changes
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [state]);
+
+    if (!user) return;
+
+    // Debounce DB writes
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    saveTimer.current = setTimeout(() => {
+      supabase
+        .from('user_app_state')
+        .update({
+          due_date: state.dueDate,
+          onboarding_complete: state.onboardingComplete,
+          intro_seen: state.introSeen,
+          completed_tasks: state.completedTasks,
+          completed_checklist: state.completedChecklist,
+          baby_born: state.babyBorn,
+          birth_date: state.birthDate,
+          reassurance_dismissed: state.reassuranceDismissed,
+        })
+        .eq('user_id', user.id)
+        .then();
+    }, 500);
+  }, [state, user]);
 
   const setDueDate = useCallback((date: string) => {
     setState(s => ({ ...s, dueDate: date }));
@@ -96,11 +155,28 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const resetState = useCallback(() => {
     setState(defaultState);
     localStorage.removeItem(STORAGE_KEY);
-  }, []);
+    if (user) {
+      supabase
+        .from('user_app_state')
+        .update({
+          due_date: null,
+          onboarding_complete: false,
+          intro_seen: false,
+          completed_tasks: [],
+          completed_checklist: [],
+          baby_born: false,
+          birth_date: null,
+          reassurance_dismissed: false,
+        })
+        .eq('user_id', user.id)
+        .then();
+    }
+  }, [user]);
 
   return (
     <AppContext.Provider value={{
       state,
+      loading,
       setDueDate,
       completeOnboarding,
       dismissIntro,
