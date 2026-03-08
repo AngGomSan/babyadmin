@@ -17,6 +17,16 @@ const trimesterRanges = [
   { label: 'Postpartum (months 0–3)', start: -1, end: -1, tri: 4 },
 ];
 
+const postpartumMonthLabels = ['Month 0', 'Month 1', 'Month 2', 'Month 3'];
+
+function getPostpartumTasksForMonth(month: number): TimelineTask[] {
+  return timelineTasks.filter(t => {
+    if (t.timing.type === 'postpartumMonth') return t.timing.month === month;
+    if (t.timing.type === 'postpartumRange') return month >= t.timing.startMonth && month <= t.timing.endMonth;
+    return false;
+  });
+}
+
 function taskInWeekRange(task: TimelineTask, rangeStart: number, rangeEnd: number): boolean {
   if (task.timing.type !== 'weekRange') return false;
   return task.timing.startWeek <= rangeEnd && task.timing.endWeek >= rangeStart;
@@ -36,6 +46,8 @@ export default function Timeline() {
   const { state } = useApp();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
+  const [selectedPostpartumMonth, setSelectedPostpartumMonth] = useState(0);
+  const [showPostpartum, setShowPostpartum] = useState(false);
 
   const weeklyTasks = useMemo(() => {
     return timelineTasks.filter(t => taskInWeek(t, selectedWeek));
@@ -81,60 +93,120 @@ export default function Timeline() {
 
       {viewMode === 'weekly' ? (
         <div className="space-y-5">
-          {/* Week selector */}
-          <div className="flex items-center gap-3">
-            <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => Math.max(4, w - 1))} disabled={selectedWeek <= 4}>
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <div className="flex-1 text-center">
-              <span className="text-lg font-semibold text-foreground">Week {selectedWeek}</span>
-              <p className="text-xs text-muted-foreground">{trimesterLabel}</p>
-            </div>
-            <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => Math.min(42, w + 1))} disabled={selectedWeek >= 42}>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
+          {/* Pregnancy / postpartum toggle */}
+          {!showPostpartum ? (
+            <>
+              {/* Week selector */}
+              <div className="flex items-center gap-3">
+                <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => Math.max(4, w - 1))} disabled={selectedWeek <= 4}>
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+                <div className="flex-1 text-center">
+                  <span className="text-lg font-semibold text-foreground">Week {selectedWeek}</span>
+                  <p className="text-xs text-muted-foreground">{trimesterLabel}</p>
+                </div>
+                <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedWeek(w => Math.min(42, w + 1))} disabled={selectedWeek >= 42}>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </div>
 
-          {/* Week slider */}
-          <div className="space-y-1.5">
-            <input
-              type="range"
-              min={4}
-              max={42}
-              value={selectedWeek}
-              onChange={e => setSelectedWeek(Number(e.target.value))}
-              className="w-full accent-primary h-1.5"
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground/60 px-0.5">
-              <span>Week 4</span>
-              <span>Week 12</span>
-              <span>Week 27</span>
-              <span>Week 42</span>
-            </div>
-          </div>
+              {/* Week slider */}
+              <div className="space-y-1.5">
+                <input
+                  type="range"
+                  min={4}
+                  max={42}
+                  value={selectedWeek}
+                  onChange={e => setSelectedWeek(Number(e.target.value))}
+                  className="w-full accent-primary h-1.5"
+                />
+                <div className="flex justify-between text-[10px] text-muted-foreground/60 px-0.5">
+                  <span>Week 4</span>
+                  <span>Week 12</span>
+                  <span>Week 27</span>
+                  <span>Week 42</span>
+                </div>
+              </div>
 
-          {/* Baby born inline prompt — week 36+ */}
-          {!state.babyBorn && selectedWeek >= 36 && (
-            <BabyBornPrompt variant="inline" />
-          )}
+              {/* Baby born inline prompt — week 36+ */}
+              {!state.babyBorn && selectedWeek >= 36 && (
+                <BabyBornPrompt variant="inline" />
+              )}
 
-          {/* Tasks split by urgency */}
-          {weeklyTasks.length === 0 ? (
-            <p className="text-sm text-muted-foreground py-8 text-center">No tasks for week {selectedWeek}.</p>
+              {/* Browse postpartum link */}
+              <button
+                onClick={() => setShowPostpartum(true)}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Browse postpartum tasks →
+              </button>
+
+              {/* Tasks split by urgency */}
+              {weeklyTasks.length === 0 ? (
+                <p className="text-sm text-muted-foreground py-8 text-center">No tasks for week {selectedWeek}.</p>
+              ) : (
+                <>
+                  {doNowTasks.length > 0 && (
+                    <section className="space-y-2.5">
+                      <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
+                      {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
+                    </section>
+                  )}
+                  {planTasks.length > 0 && (
+                    <section className="space-y-2.5">
+                      <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
+                      {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
+                    </section>
+                  )}
+                </>
+              )}
+            </>
           ) : (
             <>
-              {doNowTasks.length > 0 && (
-                <section className="space-y-2.5">
-                  <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
-                  {doNowTasks.map(task => <TaskCard key={task.id} task={task} />)}
-                </section>
-              )}
-              {planTasks.length > 0 && (
-                <section className="space-y-2.5">
-                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
-                  {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
-                </section>
-              )}
+              {/* Postpartum month selector */}
+              <div className="flex items-center gap-3">
+                <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedPostpartumMonth(m => Math.max(0, m - 1))} disabled={selectedPostpartumMonth <= 0}>
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+                <div className="flex-1 text-center">
+                  <span className="text-lg font-semibold text-foreground">{postpartumMonthLabels[selectedPostpartumMonth]}</span>
+                  <p className="text-xs text-muted-foreground">Postpartum</p>
+                </div>
+                <Button variant="outline" size="icon" className="h-9 w-9 shrink-0" onClick={() => setSelectedPostpartumMonth(m => Math.min(3, m + 1))} disabled={selectedPostpartumMonth >= 3}>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </div>
+
+              <button
+                onClick={() => setShowPostpartum(false)}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                ← Back to pregnancy weeks
+              </button>
+
+              {(() => {
+                const ppTasks = getPostpartumTasksForMonth(selectedPostpartumMonth);
+                const ppNow = ppTasks.filter(t => t.urgency === 'do_this_now');
+                const ppPlan = ppTasks.filter(t => t.urgency === 'plan_ahead');
+                return ppTasks.length === 0 ? (
+                  <p className="text-sm text-muted-foreground py-8 text-center">No tasks for {postpartumMonthLabels[selectedPostpartumMonth].toLowerCase()}.</p>
+                ) : (
+                  <>
+                    {ppNow.length > 0 && (
+                      <section className="space-y-2.5">
+                        <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">Do this now</h3>
+                        {ppNow.map(task => <TaskCard key={task.id} task={task} />)}
+                      </section>
+                    )}
+                    {ppPlan.length > 0 && (
+                      <section className="space-y-2.5">
+                        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Plan ahead</h3>
+                        {ppPlan.map(task => <TaskCard key={task.id} task={task} />)}
+                      </section>
+                    )}
+                  </>
+                );
+              })()}
             </>
           )}
         </div>
