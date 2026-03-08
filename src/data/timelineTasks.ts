@@ -765,11 +765,11 @@ export const timelineTasks: TimelineTask[] = [
     optional: false,
     description: 'Kindergeld requires the birth certificate and your baby\'s tax identification number. If either parent is an EU national or foreign-born, additional paperwork may be required.',
     whyItMatters: 'Kindergeld is a monthly payment per child. Applying promptly ensures you receive it from the earliest possible date.',
-    documents: [
-      { id: 'doc-kindergeld-birth-cert', label: 'Birth certificate', germanName: 'Geburtsurkunde' },
-      { id: 'doc-kindergeld-parent-tax-id', label: 'Tax ID for both parents', germanName: 'Steuer-Identifikationsnummer' },
-      { id: 'doc-kindergeld-child-tax-id', label: 'Child\'s tax ID', germanName: 'Steuer-ID des Kindes' },
-      { id: 'doc-kindergeld-form', label: 'Kindergeld application form', germanName: 'Kindergeld-Antrag' },
+    requiredDocuments: [
+      'doc-birth-certificate',
+      'doc-parent-tax-id',
+      'doc-child-tax-id',
+      'doc-kindergeld-form',
     ],
     checklist: [
       { id: 'submit-kindergeld-birth-certificate', label: 'Wait for birth certificate', description: 'This application cannot move properly without it.' },
