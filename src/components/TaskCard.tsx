@@ -200,7 +200,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                           className={`rounded h-[18px] w-[18px] shrink-0 ${!checked ? categoryCheckboxClass[task.category] : ''}`}
                         />
                       </span>
-                      <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
+                      <span className={`text-[13px] leading-snug ${checked ? 'line-through text-muted-foreground/60' : 'text-foreground'}`}>
                         {item.label}
                       </span>
                     </label>
