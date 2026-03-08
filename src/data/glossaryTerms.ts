@@ -161,6 +161,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The family benefits office that handles Kindergeld applications. It is part of the Federal Employment Agency and processes monthly child benefit payments.',
     pronunciationHint: 'fah-MEE-lee-en-kah-suh',
     keywords: ['family benefits office', 'kindergeld office', 'child benefit'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'jugendamt',
