@@ -104,6 +104,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A version of the birth certificate issued specifically for the Kindergeld application. Like the Elterngeld copy, request it when registering the birth.',
     pronunciationHint: 'geh-BOORTS-oor-koon-duh foor KIN-der-gelt',
     keywords: ['birth certificate', 'kindergeld', 'child benefit', 'extra copy'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'arbeitgeberbescheinigung',
