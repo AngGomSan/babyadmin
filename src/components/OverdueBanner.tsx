@@ -29,7 +29,7 @@ export default function OverdueBanner() {
     <div className="flex items-center gap-3 rounded-xl bg-muted/60 border border-border px-4 py-3">
       <Clock className="w-4 h-4 text-muted-foreground shrink-0" />
       <p className="text-sm text-muted-foreground flex-1">
-        You have <span className="font-medium text-foreground">{overdueCount}</span> overdue {overdueCount === 1 ? 'task' : 'tasks'} from earlier weeks.
+        You have tasks from earlier weeks that may still be relevant.
       </p>
       <button
         onClick={() => navigate('/overdue')}
