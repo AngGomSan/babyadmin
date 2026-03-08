@@ -142,7 +142,7 @@
     border-left: 3px solid hsl(var(--category-benefits));
   }
   .border-l-planning {
-    border-left: 3px solid hsl(var(--category-planning));
+    border-left: 3px solid hsl(var(--category-planning-border));
   }
 
   .fade-in {
