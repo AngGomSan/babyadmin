@@ -19,7 +19,10 @@ export default function Layout() {
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       {/* Desktop top nav */}
       <header className="hidden md:flex items-center justify-between px-6 py-3 border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-40">
-        <h1 className="text-lg font-bold text-gradient-primary">BabyAdmin</h1>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logoIcon} alt="BabyAdmin" className="w-7 h-7" />
+          <span className="text-lg font-bold text-gradient-primary">BabyAdmin</span>
+        </Link>
         <nav className="flex items-center gap-1">
           {navItems.map(({ to, label }) => (
             <NavLink
