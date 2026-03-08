@@ -6,17 +6,17 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const categoryBorderClass: Record<string, string> = {
-  medical: 'border-l-medical',
+  medical_care: 'border-l-medical',
   paperwork: 'border-l-paperwork',
-  benefits: 'border-l-benefits',
-  planning: 'border-l-planning',
+  benefits_and_finances: 'border-l-benefits',
+  planning_and_preparation: 'border-l-planning',
 };
 
 const categoryBadgeClass: Record<string, string> = {
-  medical: 'badge-medical',
+  medical_care: 'badge-medical',
   paperwork: 'badge-paperwork',
-  benefits: 'badge-benefits',
-  planning: 'badge-planning',
+  benefits_and_finances: 'badge-benefits',
+  planning_and_preparation: 'badge-planning',
 };
 
 interface TaskCardProps {
@@ -27,7 +27,7 @@ export default function TaskCard({ task }: TaskCardProps) {
   const { isTaskComplete, isChecklistComplete, toggleTask, toggleChecklist } = useApp();
   const [expanded, setExpanded] = useState(false);
   const completed = isTaskComplete(task.id);
-  const hasDetails = task.explanation || (task.checklist && task.checklist.length > 0);
+  const hasDetails = task.description || (task.checklist && task.checklist.length > 0);
 
   return (
     <div
@@ -49,12 +49,12 @@ export default function TaskCard({ task }: TaskCardProps) {
             <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${categoryBadgeClass[task.category]}`}>
               {CATEGORY_LABELS[task.category]}
             </span>
-            {task.isOptional && (
+            {task.optional && (
               <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
                 Optional
               </span>
             )}
-            {task.hasInternationalFlag && (
+            {task.international && (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span className="inline-flex">
@@ -85,10 +85,10 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       {expanded && hasDetails && (
         <div className="px-4 pb-4 pl-11 space-y-3 slide-up">
-          {task.explanation && (
+          {task.description && (
             <div className="flex gap-2 text-sm text-muted-foreground leading-relaxed">
               <Info className="w-4 h-4 shrink-0 mt-0.5 text-primary/60" />
-              <p>{task.explanation}</p>
+              <p>{task.description}</p>
             </div>
           )}
 
@@ -108,8 +108,8 @@ export default function TaskCard({ task }: TaskCardProps) {
                         {item.label}
                       </span>
                     </div>
-                    {item.explanation && (
-                      <p className="text-xs text-muted-foreground ml-7 leading-relaxed">{item.explanation}</p>
+                    {item.description && (
+                      <p className="text-xs text-muted-foreground ml-7 leading-relaxed">{item.description}</p>
                     )}
                   </div>
                 );

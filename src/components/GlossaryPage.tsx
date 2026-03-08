@@ -13,7 +13,9 @@ export default function GlossaryPage() {
     if (!search.trim()) return glossaryTerms;
     const q = search.toLowerCase();
     return glossaryTerms.filter(t =>
-      t.term.toLowerCase().includes(q) || t.explanation.toLowerCase().includes(q)
+      t.germanTerm.toLowerCase().includes(q) ||
+      t.englishExplanation.toLowerCase().includes(q) ||
+      (t.keywords && t.keywords.some(k => k.toLowerCase().includes(q)))
     );
   }, [search]);
 
@@ -49,12 +51,12 @@ export default function GlossaryPage() {
               className="w-full text-left rounded-xl bg-card shadow-card hover:shadow-card-hover transition-shadow p-4 flex items-center justify-between group"
             >
               <div>
-                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{term.term}</p>
-                <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{term.explanation}</p>
+                <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{term.germanTerm}</p>
+                <p className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{term.englishExplanation}</p>
               </div>
-              {term.pronunciation && (
+              {term.pronunciationHint && (
                 <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full shrink-0 ml-3">
-                  {term.pronunciation}
+                  {term.pronunciationHint}
                 </span>
               )}
             </button>

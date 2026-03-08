@@ -20,8 +20,15 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     if (!query.trim()) return { tasks: [], glossary: [] };
     const q = query.toLowerCase();
     return {
-      tasks: timelineTasks.filter(t => t.title.toLowerCase().includes(q) || t.explanation?.toLowerCase().includes(q)),
-      glossary: glossaryTerms.filter(t => t.term.toLowerCase().includes(q) || t.explanation.toLowerCase().includes(q)),
+      tasks: timelineTasks.filter(t =>
+        t.title.toLowerCase().includes(q) ||
+        t.description?.toLowerCase().includes(q)
+      ),
+      glossary: glossaryTerms.filter(t =>
+        t.germanTerm.toLowerCase().includes(q) ||
+        t.englishExplanation.toLowerCase().includes(q) ||
+        (t.keywords && t.keywords.some(k => k.toLowerCase().includes(q)))
+      ),
     };
   }, [query]);
 
@@ -76,8 +83,8 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                 >
                   <BookOpen className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-foreground">{term.term}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1">{term.explanation}</p>
+                    <p className="text-sm font-medium text-foreground">{term.germanTerm}</p>
+                    <p className="text-xs text-muted-foreground line-clamp-1">{term.englishExplanation}</p>
                   </div>
                 </button>
               ))}

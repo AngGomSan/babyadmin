@@ -14,15 +14,15 @@ export default function GlossaryModal({ term, onClose }: GlossaryModalProps) {
     <Dialog open={!!term} onOpenChange={open => { if (!open) onClose(); }}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-foreground">{term.term}</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-foreground">{term.germanTerm}</DialogTitle>
         </DialogHeader>
-        {term.pronunciation && (
+        {term.pronunciationHint && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Volume2 className="w-4 h-4" />
-            <span>{term.pronunciation}</span>
+            <span>{term.pronunciationHint}</span>
           </div>
         )}
-        <p className="text-sm text-foreground leading-relaxed">{term.explanation}</p>
+        <p className="text-sm text-foreground leading-relaxed">{term.englishExplanation}</p>
       </DialogContent>
     </Dialog>
   );

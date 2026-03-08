@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { usePregnancyCalc } from '@/hooks/usePregnancyCalc';
 import { timelineTasks } from '@/data/timelineTasks';
+import { TimelineTask } from '@/types';
 import TaskCard from '@/components/TaskCard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -14,26 +15,34 @@ const trimesterRanges = [
   { label: 'Postpartum (months 0–3)', start: -1, end: -1, tri: 4 },
 ];
 
+function taskInWeekRange(task: TimelineTask, rangeStart: number, rangeEnd: number): boolean {
+  if (task.timing.type !== 'weekRange') return false;
+  return task.timing.startWeek <= rangeEnd && task.timing.endWeek >= rangeStart;
+}
+
+function taskIsPostpartum(task: TimelineTask): boolean {
+  return task.timing.type === 'postpartumMonth' || task.timing.type === 'postpartumRange';
+}
+
+function taskInWeek(task: TimelineTask, week: number): boolean {
+  if (task.timing.type !== 'weekRange') return false;
+  return week >= task.timing.startWeek && week <= task.timing.endWeek;
+}
+
 export default function Timeline() {
   const calc = usePregnancyCalc();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
 
   const weeklyTasks = useMemo(() => {
-    return timelineTasks.filter(t =>
-      t.weekStart !== undefined && t.weekEnd !== undefined &&
-      selectedWeek >= t.weekStart && selectedWeek <= t.weekEnd
-    );
+    return timelineTasks.filter(t => taskInWeek(t, selectedWeek));
   }, [selectedWeek]);
 
   const trimesterGroups = useMemo(() => {
     return trimesterRanges.map(range => {
       const tasks = range.tri === 4
-        ? timelineTasks.filter(t => t.postpartumMonth !== undefined)
-        : timelineTasks.filter(t =>
-            t.weekStart !== undefined && t.weekEnd !== undefined &&
-            t.weekStart <= range.end && t.weekEnd >= range.start
-          );
+        ? timelineTasks.filter(taskIsPostpartum)
+        : timelineTasks.filter(t => taskInWeekRange(t, range.start, range.end));
       return { ...range, tasks };
     });
   }, []);

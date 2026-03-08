@@ -1,29 +1,40 @@
-export type TaskCategory = 'medical' | 'paperwork' | 'benefits' | 'planning';
+export type TaskCategory = 'medical_care' | 'paperwork' | 'benefits_and_finances' | 'planning_and_preparation';
+
+export type TaskUrgency = 'do_this_now' | 'plan_ahead';
+
+export type TaskPhase = 'pregnancy' | 'postpartum';
+
+export type TaskTiming =
+  | { type: 'weekRange'; startWeek: number; endWeek: number }
+  | { type: 'postpartumMonth'; month: number }
+  | { type: 'postpartumRange'; startMonth: number; endMonth: number };
 
 export interface ChecklistItem {
   id: string;
   label: string;
-  explanation?: string;
+  description?: string;
 }
 
 export interface TimelineTask {
   id: string;
+  taskGroup: string;
   title: string;
+  phase: TaskPhase;
+  timing: TaskTiming;
+  urgency: TaskUrgency;
   category: TaskCategory;
-  weekStart?: number;
-  weekEnd?: number;
-  postpartumMonth?: number;
-  isOptional?: boolean;
-  hasInternationalFlag?: boolean;
-  explanation?: string;
+  international: boolean;
+  optional: boolean;
+  description?: string;
   checklist?: ChecklistItem[];
 }
 
 export interface GlossaryTerm {
   id: string;
-  term: string;
-  explanation: string;
-  pronunciation?: string;
+  germanTerm: string;
+  englishExplanation: string;
+  pronunciationHint?: string;
+  keywords?: string[];
 }
 
 export interface AppState {
@@ -38,8 +49,8 @@ export interface AppState {
 }
 
 export const CATEGORY_LABELS: Record<TaskCategory, string> = {
-  medical: 'Medical care',
+  medical_care: 'Medical care',
   paperwork: 'Paperwork',
-  benefits: 'Benefits & finances',
-  planning: 'Planning & preparation',
+  benefits_and_finances: 'Benefits and finances',
+  planning_and_preparation: 'Planning and preparation',
 };
