@@ -75,7 +75,7 @@ export default function DocumentsPage() {
       <div className="rounded-xl bg-card shadow-card p-4 mb-5">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm font-medium text-foreground">
-            {completedCount} of {totalCount} documents prepared
+            Documents ready: {completedCount} / {totalCount}
           </span>
           <span className="text-xs text-muted-foreground">
             {totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0}%
