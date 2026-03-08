@@ -45,7 +45,7 @@ export default function OverdueTasks() {
       {overdueTasks.length === 0 ? (
         <div className="text-center py-12 space-y-2">
           <Clock className="w-8 h-8 text-muted-foreground/40 mx-auto" />
-          <p className="text-sm text-muted-foreground">You're all caught up! No overdue tasks.</p>
+          <p className="text-sm text-muted-foreground">You're all caught up! Nothing to review.</p>
           <Button variant="ghost" size="sm" className="text-xs" onClick={() => navigate('/')}>
             Back to dashboard
           </Button>
