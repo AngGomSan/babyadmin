@@ -128,6 +128,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A unique tax identification number assigned to every person registered in Germany. Your baby receives one automatically by mail after birth registration. Needed for Kindergeld and other benefit applications.',
     pronunciationHint: 'SHTOY-er ee-den-tee-fee-kah-tsee-OHNS-noo-mer',
     keywords: ['tax ID', 'tax number', 'steuer-id', 'kindergeld', 'identification'],
+    category: 'benefits_and_finances',
   },
   {
     id: 'geburtsbescheinigung',
