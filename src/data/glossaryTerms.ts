@@ -169,6 +169,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The youth welfare office. Relevant for paternity recognition and custody declarations if the parents are not married. Also handles Kita vouchers in some areas.',
     pronunciationHint: 'YOO-gent-amt',
     keywords: ['youth welfare office', 'paternity', 'custody', 'kita voucher'],
+    category: 'paperwork',
   },
   {
     id: 'krankenkasse',
