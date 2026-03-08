@@ -191,9 +191,9 @@ export default function TaskCard({ task }: TaskCardProps) {
               {task.checklist.map((item, idx) => {
                 const checked = isChecklistComplete(item.id);
                 return (
-                  <div key={item.id} className={`-mx-1 px-1 rounded-lg py-1 ${idx > 0 ? 'mt-2' : ''}`}>
-                    <label className="grid cursor-pointer min-h-[1.75rem]" style={{ gridTemplateColumns: '24px 1fr' }}>
-                      <span className="flex items-start justify-center pt-[3px]">
+                  <div key={item.id} className={`py-1 ${idx > 0 ? 'mt-1' : ''}`}>
+                    <label className="grid cursor-pointer items-start min-h-[1.75rem]" style={{ gridTemplateColumns: '20px 1fr', columnGap: '12px' }}>
+                      <span className="flex items-start justify-center pt-[2px]">
                         <Checkbox
                           checked={checked}
                           onCheckedChange={() => toggleChecklist(item.id)}
@@ -205,7 +205,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                       </span>
                     </label>
                     {item.description && !checked && (
-                      <p className="text-[11px] text-muted-foreground/50 mt-px leading-relaxed" style={{ paddingLeft: '24px' }}>{item.description}</p>
+                      <p className="text-[11px] text-muted-foreground/50 mt-px leading-relaxed" style={{ paddingLeft: '32px' }}>{item.description}</p>
                     )}
                   </div>
                 );
