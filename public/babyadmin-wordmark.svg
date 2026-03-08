@@ -1,0 +1,10 @@
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wordmark-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F25DAA"/>
+      <stop offset="50%" stop-color="#8A5CF6"/>
+      <stop offset="100%" stop-color="#4F7DF3"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="30" font-family="Work Sans, system-ui, sans-serif" font-size="28" font-weight="700" fill="url(#wordmark-gradient)">BabyAdmin</text>
+</svg>
