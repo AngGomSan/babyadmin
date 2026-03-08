@@ -1,8 +1,11 @@
+import { TaskCategory } from '@/types';
+
 export interface GlobalDocument {
   id: string;
   label: string;
   germanName: string;
   description?: string;
+  category?: TaskCategory;
 }
 
 /**
