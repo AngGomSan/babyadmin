@@ -25,8 +25,10 @@ interface AppContextType {
   dismissIntro: () => void;
   toggleTask: (taskId: string) => void;
   toggleChecklist: (itemId: string) => void;
+  toggleDocument: (docId: string) => void;
   isTaskComplete: (taskId: string) => boolean;
   isChecklistComplete: (itemId: string) => boolean;
+  isDocumentComplete: (docId: string) => boolean;
   markBabyBorn: (birthDate: string) => void;
   dismissReassurance: () => void;
   resetState: () => void;
