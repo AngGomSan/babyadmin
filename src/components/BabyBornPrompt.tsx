@@ -34,7 +34,7 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               <Baby className="w-4 h-4 text-primary" />
-              <span>Baby arrived? <span className="underline underline-offset-2">Mark as born</span></span>
+              <span>Has your baby arrived? <span className="underline underline-offset-2">Mark as born.</span></span>
             </button>
           </TooltipTrigger>
           <TooltipContent side="bottom" className="text-xs max-w-[260px]">
