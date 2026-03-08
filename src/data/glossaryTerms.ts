@@ -23,6 +23,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A hospital-issued document confirming the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
     pronunciationHint: 'geh-BOORTS-an-tsy-guh',
     keywords: ['birth notification', 'temporary proof of birth', 'hospital document'],
+    category: 'paperwork',
   },
   {
     id: 'geburtsurkunde',
