@@ -162,7 +162,7 @@ export default function Dashboard() {
       </div>
 
       {/* Baby born prompt — visible from week 36 onward, pre-birth only */}
-      {!calc.isPostpartum && calc.currentWeek >= 36 && isCurrentView && (
+      {!calc.isPostpartum && (calc.currentWeek >= 36 || viewWeek >= 36) && isCurrentView && (
         <BabyBornPrompt variant="card" />
       )}
 
