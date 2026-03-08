@@ -141,6 +141,9 @@ export default function DocumentsPage() {
                           <span className={`text-[13px] leading-snug block ${checked ? 'line-through text-muted-foreground' : 'text-foreground'}`}>
                             {doc.label} <span className="text-muted-foreground">({doc.germanName})</span>
                           </span>
+                          {doc.description && !checked && (
+                            <p className="text-[11px] mt-0.5 leading-relaxed text-muted-foreground/70">{doc.description}</p>
+                          )}
                           {usedFor.length > 0 && !checked && (
                             <p className="text-[11px] mt-1 leading-relaxed">
                               <span className="text-muted-foreground/70">Used for: </span>

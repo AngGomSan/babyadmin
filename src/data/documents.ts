@@ -2,6 +2,7 @@ export interface GlobalDocument {
   id: string;
   label: string;
   germanName: string;
+  description?: string;
 }
 
 /**
@@ -25,7 +26,7 @@ export const globalDocuments: GlobalDocument[] = [
   // Birth
   { id: 'doc-birth-certificate', label: 'Birth certificate', germanName: 'Geburtsurkunde' },
   { id: 'doc-birth-certificate-elterngeld', label: 'Birth certificate for Elterngeld', germanName: 'Geburtsurkunde für Elterngeld' },
-  { id: 'doc-geburtsanzeige', label: 'Birth registration confirmation', germanName: 'Geburtsanzeige' },
+  { id: 'doc-geburtsanzeige', label: 'Hospital birth confirmation', germanName: 'Geburtsanzeige', description: 'Provided by the hospital after birth. Make sure you receive a copy before discharge.' },
   { id: 'doc-naming-declaration', label: 'Naming declaration', germanName: 'Namensklärung' },
 
   // Translations
