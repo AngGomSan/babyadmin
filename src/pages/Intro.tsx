@@ -81,7 +81,7 @@ export default function Intro({ onDismiss }: IntroProps) {
           </button>
         </div>
         <p className="mt-5 text-xs text-muted-foreground">
-          Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link>
+          Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in here</Link>
         </p>
       </section>
 
