@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { usePregnancyCalc } from '@/hooks/usePregnancyCalc';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarDays, Baby, Trash2 } from 'lucide-react';
+import { CalendarDays, Baby, Trash2, LogOut } from 'lucide-react';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 
 export default function SettingsPage() {
   const { state, setDueDate, markBabyBorn, resetState } = useApp();
+  const { user, signOut } = useAuth();
   const calc = usePregnancyCalc();
   const [editingDueDate, setEditingDueDate] = useState(false);
   const [tempDate, setTempDate] = useState<Date | undefined>(state.dueDate ? new Date(state.dueDate) : undefined);
@@ -35,6 +37,18 @@ export default function SettingsPage() {
   return (
     <div className="space-y-8 fade-in">
       <h1 className="text-xl font-bold text-foreground">Settings</h1>
+
+      {/* Account */}
+      <section className="space-y-3">
+        <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">Account</h2>
+        <div className="rounded-xl bg-card shadow-card p-4 space-y-3">
+          <p className="text-sm text-muted-foreground">{user?.email}</p>
+          <Button variant="outline" size="sm" onClick={signOut}>
+            <LogOut className="w-4 h-4 mr-2" />
+            Log out
+          </Button>
+        </div>
+      </section>
 
       {/* Due date */}
       <section className="space-y-3">
