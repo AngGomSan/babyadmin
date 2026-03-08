@@ -97,7 +97,8 @@ export default function DocumentsPage() {
 
           return (
             <div key={section.title}>
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 px-1">
+              <h2 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2 px-1">
+                {(() => { const Icon = sectionIcons[section.title]; return Icon ? <Icon className="h-3.5 w-3.5" /> : null; })()}
                 {section.title}
               </h2>
               <div className="rounded-xl bg-card shadow-card divide-y divide-border">
