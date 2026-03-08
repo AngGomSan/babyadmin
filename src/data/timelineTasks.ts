@@ -408,11 +408,11 @@ export const timelineTasks: TimelineTask[] = [
     optional: false,
     description: 'Some documents can take time to obtain, especially if they were issued outside Germany. Starting now helps avoid painful delays later.',
     whyItMatters: 'If documents are missing or need apostilles and translations, it can delay the birth certificate by weeks, blocking almost every other postpartum step.',
-    documents: [
-      { id: 'doc-gather-parent-birth-certs', label: 'Parent birth certificates', germanName: 'Geburtsurkunden der Eltern' },
-      { id: 'doc-gather-passports', label: 'Passports or ID cards', germanName: 'Reisepässe oder Personalausweise' },
-      { id: 'doc-gather-marriage-cert', label: 'Marriage certificate (if married)', germanName: 'Eheurkunde' },
-      { id: 'doc-gather-naming-declaration', label: 'Naming declaration', germanName: 'Namensklärung' },
+    requiredDocuments: [
+      'doc-parent-birth-certificates',
+      'doc-parent-passports',
+      'doc-marriage-certificate',
+      'doc-naming-declaration',
     ],
     checklist: [
       { id: 'gather-birth-certificate-documents-birth-certificates', label: 'Obtain parent birth certificates', description: 'These are often core documents in the file.' },
