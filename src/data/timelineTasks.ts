@@ -1,4 +1,4 @@
-import { TimelineTask } from '@/types';
+import { TimelineTask, DocumentItem } from '@/types';
 
 export const timelineTasks: TimelineTask[] = [
   {
