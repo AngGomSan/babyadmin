@@ -12,6 +12,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Timeline from "@/components/Timeline";
 import OverdueTasks from "@/components/OverdueTasks";
 import GlossaryPage from "@/components/GlossaryPage";
+import DocumentsPage from "@/components/DocumentsPage";
 import SettingsPage from "@/components/Settings";
 import Impressum from "./pages/Impressum";
 import Privacy from "./pages/Privacy";
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/timeline" element={<Timeline />} />
                 <Route path="/overdue" element={<OverdueTasks />} />
+                <Route path="/documents" element={<DocumentsPage />} />
                 <Route path="/glossary" element={<GlossaryPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/impressum" element={<Impressum />} />

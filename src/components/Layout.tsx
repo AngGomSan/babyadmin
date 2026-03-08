@@ -1,5 +1,5 @@
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
-import { Home, CalendarDays, BookOpen, Settings, Search } from 'lucide-react';
+import { Home, CalendarDays, ClipboardList, BookOpen, Settings, Search } from 'lucide-react';
 import { useState } from 'react';
 import SearchOverlay from '@/components/SearchOverlay';
 import logoIcon from '@/assets/logo-icon.png';
@@ -7,6 +7,7 @@ import logoIcon from '@/assets/logo-icon.png';
 const navItems = [
   { to: '/', icon: Home, label: 'Home' },
   { to: '/timeline', icon: CalendarDays, label: 'Timeline' },
+  { to: '/documents', icon: ClipboardList, label: 'Documents' },
   { to: '/glossary', icon: BookOpen, label: 'Glossary' },
   { to: '/settings', icon: Settings, label: 'Settings' },
 ];
