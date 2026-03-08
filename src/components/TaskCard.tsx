@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
-import { TimelineTask, CATEGORY_LABELS, CATEGORY_ICONS } from '@/types';
-import { ChevronDown, ChevronUp, Globe, Info, Unlock } from 'lucide-react';
+import { TimelineTask, CATEGORY_LABELS, TaskCategory } from '@/types';
+import { ChevronDown, ChevronUp, Globe, Info, Unlock, Stethoscope, FileText, Wallet, Compass } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -18,6 +18,12 @@ const categoryBadgeClass: Record<string, string> = {
   benefits_and_finances: 'badge-benefits',
   planning_and_preparation: 'badge-planning',
 };
+const CATEGORY_ICON_MAP: Record<TaskCategory, React.ComponentType<{ className?: string }>> = {
+  medical_care: Stethoscope,
+  paperwork: FileText,
+  benefits_and_finances: Wallet,
+  planning_and_preparation: Compass,
+};
 
 interface TaskCardProps {
   task: TimelineTask;
@@ -33,6 +39,8 @@ export default function TaskCard({ task }: TaskCardProps) {
     ? task.checklist.filter(item => isChecklistComplete(item.id)).length
     : 0;
   const totalChecklistCount = task.checklist?.length || 0;
+
+  const CategoryIcon = CATEGORY_ICON_MAP[task.category];
 
   return (
     <div
@@ -61,7 +69,7 @@ export default function TaskCard({ task }: TaskCardProps) {
           </p>
           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
             <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
-              <span className="text-[9px] leading-none">{CATEGORY_ICONS[task.category]}</span>
+              <CategoryIcon className="w-3 h-3" />
               {CATEGORY_LABELS[task.category]}
             </span>
             {task.optional && (

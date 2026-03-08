@@ -56,9 +56,3 @@ export const CATEGORY_LABELS: Record<TaskCategory, string> = {
   planning_and_preparation: 'Planning and preparation',
 };
 
-export const CATEGORY_ICONS: Record<TaskCategory, string> = {
-  medical_care: '🏥',
-  paperwork: '📄',
-  benefits_and_finances: '💰',
-  planning_and_preparation: '🧭',
-};
