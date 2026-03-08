@@ -5,6 +5,8 @@ import { TimelineTask } from '@/types';
 import TaskCard from '@/components/TaskCard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useApp } from '@/contexts/AppContext';
+import BabyBornPrompt from '@/components/BabyBornPrompt';
 
 type ViewMode = 'weekly' | 'trimester';
 
@@ -31,6 +33,7 @@ function taskInWeek(task: TimelineTask, week: number): boolean {
 
 export default function Timeline() {
   const calc = usePregnancyCalc();
+  const { state } = useApp();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
 
@@ -109,6 +112,11 @@ export default function Timeline() {
               <span>Week 42</span>
             </div>
           </div>
+
+          {/* Baby born inline prompt — week 36+ */}
+          {!state.babyBorn && calc && calc.currentWeek >= 36 && selectedWeek >= 36 && (
+            <BabyBornPrompt variant="inline" />
+          )}
 
           {/* Tasks split by urgency */}
           {weeklyTasks.length === 0 ? (
