@@ -94,7 +94,7 @@ export default function Intro({ onDismiss }: IntroProps) {
               className="rounded-2xl border border-border bg-card px-6 py-4 shadow-card"
             >
               <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center mb-3">
-                <Icon className="w-[22px] h-[22px] text-primary" />
+                <Icon className="w-[22px] h-[22px] text-primary/90" />
               </div>
               <h3 className="text-sm font-semibold text-foreground mb-1.5">{title}</h3>
               <p className="text-sm text-muted-foreground leading-snug">{body}</p>
