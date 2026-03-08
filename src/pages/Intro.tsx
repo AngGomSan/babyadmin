@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ClipboardCheck, CalendarDays, BookOpen, ArrowRight } from 'lucide-react';
+import { ClipboardCheck, CalendarDays, BookOpen } from 'lucide-react';
 
 const LogoIcon = () => (
   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,10 +70,9 @@ export default function Intro({ onDismiss }: IntroProps) {
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <button
             onClick={handleGetStarted}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
+            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-[hsl(340,72%,65%)] via-[hsl(278,52%,50%)] to-[hsl(220,62%,55%)] text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity"
           >
             Get started
-            <ArrowRight className="w-4 h-4" />
           </button>
           <button
             onClick={handleExploreTimeline}
