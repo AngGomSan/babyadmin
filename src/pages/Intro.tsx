@@ -80,7 +80,7 @@ export default function Intro({ onDismiss }: IntroProps) {
             Get started
           </button>
         </div>
-        <p className="mt-5 text-xs text-muted-foreground">
+        <p className="mt-5 text-xs text-muted-foreground/75">
           Already have an account? <Link to="/auth" className="text-primary font-medium hover:underline transition-colors">Log in</Link><span className="text-muted-foreground">.</span>
         </p>
       </section>
