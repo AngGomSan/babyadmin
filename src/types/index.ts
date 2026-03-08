@@ -47,6 +47,7 @@ export interface AppState {
   introSeen: boolean;
   completedTasks: string[];
   completedChecklist: string[];
+  completedDocuments: string[];
   babyBorn: boolean;
   birthDate: string | null;
   reassuranceDismissed: boolean;
