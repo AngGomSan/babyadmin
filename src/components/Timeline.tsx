@@ -218,7 +218,7 @@ export default function Timeline() {
                 </section>
               )}
               {planTasks.length > 0 && (
-                <section className="space-y-3">
+                <section className="space-y-2.5">
                   <h3 className="text-xs font-semibold text-[hsl(215,16%,47%)] uppercase tracking-wider">Plan ahead</h3>
                   {planTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </section>
