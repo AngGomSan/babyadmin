@@ -11,6 +11,7 @@ const defaultState: AppState = {
   introSeen: false,
   completedTasks: [],
   completedChecklist: [],
+  completedDocuments: [],
   babyBorn: false,
   birthDate: null,
   reassuranceDismissed: false,
