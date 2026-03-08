@@ -36,7 +36,7 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
 
   return (
     <Dialog open={open} onOpenChange={o => { if (!o) { onClose(); setQuery(''); } }}>
-      <DialogContent className="max-w-lg p-0 gap-0">
+      <DialogContent className="max-w-lg p-0 gap-0 mx-4 rounded-2xl">
         <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
           <Search className="w-5 h-5 text-muted-foreground shrink-0" />
           <Input
@@ -54,16 +54,16 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
           )}
 
           {results.tasks.length > 0 && (
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider px-3 py-2">Tasks</p>
               {results.tasks.slice(0, 8).map(task => (
                 <button
                   key={task.id}
                   onClick={() => { navigate('/timeline'); onClose(); setQuery(''); }}
-                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-muted transition-colors flex items-start gap-2.5"
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-muted transition-colors flex items-start gap-2.5 active:bg-muted"
                 >
                   <CheckSquare className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-foreground">{task.title}</p>
                     <p className="text-xs text-muted-foreground">{CATEGORY_LABELS[task.category]}</p>
                   </div>
@@ -73,16 +73,16 @@ export default function SearchOverlay({ open, onClose }: SearchOverlayProps) {
           )}
 
           {results.glossary.length > 0 && (
-            <div className="space-y-1 mt-2">
+            <div className="space-y-0.5 mt-2">
               <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider px-3 py-2">Glossary</p>
               {results.glossary.map(term => (
                 <button
                   key={term.id}
                   onClick={() => { navigate('/glossary'); onClose(); setQuery(''); }}
-                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-muted transition-colors flex items-start gap-2.5"
+                  className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-muted transition-colors flex items-start gap-2.5 active:bg-muted"
                 >
                   <BookOpen className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-foreground">{term.germanTerm}</p>
                     <p className="text-xs text-muted-foreground line-clamp-1">{term.englishExplanation}</p>
                   </div>

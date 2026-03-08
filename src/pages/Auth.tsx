@@ -21,7 +21,7 @@ export default function Auth() {
       const { error } = await resetPassword(email);
       setLoading(false);
       if (error) {
-        toast({ title: 'Error', description: error.message, variant: 'destructive' });
+        toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
       } else {
         toast({ title: 'Check your email', description: 'We sent you a password reset link.' });
         setMode('login');
@@ -34,7 +34,7 @@ export default function Auth() {
     setLoading(false);
 
     if (error) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: 'Something went wrong', description: error.message, variant: 'destructive' });
     } else if (mode === 'signup') {
       toast({ title: 'Account created', description: 'Check your email to confirm your account.' });
     }
@@ -45,7 +45,7 @@ export default function Auth() {
       <div className="w-full max-w-sm space-y-8 text-center fade-in">
         <div>
           <h1 className="text-3xl font-bold text-gradient-primary mb-2">BabyAdmin</h1>
-          <p className="text-muted-foreground">Your guide to pregnancy admin in Germany</p>
+          <p className="text-sm text-muted-foreground">Your guide to pregnancy admin in Germany</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,7 +99,7 @@ export default function Auth() {
         <div className="space-y-2 text-sm">
           {mode === 'login' && (
             <>
-              <button onClick={() => setMode('forgot')} className="text-muted-foreground hover:text-foreground transition-colors">
+              <button onClick={() => setMode('forgot')} className="text-muted-foreground hover:text-foreground transition-colors block mx-auto">
                 Forgot password?
               </button>
               <p className="text-muted-foreground">

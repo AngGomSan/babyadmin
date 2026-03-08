@@ -3,7 +3,7 @@ import { useApp } from '@/contexts/AppContext';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarDays, ArrowRight, Sparkles } from 'lucide-react';
+import { CalendarDays, ArrowRight } from 'lucide-react';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
 
@@ -32,7 +32,7 @@ export default function Onboarding() {
         <div className="w-full max-w-sm space-y-8 text-center fade-in">
           <div>
             <h1 className="text-3xl font-bold text-gradient-primary mb-2">BabyAdmin</h1>
-            <p className="text-muted-foreground">Your guide to pregnancy admin in Germany</p>
+            <p className="text-sm text-muted-foreground">Your guide to pregnancy admin in Germany</p>
           </div>
 
           <div className="space-y-4">
@@ -80,16 +80,12 @@ export default function Onboarding() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
       <div className="w-full max-w-sm space-y-8 text-center fade-in">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-primary-soft flex items-center justify-center mx-auto">
-          <Sparkles className="w-7 h-7 text-primary" />
-        </div>
-
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h2 className="text-xl font-semibold text-foreground">You're all set</h2>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             BabyAdmin helps you stay ahead of Germany-specific pregnancy admin. It shows you what to do, when to start and why starting then matters.
           </p>
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             You do not need to figure everything out at once. Focus on what matters now and what to prepare next.
           </p>
         </div>
