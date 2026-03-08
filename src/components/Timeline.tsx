@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { usePregnancyCalc } from '@/hooks/usePregnancyCalc';
 import { timelineTasks } from '@/data/timelineTasks';
 import { TimelineTask } from '@/types';
@@ -11,10 +11,10 @@ import BabyBornPrompt from '@/components/BabyBornPrompt';
 type ViewMode = 'weekly' | 'trimester';
 
 const trimesterRanges = [
-  { label: 'First trimester (weeks 4–12)', start: 4, end: 12, tri: 1 },
-  { label: 'Second trimester (weeks 13–27)', start: 13, end: 27, tri: 2 },
-  { label: 'Third trimester (weeks 28–42)', start: 28, end: 42, tri: 3 },
-  { label: 'Postpartum (months 0–3)', start: -1, end: -1, tri: 4 },
+  { label: 'First trimester (weeks 4–12)', shortLabel: 'First trimester', start: 4, end: 12, tri: 1 },
+  { label: 'Second trimester (weeks 13–27)', shortLabel: 'Second trimester', start: 13, end: 27, tri: 2 },
+  { label: 'Third trimester (weeks 28–42)', shortLabel: 'Third trimester', start: 28, end: 42, tri: 3 },
+  { label: 'Postpartum (months 0–3)', shortLabel: 'Postpartum', start: -1, end: -1, tri: 4 },
 ];
 
 const postpartumMonthLabels = ['Month 0', 'Month 1', 'Month 2', 'Month 3'];
@@ -45,11 +45,16 @@ export default function Timeline() {
   const calc = usePregnancyCalc();
   const { state } = useApp();
   const [viewMode, setViewMode] = useState<ViewMode>('weekly');
-  // selectedWeek: 4–42 = pregnancy weeks, 43–46 = postpartum months 0–3
   const [selectedWeek, setSelectedWeek] = useState(calc ? Math.min(42, Math.max(4, calc.currentWeek)) : 8);
+  const [activeTri, setActiveTri] = useState(1);
+
+  // Refs for trimester sections
+  const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
+  const navRef = useRef<HTMLDivElement>(null);
+  const isScrollingToSection = useRef(false);
 
   const isPostpartumView = selectedWeek > 42;
-  const postpartumMonth = selectedWeek - 43; // 0–3
+  const postpartumMonth = selectedWeek - 43;
 
   const weeklyTasks = useMemo(() => {
     if (isPostpartumView) return getPostpartumTasksForMonth(postpartumMonth);
@@ -75,6 +80,55 @@ export default function Timeline() {
   const subLabel = isPostpartumView
     ? 'Postpartum'
     : selectedWeek <= 12 ? 'First trimester' : selectedWeek <= 27 ? 'Second trimester' : 'Third trimester';
+
+  // Scroll-based active section detection for trimester view
+  useEffect(() => {
+    if (viewMode !== 'trimester') return;
+
+    const handleScroll = () => {
+      if (isScrollingToSection.current) return;
+
+      const navHeight = navRef.current?.getBoundingClientRect().bottom ?? 0;
+      const offset = navHeight + 16;
+
+      let closest = 1;
+      let closestDist = Infinity;
+
+      for (const tri of [1, 2, 3, 4]) {
+        const el = sectionRefs.current[tri];
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const dist = Math.abs(rect.top - offset);
+        if (rect.top <= offset + 100 && dist < closestDist) {
+          closestDist = dist;
+          closest = tri;
+        }
+      }
+
+      setActiveTri(closest);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [viewMode]);
+
+  const scrollToSection = useCallback((tri: number) => {
+    const el = sectionRefs.current[tri];
+    if (!el) return;
+
+    setActiveTri(tri);
+    isScrollingToSection.current = true;
+
+    const navHeight = navRef.current?.getBoundingClientRect().height ?? 0;
+    const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 72;
+
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    setTimeout(() => {
+      isScrollingToSection.current = false;
+    }, 600);
+  }, []);
 
   return (
     <div className="space-y-5 fade-in">
@@ -164,19 +218,51 @@ export default function Timeline() {
           )}
         </div>
       ) : (
-        <div className="space-y-8">
-          {trimesterGroups.map(group => (
-            <section key={group.tri} className="space-y-2.5">
-              <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">{group.label}</h3>
-              {group.tasks.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No tasks.</p>
-              ) : (
-                <div className="space-y-2.5">
-                  {group.tasks.map(task => <TaskCard key={task.id} task={task} />)}
+        <div>
+          {/* Sticky trimester pill navigation */}
+          <div
+            ref={navRef}
+            className="sticky top-0 md:top-[57px] z-30 bg-background/95 backdrop-blur-sm pb-3 pt-1 -mx-4 px-4"
+          >
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-hide">
+              {trimesterRanges.map(range => (
+                <button
+                  key={range.tri}
+                  onClick={() => scrollToSection(range.tri)}
+                  className={`shrink-0 px-3.5 py-2 rounded-full text-xs font-medium transition-all duration-200 ${
+                    activeTri === range.tri
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  {range.shortLabel}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Trimester sections */}
+          <div className="space-y-10 mt-2">
+            {trimesterGroups.map(group => (
+              <section
+                key={group.tri}
+                ref={el => { sectionRefs.current[group.tri] = el; }}
+                className="scroll-mt-28"
+              >
+                <div className="mb-4">
+                  <h3 className="text-sm font-semibold text-foreground">{group.label}</h3>
+                  <div className="mt-2 h-px bg-border" />
                 </div>
-              )}
-            </section>
-          ))}
+                {group.tasks.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">No tasks.</p>
+                ) : (
+                  <div className="space-y-2.5">
+                    {group.tasks.map(task => <TaskCard key={task.id} task={task} />)}
+                  </div>
+                )}
+              </section>
+            ))}
+          </div>
         </div>
       )}
     </div>
