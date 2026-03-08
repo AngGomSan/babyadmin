@@ -211,6 +211,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'An international certification that authenticates a document for use in another country. If your birth certificate or other documents were issued outside Germany, an apostille may be required before they are accepted.',
     pronunciationHint: 'ah-po-STEEL-uh',
     keywords: ['international certification', 'document authentication', 'foreign documents', 'hague convention'],
+    category: 'paperwork',
   },
   {
     id: 'beglaubigte-uebersetzung',
