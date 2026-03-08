@@ -136,6 +136,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'A birth confirmation certificate, sometimes used interchangeably with Geburtsanzeige. It serves as early proof of birth before the official birth certificate is issued.',
     pronunciationHint: 'geh-BOORTS-buh-shy-ni-goong',
     keywords: ['birth confirmation', 'proof of birth', 'hospital certificate'],
+    category: 'paperwork',
   },
   // Institutions
   {
