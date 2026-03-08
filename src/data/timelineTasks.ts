@@ -594,7 +594,11 @@ export const timelineTasks: TimelineTask[] = [
     category: 'paperwork',
     international: false,
     optional: false,
-    description: 'This document confirms the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
+     description: 'This document confirms the birth before the official birth certificate is issued. It can be used as temporary proof of birth.',
+     unlocks: [
+       'employer notification',
+       'health insurance enrollment (temporary)',
+     ],
     checklist: [
       { id: 'request-geburtsanzeige-ask', label: 'Ask hospital before discharge', description: 'Do this before discharge so you do not leave without temporary proof of birth.' },
     ],
