@@ -60,9 +60,9 @@ export default function TaskCard({ task }: TaskCardProps) {
 
   return (
     <div
-      className={`rounded-xl bg-card shadow-card hover:shadow-card-hover transition-all duration-200 ${categoryBorderClass[task.category]} ${
-        completed ? 'opacity-50' : ''
-      }`}
+      className={`rounded-xl bg-card card-highlight-hover ${categoryBorderClass[task.category]} ${
+        expanded ? 'card-highlight-active' : ''
+      } ${completed ? 'opacity-50' : ''}`}
     >
       {/* Header row */}
       <div

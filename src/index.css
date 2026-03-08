@@ -110,43 +110,34 @@
     background-clip: text;
   }
 
-  /* Brand gradient highlight — use sparingly for emphasis */
-  .highlight-gradient {
-    position: relative;
-    background: linear-gradient(
-      to right,
-      rgba(242, 93, 170, 0.06),
-      rgba(138, 92, 246, 0.05),
-      rgba(79, 125, 243, 0.06)
-    );
-    border: 1px solid transparent;
-    border-image: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3) 1;
-    border-radius: 0;
+  /* Brand gradient highlight — box-shadow based, no layout shift */
+  .card-highlight-hover {
+    box-shadow:
+      0 2px 12px -2px hsl(232 25% 16% / 0.07),
+      inset 0 0 0 1.5px transparent;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
   }
-  .highlight-gradient-rounded {
+  .card-highlight-hover:hover {
+    box-shadow:
+      0 4px 16px -4px hsl(232 25% 16% / 0.1),
+      inset 0 0 0 1.5px rgba(138, 92, 246, 0.35);
     background: linear-gradient(
-      to right,
-      rgba(242, 93, 170, 0.06),
-      rgba(138, 92, 246, 0.05),
-      rgba(79, 125, 243, 0.06)
+      135deg,
+      rgba(242, 93, 170, 0.03),
+      rgba(138, 92, 246, 0.025),
+      rgba(79, 125, 243, 0.03)
     );
   }
-  .highlight-gradient-border {
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    position: relative;
-  }
-  .highlight-gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(to right, #F25DAA, #8A5CF6, #4F7DF3);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+  .card-highlight-active {
+    box-shadow:
+      0 4px 16px -4px hsl(232 25% 16% / 0.1),
+      inset 0 0 0 1.5px rgba(138, 92, 246, 0.4) !important;
+    background: linear-gradient(
+      135deg,
+      rgba(242, 93, 170, 0.05),
+      rgba(138, 92, 246, 0.04),
+      rgba(79, 125, 243, 0.05)
+    ) !important;
   }
   .shadow-card {
     box-shadow: 0 2px 12px -2px hsl(232 25% 16% / 0.07);
