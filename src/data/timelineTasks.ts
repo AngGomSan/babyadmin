@@ -458,6 +458,13 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'Elterngeld can only be submitted after birth, but preparing early reduces stress and delays.',
+    whyItMatters: 'Elterngeld replaces part of your income during parental leave. Applying late means payments start later, potentially leaving a gap in your finances.',
+    documents: [
+      { id: 'doc-elterngeld-birth-cert', label: 'Birth certificate (after birth)', germanName: 'Geburtsurkunde' },
+      { id: 'doc-elterngeld-income-proof', label: 'Proof of income (payslips)', germanName: 'Gehaltsnachweise' },
+      { id: 'doc-elterngeld-employer-cert', label: 'Employer certificate of maternity pay', germanName: 'Bescheinigung über Mutterschaftsgeld' },
+      { id: 'doc-elterngeld-health-ins-cert', label: 'Health insurance maternity benefit statement', germanName: 'Bescheinigung der Krankenkasse über Mutterschaftsgeld' },
+    ],
     checklist: [
       { id: 'prepare-elterngeld-application-eligibility', label: 'Review eligibility', description: 'Review the basic rules so there are no surprises later.' },
       { id: 'prepare-elterngeld-application-forms', label: 'Review required forms', description: 'Find out what the application will require.' },
