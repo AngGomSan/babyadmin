@@ -145,7 +145,7 @@ export default function Timeline() {
             return (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <p className="text-sm text-foreground/65 cursor-default mt-1.5">
+                  <p className="text-sm text-foreground/65 cursor-default mt-4">
                     <span className="mr-1">✨</span>
                     You're <span className="font-semibold text-foreground/80 tabular-nums">{pct}%</span> ready for baby's arrival!
                   </p>
