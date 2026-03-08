@@ -82,9 +82,8 @@
   .bg-gradient-primary {
     background: linear-gradient(
       135deg,
-      hsl(340, 72%, 65%),
-      hsl(278, 52%, 50%),
-      hsl(220, 62%, 55%)
+      hsl(330, 81%, 60%),
+      hsl(239, 84%, 67%)
     );
   }
   .bg-gradient-primary-soft {
