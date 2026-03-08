@@ -60,9 +60,12 @@ export default function TaskCard({ task }: TaskCardProps) {
             {task.title}
           </p>
           <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
+            {(() => { const Icon = CATEGORY_ICON_MAP[task.category]; return (
             <span className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${categoryBadgeClass[task.category]}`}>
-              <span className="text-[9px] leading-none">{CATEGORY_ICONS[task.category]}</span>
+              <Icon className="w-3 h-3" />
               {CATEGORY_LABELS[task.category]}
+            </span>
+            ); })()}
             </span>
             {task.optional && (
               <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
