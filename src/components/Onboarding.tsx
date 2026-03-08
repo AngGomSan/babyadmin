@@ -86,7 +86,7 @@ export default function Onboarding() {
             BabyAdmin helps you stay ahead of Germany-specific pregnancy admin. It shows you what to do, when to start and why starting then matters.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            You do not need to figure everything out at once. Focus on what matters now and what to prepare next.
+            You don't need to figure everything out at once. Focus on what matters now and what to prepare next.
           </p>
         </div>
 
