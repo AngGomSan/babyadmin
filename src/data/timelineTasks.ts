@@ -731,6 +731,14 @@ export const timelineTasks: TimelineTask[] = [
     international: false,
     optional: false,
     description: 'Elterngeld can only be submitted after birth. Preparing early makes this much easier during the newborn stage.',
+    whyItMatters: 'Elterngeld replaces part of your income during parental leave. Submitting promptly ensures payments start as early as possible.',
+    documents: [
+      { id: 'doc-submit-eg-birth-cert', label: 'Birth certificate for Elterngeld', germanName: 'Geburtsurkunde für Elterngeld' },
+      { id: 'doc-submit-eg-salary', label: 'Salary statements from the last 12 months', germanName: 'Gehaltsnachweise' },
+      { id: 'doc-submit-eg-employer', label: 'Employer confirmation of parental leave', germanName: 'Arbeitgeberbescheinigung' },
+      { id: 'doc-submit-eg-tax-id', label: 'Tax ID', germanName: 'Steuer-Identifikationsnummer' },
+      { id: 'doc-submit-eg-health-ins', label: 'Health insurance information', germanName: 'Krankenversicherung' },
+    ],
     checklist: [
       { id: 'submit-elterngeld-add-post-birth-documents', label: 'Add post-birth documents', description: 'Some supporting documents are only available once the baby has been born.' },
       { id: 'submit-elterngeld-send', label: 'Submit the application', description: 'Do not leave this hanging once the key documents are available.' },
