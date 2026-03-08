@@ -37,9 +37,9 @@
     /* Category colors */
     --category-medical: 217 91% 60%;
     --category-paperwork: 330 81% 60%;
-    --category-benefits: 152 47% 40%;
-    --category-planning: 41 96% 40%;
-    --category-planning-border: 48 96% 53%;
+    --category-benefits: 142 58% 49%;
+    --category-planning: 44 100% 48%;
+    --category-planning-border: 44 100% 48%;
 
     /* Category badge backgrounds */
     --category-medical-bg: 214 100% 97%;
