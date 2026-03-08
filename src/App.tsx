@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { AppProvider } from "@/contexts/AppContext";
 import Layout from "@/components/Layout";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import PublicLayout from "@/components/PublicLayout";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
@@ -31,20 +33,28 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Public routes */}
               <Route path="/auth" element={<Auth />} />
               <Route path="/intro" element={<Intro />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route element={<Layout />}>
-                <Route path="/" element={<Index />} />
-                <Route path="/timeline" element={<Timeline />} />
-                <Route path="/overdue" element={<OverdueTasks />} />
-                <Route path="/documents" element={<DocumentsPage />} />
-                <Route path="/glossary" element={<GlossaryPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
+              <Route element={<PublicLayout />}>
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/your-data" element={<DataHandling />} />
+                <Route path="/glossary" element={<GlossaryPage />} />
               </Route>
+
+              {/* Protected routes */}
+              <Route element={<ProtectedRoute />}>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/timeline" element={<Timeline />} />
+                  <Route path="/overdue" element={<OverdueTasks />} />
+                  <Route path="/documents" element={<DocumentsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                </Route>
+              </Route>
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
