@@ -140,6 +140,19 @@ export default function DocumentsPage() {
                               ))}
                             </p>
                           )}
+                          {(() => {
+                            const match = glossaryByGerman.get(doc.germanName.toLowerCase());
+                            if (!match || checked) return null;
+                            return (
+                              <button
+                                type="button"
+                                onClick={(e) => { e.preventDefault(); setActiveTerm(match); }}
+                                className="text-[11px] mt-1 text-primary/70 hover:text-primary transition-colors"
+                              >
+                                What is this?
+                              </button>
+                            );
+                          })()}
                         </div>
                       </label>
                     </div>
@@ -150,6 +163,8 @@ export default function DocumentsPage() {
           );
         })}
       </div>
+
+      <GlossaryModal term={activeTerm} onClose={() => setActiveTerm(null)} />
     </div>
   );
 }
