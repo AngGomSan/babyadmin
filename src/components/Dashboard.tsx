@@ -15,13 +15,12 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [weekOffset, setWeekOffset] = useState(0);
 
-  if (!calc) return null;
-
-  const viewWeek = calc.isPostpartum ? calc.currentWeek : Math.min(42, Math.max(4, calc.currentWeek + weekOffset));
-  const viewMonth = calc.isPostpartum ? Math.min(3, calc.postpartumMonth + weekOffset) : 0;
+  const viewWeek = calc ? (calc.isPostpartum ? calc.currentWeek : Math.min(42, Math.max(4, calc.currentWeek + weekOffset))) : 4;
+  const viewMonth = calc ? (calc.isPostpartum ? Math.min(3, calc.postpartumMonth + weekOffset) : 0) : 0;
   const isCurrentView = weekOffset === 0;
 
   const { nowTasks, planTasks } = useMemo(() => {
+    if (!calc) return { nowTasks: [], planTasks: [] };
     let now: TimelineTask[] = [];
     let plan: TimelineTask[] = [];
 
@@ -40,7 +39,9 @@ export default function Dashboard() {
       );
     }
     return { nowTasks: now, planTasks: plan };
-  }, [calc.isPostpartum, viewWeek, viewMonth]);
+  }, [calc, viewWeek, viewMonth]);
+
+  if (!calc) return null;
 
   const completedNow = nowTasks.filter(t => state.completedTasks.includes(t.id)).length;
   const trimesterLabel = calc.currentTrimester === 1 ? 'First trimester' : calc.currentTrimester === 2 ? 'Second trimester' : 'Third trimester';
