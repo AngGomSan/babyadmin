@@ -79,6 +79,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     englishExplanation: 'The name declaration used to determine and register the baby\'s name. In some cases, families may choose naming rules based on another nationality.',
     pronunciationHint: 'NAH-mens-klair-oong',
     keywords: ['name declaration', 'baby name', 'naming law', 'surname rules'],
+    category: 'paperwork',
   },
   {
     id: 'meldebescheinigung',
