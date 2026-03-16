@@ -31,7 +31,7 @@ export default function SettingsPage() {
 
   const handleBabyBorn = () => {
     if (birthDate) {
-      markBabyBorn(birthDate.toISOString().split('T')[0]);
+      markBabyBorn(formatDateString(birthDate));
       setBabyBornDialog(false);
     }
   };
