@@ -7,6 +7,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
+import { formatDateString } from '@/lib/dateUtils';
 
 interface BabyBornPromptProps {
   variant: 'card' | 'inline';
@@ -19,7 +20,7 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
 
   const handleConfirm = () => {
     if (birthDate) {
-      markBabyBorn(birthDate.toISOString().split('T')[0]);
+      markBabyBorn(formatDateString(birthDate));
       setDialogOpen(false);
     }
   };

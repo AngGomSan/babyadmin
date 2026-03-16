@@ -9,6 +9,7 @@ import { CalendarDays, Baby, Trash2, LogOut, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { formatDateString, parseDateString } from '@/lib/dateUtils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 
 export default function SettingsPage() {
@@ -16,21 +17,21 @@ export default function SettingsPage() {
   const { user, signOut } = useAuth();
   const calc = usePregnancyCalc();
   const [editingDueDate, setEditingDueDate] = useState(false);
-  const [tempDate, setTempDate] = useState<Date | undefined>(state.dueDate ? new Date(state.dueDate) : undefined);
+  const [tempDate, setTempDate] = useState<Date | undefined>(state.dueDate ? parseDateString(state.dueDate) : undefined);
   const [babyBornDialog, setBabyBornDialog] = useState(false);
   const [birthDate, setBirthDate] = useState<Date | undefined>(new Date());
   const [confirmReset, setConfirmReset] = useState(false);
 
   const handleSaveDueDate = () => {
     if (tempDate) {
-      setDueDate(tempDate.toISOString().split('T')[0]);
+      setDueDate(formatDateString(tempDate));
       setEditingDueDate(false);
     }
   };
 
   const handleBabyBorn = () => {
     if (birthDate) {
-      markBabyBorn(birthDate.toISOString().split('T')[0]);
+      markBabyBorn(formatDateString(birthDate));
       setBabyBornDialog(false);
     }
   };
@@ -59,10 +60,10 @@ export default function SettingsPage() {
             <div className="flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-primary" />
               <span className="text-sm text-foreground">
-                {state.dueDate ? format(new Date(state.dueDate), 'PPP') : 'Not set'}
+                {state.dueDate ? format(parseDateString(state.dueDate), 'PPP') : 'Not set'}
               </span>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => { setTempDate(state.dueDate ? new Date(state.dueDate) : undefined); setEditingDueDate(true); }}>
+            <Button variant="ghost" size="sm" onClick={() => { setTempDate(state.dueDate ? parseDateString(state.dueDate) : undefined); setEditingDueDate(true); }}>
               Edit
             </Button>
           </div>
@@ -93,7 +94,7 @@ export default function SettingsPage() {
           <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Birth</h2>
           <div className="rounded-xl bg-card shadow-card p-4 flex items-center gap-2">
             <Baby className="w-4 h-4 text-primary" />
-            <span className="text-sm text-foreground">Born {format(new Date(state.birthDate), 'PPP')}</span>
+            <span className="text-sm text-foreground">Born {format(parseDateString(state.birthDate), 'PPP')}</span>
           </div>
         </section>
       )}

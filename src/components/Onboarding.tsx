@@ -6,17 +6,18 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { formatDateString, parseDateString } from '@/lib/dateUtils';
 
 export default function Onboarding() {
   const { setDueDate, completeOnboarding, state, dismissIntro } = useApp();
   const [step, setStep] = useState<'date' | 'intro'>(state.dueDate ? 'intro' : 'date');
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    state.dueDate ? new Date(state.dueDate) : undefined
+    state.dueDate ? parseDateString(state.dueDate) : undefined
   );
 
   const handleDateConfirm = () => {
     if (selectedDate) {
-      setDueDate(selectedDate.toISOString().split('T')[0]);
+      setDueDate(formatDateString(selectedDate));
       setStep('intro');
     }
   };

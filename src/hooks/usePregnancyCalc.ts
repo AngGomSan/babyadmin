@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { differenceInDays } from 'date-fns';
 import { useApp } from '@/contexts/AppContext';
+import { parseDateString } from '@/lib/dateUtils';
 
 export interface PregnancyCalc {
   currentWeek: number;
@@ -21,7 +22,7 @@ export function usePregnancyCalc(): PregnancyCalc | null {
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const due = new Date(state.dueDate);
+    const due = parseDateString(state.dueDate);
     due.setHours(0, 0, 0, 0);
 
     const daysUntilDue = differenceInDays(due, today);
@@ -40,7 +41,7 @@ export function usePregnancyCalc(): PregnancyCalc | null {
     let postpartumDay = 0;
 
     if (state.birthDate) {
-      const birth = new Date(state.birthDate);
+      const birth = parseDateString(state.birthDate);
       birth.setHours(0, 0, 0, 0);
       const daysSinceBirth = differenceInDays(today, birth);
       postpartumMonth = Math.min(3, Math.floor(daysSinceBirth / 30));
