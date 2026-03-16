@@ -63,7 +63,7 @@ export default function SettingsPage() {
                 {state.dueDate ? format(parseDateString(state.dueDate), 'PPP') : 'Not set'}
               </span>
             </div>
-            <Button variant="ghost" size="sm" onClick={() => { setTempDate(state.dueDate ? new Date(state.dueDate) : undefined); setEditingDueDate(true); }}>
+            <Button variant="ghost" size="sm" onClick={() => { setTempDate(state.dueDate ? parseDateString(state.dueDate) : undefined); setEditingDueDate(true); }}>
               Edit
             </Button>
           </div>
