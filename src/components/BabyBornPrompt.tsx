@@ -20,7 +20,7 @@ export default function BabyBornPrompt({ variant }: BabyBornPromptProps) {
 
   const handleConfirm = () => {
     if (birthDate) {
-      markBabyBorn(birthDate.toISOString().split('T')[0]);
+      markBabyBorn(formatDateString(birthDate));
       setDialogOpen(false);
     }
   };
