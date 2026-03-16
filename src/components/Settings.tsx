@@ -24,7 +24,7 @@ export default function SettingsPage() {
 
   const handleSaveDueDate = () => {
     if (tempDate) {
-      setDueDate(tempDate.toISOString().split('T')[0]);
+      setDueDate(formatDateString(tempDate));
       setEditingDueDate(false);
     }
   };
