@@ -22,7 +22,7 @@ export function usePregnancyCalc(): PregnancyCalc | null {
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const due = new Date(state.dueDate);
+    const due = parseDateString(state.dueDate);
     due.setHours(0, 0, 0, 0);
 
     const daysUntilDue = differenceInDays(due, today);
