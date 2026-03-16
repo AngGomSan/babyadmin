@@ -60,7 +60,7 @@ export default function SettingsPage() {
             <div className="flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-primary" />
               <span className="text-sm text-foreground">
-                {state.dueDate ? format(new Date(state.dueDate), 'PPP') : 'Not set'}
+                {state.dueDate ? format(parseDateString(state.dueDate), 'PPP') : 'Not set'}
               </span>
             </div>
             <Button variant="ghost" size="sm" onClick={() => { setTempDate(state.dueDate ? new Date(state.dueDate) : undefined); setEditingDueDate(true); }}>
