@@ -6,6 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { CalendarDays, ArrowRight } from 'lucide-react';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { formatDateString, parseDateString } from '@/lib/dateUtils';
 
 export default function Onboarding() {
   const { setDueDate, completeOnboarding, state, dismissIntro } = useApp();
