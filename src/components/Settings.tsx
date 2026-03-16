@@ -9,6 +9,7 @@ import { CalendarDays, Baby, Trash2, LogOut, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { format, addWeeks } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { formatDateString, parseDateString } from '@/lib/dateUtils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 
 export default function SettingsPage() {
