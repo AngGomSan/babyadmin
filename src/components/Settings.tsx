@@ -94,7 +94,7 @@ export default function SettingsPage() {
           <h2 className="text-xs font-semibold text-foreground uppercase tracking-wider">Birth</h2>
           <div className="rounded-xl bg-card shadow-card p-4 flex items-center gap-2">
             <Baby className="w-4 h-4 text-primary" />
-            <span className="text-sm text-foreground">Born {format(new Date(state.birthDate), 'PPP')}</span>
+            <span className="text-sm text-foreground">Born {format(parseDateString(state.birthDate), 'PPP')}</span>
           </div>
         </section>
       )}

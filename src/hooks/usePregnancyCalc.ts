@@ -41,7 +41,7 @@ export function usePregnancyCalc(): PregnancyCalc | null {
     let postpartumDay = 0;
 
     if (state.birthDate) {
-      const birth = new Date(state.birthDate);
+      const birth = parseDateString(state.birthDate);
       birth.setHours(0, 0, 0, 0);
       const daysSinceBirth = differenceInDays(today, birth);
       postpartumMonth = Math.min(3, Math.floor(daysSinceBirth / 30));

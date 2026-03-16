@@ -17,7 +17,7 @@ export default function Onboarding() {
 
   const handleDateConfirm = () => {
     if (selectedDate) {
-      setDueDate(selectedDate.toISOString().split('T')[0]);
+      setDueDate(formatDateString(selectedDate));
       setStep('intro');
     }
   };
