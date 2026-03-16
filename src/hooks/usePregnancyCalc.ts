@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { differenceInDays } from 'date-fns';
 import { useApp } from '@/contexts/AppContext';
+import { parseDateString } from '@/lib/dateUtils';
 
 export interface PregnancyCalc {
   currentWeek: number;
