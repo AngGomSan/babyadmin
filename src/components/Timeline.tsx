@@ -139,19 +139,25 @@ export default function Timeline() {
           <p className="text-xs text-muted-foreground mt-0.5">Tasks organized by pregnancy stage.</p>
           {/* Preparation progress */}
           {(() => {
-            const totalTasks = timelineTasks.length;
-            const completedCount = state.completedTasks.length;
+            const isBorn = state.babyBorn;
+            const phaseTasks = isBorn
+              ? timelineTasks.filter(t => t.timing.type === 'postpartumMonth' || t.timing.type === 'postpartumRange')
+              : timelineTasks.filter(t => t.timing.type === 'weekRange');
+            const phaseIds = new Set(phaseTasks.map(t => t.id));
+            const completedCount = state.completedTasks.filter(id => phaseIds.has(id)).length;
+            const totalTasks = phaseTasks.length;
             const pct = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
             return (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <p className="text-sm text-foreground/65 cursor-default mt-4">
                     <span className="mr-1">✨</span>
-                    You're <span className="font-semibold text-foreground/80 tabular-nums">{pct}%</span> ready for baby's arrival!
+                    You're <span className="font-semibold text-foreground/80 tabular-nums">{pct}%</span>{' '}
+                    {isBorn ? 'through postpartum admin' : "ready for baby's arrival"}!
                   </p>
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="text-xs">
-                  {completedCount} of {totalTasks} tasks completed
+                  {completedCount} of {totalTasks} {isBorn ? 'postpartum ' : ''}tasks completed
                 </TooltipContent>
               </Tooltip>
             );
