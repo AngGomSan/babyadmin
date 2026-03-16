@@ -12,7 +12,7 @@ export default function Onboarding() {
   const { setDueDate, completeOnboarding, state, dismissIntro } = useApp();
   const [step, setStep] = useState<'date' | 'intro'>(state.dueDate ? 'intro' : 'date');
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    state.dueDate ? new Date(state.dueDate) : undefined
+    state.dueDate ? parseDateString(state.dueDate) : undefined
   );
 
   const handleDateConfirm = () => {
