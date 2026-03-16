@@ -17,7 +17,7 @@ export default function SettingsPage() {
   const { user, signOut } = useAuth();
   const calc = usePregnancyCalc();
   const [editingDueDate, setEditingDueDate] = useState(false);
-  const [tempDate, setTempDate] = useState<Date | undefined>(state.dueDate ? new Date(state.dueDate) : undefined);
+  const [tempDate, setTempDate] = useState<Date | undefined>(state.dueDate ? parseDateString(state.dueDate) : undefined);
   const [babyBornDialog, setBabyBornDialog] = useState(false);
   const [birthDate, setBirthDate] = useState<Date | undefined>(new Date());
   const [confirmReset, setConfirmReset] = useState(false);
